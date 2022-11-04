@@ -4264,3885 +4264,2358 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 }();
 "use strict";
 
-function _typeof2(obj) { "@babel/helpers - typeof"; return _typeof2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof2(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
-(function (global, factory) {
-  (typeof exports === "undefined" ? "undefined" : _typeof2(exports)) === 'object' && typeof module !== 'undefined' ? factory(exports) : typeof define === 'function' && define.amd ? define(['exports'], factory) : (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.IMask = {}));
-})(void 0, function (exports) {
-  'use strict';
+!function (t, e) {
+  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? e(exports) : "function" == typeof define && define.amd ? define(["exports"], e) : (t = "undefined" != typeof globalThis ? globalThis : t || self, e(t.IMask = {}));
+}(void 0, function (t) {
+  "use strict";
 
-  var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-  var check = function check(it) {
-    return it && it.Math == Math && it;
-  }; // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-
-
-  var global$c = // eslint-disable-next-line es/no-global-this -- safe
-  check((typeof globalThis === "undefined" ? "undefined" : _typeof2(globalThis)) == 'object' && globalThis) || check((typeof window === "undefined" ? "undefined" : _typeof2(window)) == 'object' && window) || // eslint-disable-next-line no-restricted-globals -- safe
-  check((typeof self === "undefined" ? "undefined" : _typeof2(self)) == 'object' && self) || check(_typeof2(commonjsGlobal) == 'object' && commonjsGlobal) || // eslint-disable-next-line no-new-func -- fallback
-  function () {
+  var e,
+      n,
+      u,
+      i,
+      r,
+      a = "undefined" != typeof globalThis ? globalThis : "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
+      s = function s(t) {
+    return t && t.Math == Math && t;
+  },
+      o = s("object" == (typeof globalThis === "undefined" ? "undefined" : _typeof(globalThis)) && globalThis) || s("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window) || s("object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self) || s("object" == _typeof(a) && a) || function () {
     return this;
-  }() || Function('return this')();
-
-  var objectGetOwnPropertyDescriptor = {};
-
-  var fails$6 = function fails$6(exec) {
+  }() || Function("return this")(),
+      l = {},
+      h = function h(t) {
     try {
-      return !!exec();
-    } catch (error) {
-      return true;
+      return !!t();
+    } catch (e) {
+      return !0;
     }
-  };
-
-  var fails$5 = fails$6; // Detect IE8's incomplete defineProperty implementation
-
-  var descriptors = !fails$5(function () {
-    // eslint-disable-next-line es/no-object-defineproperty -- required for testing
-    return Object.defineProperty({}, 1, {
+  },
+      c = !h(function () {
+    return 7 != Object.defineProperty({}, 1, {
       get: function get() {
         return 7;
       }
-    })[1] != 7;
-  });
-  var objectPropertyIsEnumerable = {};
-  var $propertyIsEnumerable = {}.propertyIsEnumerable; // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-
-  var getOwnPropertyDescriptor$1 = Object.getOwnPropertyDescriptor; // Nashorn ~ JDK8 bug
-
-  var NASHORN_BUG = getOwnPropertyDescriptor$1 && !$propertyIsEnumerable.call({
+    })[1];
+  }),
+      f = {},
+      $ = {}.propertyIsEnumerable,
+      p = Object.getOwnPropertyDescriptor,
+      d = p && !$.call({
     1: 2
-  }, 1); // `Object.prototype.propertyIsEnumerable` method implementation
-  // https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
+  }, 1);
 
-  objectPropertyIsEnumerable.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
-    var descriptor = getOwnPropertyDescriptor$1(this, V);
-    return !!descriptor && descriptor.enumerable;
-  } : $propertyIsEnumerable;
+  f.f = d ? function t(e) {
+    var n = p(this, e);
+    return !!n && n.enumerable;
+  } : $;
 
-  var createPropertyDescriptor$2 = function createPropertyDescriptor$2(bitmap, value) {
+  var v,
+      k = function k(t, e) {
     return {
-      enumerable: !(bitmap & 1),
-      configurable: !(bitmap & 2),
-      writable: !(bitmap & 4),
-      value: value
+      enumerable: !(1 & t),
+      configurable: !(2 & t),
+      writable: !(4 & t),
+      value: e
     };
-  };
+  },
+      g = {}.toString,
+      _ = function _(t) {
+    return g.call(t).slice(8, -1);
+  },
+      y = "".split,
+      m = h(function () {
+    return !Object("z").propertyIsEnumerable(0);
+  }) ? function (t) {
+    return "String" == _(t) ? y.call(t, "") : Object(t);
+  } : Object,
+      C = function C(t) {
+    if (void 0 == t) throw TypeError("Can't call method on " + t);
+    return t;
+  },
+      A = m,
+      F = C,
+      E = function E(t) {
+    return A(F(t));
+  },
+      b = function b(t) {
+    return "object" == _typeof(t) ? null !== t : "function" == typeof t;
+  },
+      S = o,
+      D = function D(t, e) {
+    var n;
+    return arguments.length < 2 ? "function" == typeof (n = S[t]) ? n : void 0 : S[t] && S[t][e];
+  },
+      B = D("navigator", "userAgent") || "",
+      w = o,
+      P = B,
+      x = w.process,
+      M = w.Deno,
+      T = x && x.versions || M && M.version,
+      I = T && T.v8;
 
-  var toString$3 = {}.toString;
+  I ? n = (e = I.split("."))[0] < 4 ? 1 : e[0] + e[1] : P && (!(e = P.match(/Edge\/(\d+)/)) || e[1] >= 74) && (e = P.match(/Chrome\/(\d+)/)) && (n = e[1]);
 
-  var classofRaw = function classofRaw(it) {
-    return toString$3.call(it).slice(8, -1);
-  };
-
-  var fails$4 = fails$6;
-  var classof = classofRaw;
-  var split = ''.split; // fallback for non-array-like ES3 and non-enumerable old V8 strings
-
-  var indexedObject = fails$4(function () {
-    // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
-    // eslint-disable-next-line no-prototype-builtins -- safe
-    return !Object('z').propertyIsEnumerable(0);
-  }) ? function (it) {
-    return classof(it) == 'String' ? split.call(it, '') : Object(it);
-  } : Object; // `RequireObjectCoercible` abstract operation
-  // https://tc39.es/ecma262/#sec-requireobjectcoercible
-
-  var requireObjectCoercible$4 = function requireObjectCoercible$4(it) {
-    if (it == undefined) throw TypeError("Can't call method on " + it);
-    return it;
-  }; // toObject with fallback for non-array-like ES3 strings
-
-
-  var IndexedObject$1 = indexedObject;
-  var requireObjectCoercible$3 = requireObjectCoercible$4;
-
-  var toIndexedObject$3 = function toIndexedObject$3(it) {
-    return IndexedObject$1(requireObjectCoercible$3(it));
-  };
-
-  var isObject$5 = function isObject$5(it) {
-    return _typeof2(it) === 'object' ? it !== null : typeof it === 'function';
-  };
-
-  var global$b = global$c;
-
-  var aFunction = function aFunction(variable) {
-    return typeof variable == 'function' ? variable : undefined;
-  };
-
-  var getBuiltIn$3 = function getBuiltIn$3(namespace, method) {
-    return arguments.length < 2 ? aFunction(global$b[namespace]) : global$b[namespace] && global$b[namespace][method];
-  };
-
-  var getBuiltIn$2 = getBuiltIn$3;
-  var engineUserAgent = getBuiltIn$2('navigator', 'userAgent') || '';
-  var global$a = global$c;
-  var userAgent$1 = engineUserAgent;
-  var process = global$a.process;
-  var Deno = global$a.Deno;
-  var versions = process && process.versions || Deno && Deno.version;
-  var v8 = versions && versions.v8;
-  var match, version;
-
-  if (v8) {
-    match = v8.split('.');
-    version = match[0] < 4 ? 1 : match[0] + match[1];
-  } else if (userAgent$1) {
-    match = userAgent$1.match(/Edge\/(\d+)/);
-
-    if (!match || match[1] >= 74) {
-      match = userAgent$1.match(/Chrome\/(\d+)/);
-      if (match) version = match[1];
-    }
-  }
-
-  var engineV8Version = version && +version;
-  /* eslint-disable es/no-symbol -- required for testing */
-
-  var V8_VERSION = engineV8Version;
-  var fails$3 = fails$6; // eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
-
-  var nativeSymbol = !!Object.getOwnPropertySymbols && !fails$3(function () {
-    var symbol = Symbol(); // Chrome 38 Symbol has incorrect toString conversion
-    // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
-
-    return !String(symbol) || !(Object(symbol) instanceof Symbol) || // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
-    !Symbol.sham && V8_VERSION && V8_VERSION < 41;
-  });
-  /* eslint-disable es/no-symbol -- required for testing */
-
-  var NATIVE_SYMBOL$1 = nativeSymbol;
-  var useSymbolAsUid = NATIVE_SYMBOL$1 && !Symbol.sham && _typeof2(Symbol.iterator) == 'symbol';
-  var getBuiltIn$1 = getBuiltIn$3;
-  var USE_SYMBOL_AS_UID$1 = useSymbolAsUid;
-  var isSymbol$3 = USE_SYMBOL_AS_UID$1 ? function (it) {
-    return _typeof2(it) == 'symbol';
-  } : function (it) {
-    var $Symbol = getBuiltIn$1('Symbol');
-    return typeof $Symbol == 'function' && Object(it) instanceof $Symbol;
-  };
-  var isObject$4 = isObject$5; // `OrdinaryToPrimitive` abstract operation
-  // https://tc39.es/ecma262/#sec-ordinarytoprimitive
-
-  var ordinaryToPrimitive$1 = function ordinaryToPrimitive$1(input, pref) {
-    var fn, val;
-    if (pref === 'string' && typeof (fn = input.toString) == 'function' && !isObject$4(val = fn.call(input))) return val;
-    if (typeof (fn = input.valueOf) == 'function' && !isObject$4(val = fn.call(input))) return val;
-    if (pref !== 'string' && typeof (fn = input.toString) == 'function' && !isObject$4(val = fn.call(input))) return val;
+  var R = n && +n,
+      O = !!Object.getOwnPropertySymbols && !h(function () {
+    var t = Symbol();
+    return !String(t) || !(Object(t) instanceof Symbol) || !Symbol.sham && R && R < 41;
+  }),
+      V = O && !Symbol.sham && "symbol" == _typeof(Symbol.iterator),
+      L = D,
+      N = V ? function (t) {
+    return "symbol" == _typeof(t);
+  } : function (t) {
+    var e = L("Symbol");
+    return "function" == typeof e && Object(t) instanceof e;
+  },
+      j = b,
+      H = function H(t, e) {
+    var n, u;
+    if ("string" === e && "function" == typeof (n = t.toString) && !j(u = n.call(t)) || "function" == typeof (n = t.valueOf) && !j(u = n.call(t)) || "string" !== e && "function" == typeof (n = t.toString) && !j(u = n.call(t))) return u;
     throw TypeError("Can't convert object to primitive value");
-  };
-
-  var shared$3 = {
+  },
+      U = {
     exports: {}
-  };
-  var global$9 = global$c;
-
-  var setGlobal$3 = function setGlobal$3(key, value) {
+  },
+      z = o,
+      G = function G(t, e) {
     try {
-      // eslint-disable-next-line es/no-object-defineproperty -- safe
-      Object.defineProperty(global$9, key, {
-        value: value,
-        configurable: true,
-        writable: true
+      Object.defineProperty(z, t, {
+        value: e,
+        configurable: !0,
+        writable: !0
       });
-    } catch (error) {
-      global$9[key] = value;
+    } catch (n) {
+      z[t] = e;
     }
 
-    return value;
-  };
+    return e;
+  },
+      Y = "__core-js_shared__",
+      Z = o[Y] || G(Y, {}),
+      K = Z;
 
-  var global$8 = global$c;
-  var setGlobal$2 = setGlobal$3;
-  var SHARED = '__core-js_shared__';
-  var store$3 = global$8[SHARED] || setGlobal$2(SHARED, {});
-  var sharedStore = store$3;
-  var store$2 = sharedStore;
-  (shared$3.exports = function (key, value) {
-    return store$2[key] || (store$2[key] = value !== undefined ? value : {});
-  })('versions', []).push({
-    version: '3.17.3',
-    mode: 'global',
-    copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
+  (U.exports = function (t, e) {
+    return K[t] || (K[t] = void 0 !== e ? e : {});
+  })("versions", []).push({
+    version: "3.17.3",
+    mode: "global",
+    copyright: "\xa9 2021 Denis Pushkarev (zloirock.ru)"
   });
-  var requireObjectCoercible$2 = requireObjectCoercible$4; // `ToObject` abstract operation
-  // https://tc39.es/ecma262/#sec-toobject
 
-  var toObject$2 = function toObject$2(argument) {
-    return Object(requireObjectCoercible$2(argument));
-  };
+  var W,
+      q = "toPrimitive",
+      X = C,
+      J = function J(t) {
+    return Object(X(t));
+  },
+      Q = J,
+      tt = {}.hasOwnProperty,
+      te = Object.hasOwn || function t(e, n) {
+    return tt.call(Q(e), n);
+  },
+      tn = 0,
+      tu = Math.random(),
+      ti = function ti(t) {
+    return "Symbol(" + String(void 0 === t ? "" : t) + ")_" + (++tn + tu).toString(36);
+  },
+      tr = U.exports,
+      ta = te,
+      ts = O,
+      to = tr("wks"),
+      tl = o.Symbol,
+      th = V ? tl : tl && tl.withoutSetter || ti,
+      tc = b,
+      tf = N,
+      t$ = H,
+      tp = (ta(to, q) && (ts || "string" == typeof to[q]) || (ts && ta(tl, q) ? to[q] = tl[q] : to[q] = th("Symbol." + q)), to[q]),
+      td = function td(t, e) {
+    if (!tc(t) || tf(t)) return t;
+    var n,
+        u = t[tp];
 
-  var toObject$1 = toObject$2;
-  var hasOwnProperty = {}.hasOwnProperty;
-
-  var has$6 = Object.hasOwn || function hasOwn(it, key) {
-    return hasOwnProperty.call(toObject$1(it), key);
-  };
-
-  var id = 0;
-  var postfix = Math.random();
-
-  var uid$2 = function uid$2(key) {
-    return 'Symbol(' + String(key === undefined ? '' : key) + ')_' + (++id + postfix).toString(36);
-  };
-
-  var global$7 = global$c;
-  var shared$2 = shared$3.exports;
-  var has$5 = has$6;
-  var uid$1 = uid$2;
-  var NATIVE_SYMBOL = nativeSymbol;
-  var USE_SYMBOL_AS_UID = useSymbolAsUid;
-  var WellKnownSymbolsStore = shared$2('wks');
-  var Symbol$1 = global$7.Symbol;
-  var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol$1 : Symbol$1 && Symbol$1.withoutSetter || uid$1;
-
-  var wellKnownSymbol$1 = function wellKnownSymbol$1(name) {
-    if (!has$5(WellKnownSymbolsStore, name) || !(NATIVE_SYMBOL || typeof WellKnownSymbolsStore[name] == 'string')) {
-      if (NATIVE_SYMBOL && has$5(Symbol$1, name)) {
-        WellKnownSymbolsStore[name] = Symbol$1[name];
-      } else {
-        WellKnownSymbolsStore[name] = createWellKnownSymbol('Symbol.' + name);
-      }
-    }
-
-    return WellKnownSymbolsStore[name];
-  };
-
-  var isObject$3 = isObject$5;
-  var isSymbol$2 = isSymbol$3;
-  var ordinaryToPrimitive = ordinaryToPrimitive$1;
-  var wellKnownSymbol = wellKnownSymbol$1;
-  var TO_PRIMITIVE = wellKnownSymbol('toPrimitive'); // `ToPrimitive` abstract operation
-  // https://tc39.es/ecma262/#sec-toprimitive
-
-  var toPrimitive$1 = function toPrimitive$1(input, pref) {
-    if (!isObject$3(input) || isSymbol$2(input)) return input;
-    var exoticToPrim = input[TO_PRIMITIVE];
-    var result;
-
-    if (exoticToPrim !== undefined) {
-      if (pref === undefined) pref = 'default';
-      result = exoticToPrim.call(input, pref);
-      if (!isObject$3(result) || isSymbol$2(result)) return result;
+    if (void 0 !== u) {
+      if (void 0 === e && (e = "default"), !tc(n = u.call(t, e)) || tf(n)) return n;
       throw TypeError("Can't convert object to primitive value");
     }
 
-    if (pref === undefined) pref = 'number';
-    return ordinaryToPrimitive(input, pref);
-  };
-
-  var toPrimitive = toPrimitive$1;
-  var isSymbol$1 = isSymbol$3; // `ToPropertyKey` abstract operation
-  // https://tc39.es/ecma262/#sec-topropertykey
-
-  var toPropertyKey$2 = function toPropertyKey$2(argument) {
-    var key = toPrimitive(argument, 'string');
-    return isSymbol$1(key) ? key : String(key);
-  };
-
-  var global$6 = global$c;
-  var isObject$2 = isObject$5;
-  var document$1 = global$6.document; // typeof document.createElement is 'object' in old IE
-
-  var EXISTS = isObject$2(document$1) && isObject$2(document$1.createElement);
-
-  var documentCreateElement = function documentCreateElement(it) {
-    return EXISTS ? document$1.createElement(it) : {};
-  };
-
-  var DESCRIPTORS$4 = descriptors;
-  var fails$2 = fails$6;
-  var createElement = documentCreateElement; // Thank's IE8 for his funny defineProperty
-
-  var ie8DomDefine = !DESCRIPTORS$4 && !fails$2(function () {
-    // eslint-disable-next-line es/no-object-defineproperty -- requied for testing
-    return Object.defineProperty(createElement('div'), 'a', {
+    return void 0 === e && (e = "number"), t$(t, e);
+  },
+      tv = N,
+      tk = function tk(t) {
+    var e = td(t, "string");
+    return tv(e) ? e : String(e);
+  },
+      tg = b,
+      t_ = o.document,
+      ty = tg(t_) && tg(t_.createElement),
+      tm = function tm(t) {
+    return ty ? t_.createElement(t) : {};
+  },
+      t8 = !c && !h(function () {
+    return 7 != Object.defineProperty(tm("div"), "a", {
       get: function get() {
         return 7;
       }
-    }).a != 7;
-  });
-  var DESCRIPTORS$3 = descriptors;
-  var propertyIsEnumerableModule$1 = objectPropertyIsEnumerable;
-  var createPropertyDescriptor$1 = createPropertyDescriptor$2;
-  var toIndexedObject$2 = toIndexedObject$3;
-  var toPropertyKey$1 = toPropertyKey$2;
-  var has$4 = has$6;
-  var IE8_DOM_DEFINE$1 = ie8DomDefine; // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+    }).a;
+  }),
+      tC = f,
+      tA = k,
+      tF = E,
+      tE = tk,
+      tb = te,
+      t0 = t8,
+      tS = Object.getOwnPropertyDescriptor;
 
-  var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor; // `Object.getOwnPropertyDescriptor` method
-  // https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
-
-  objectGetOwnPropertyDescriptor.f = DESCRIPTORS$3 ? $getOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
-    O = toIndexedObject$2(O);
-    P = toPropertyKey$1(P);
-    if (IE8_DOM_DEFINE$1) try {
-      return $getOwnPropertyDescriptor(O, P);
-    } catch (error) {
-      /* empty */
-    }
-    if (has$4(O, P)) return createPropertyDescriptor$1(!propertyIsEnumerableModule$1.f.call(O, P), O[P]);
-  };
-  var objectDefineProperty = {};
-  var isObject$1 = isObject$5;
-
-  var anObject$2 = function anObject$2(it) {
-    if (!isObject$1(it)) {
-      throw TypeError(String(it) + ' is not an object');
-    }
-
-    return it;
+  l.f = c ? tS : function t(e, n) {
+    if (e = tF(e), n = tE(n), t0) try {
+      return tS(e, n);
+    } catch (u) {}
+    if (tb(e, n)) return tA(!tC.f.call(e, n), e[n]);
   };
 
-  var DESCRIPTORS$2 = descriptors;
-  var IE8_DOM_DEFINE = ie8DomDefine;
-  var anObject$1 = anObject$2;
-  var toPropertyKey = toPropertyKey$2; // eslint-disable-next-line es/no-object-defineproperty -- safe
+  var tD = {},
+      tB = b,
+      tw = function tw(t) {
+    if (!tB(t)) throw TypeError(String(t) + " is not an object");
+    return t;
+  },
+      tP = t8,
+      tx = tw,
+      t1 = tk,
+      tM = Object.defineProperty;
 
-  var $defineProperty = Object.defineProperty; // `Object.defineProperty` method
-  // https://tc39.es/ecma262/#sec-object.defineproperty
-
-  objectDefineProperty.f = DESCRIPTORS$2 ? $defineProperty : function defineProperty(O, P, Attributes) {
-    anObject$1(O);
-    P = toPropertyKey(P);
-    anObject$1(Attributes);
-    if (IE8_DOM_DEFINE) try {
-      return $defineProperty(O, P, Attributes);
-    } catch (error) {
-      /* empty */
-    }
-    if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported');
-    if ('value' in Attributes) O[P] = Attributes.value;
-    return O;
+  tD.f = c ? tM : function t(e, n, u) {
+    if (tx(e), n = t1(n), tx(u), tP) try {
+      return tM(e, n, u);
+    } catch (i) {}
+    if ("get" in u || "set" in u) throw TypeError("Accessors not supported");
+    return "value" in u && (e[n] = u.value), e;
   };
-  var DESCRIPTORS$1 = descriptors;
-  var definePropertyModule$1 = objectDefineProperty;
-  var createPropertyDescriptor = createPropertyDescriptor$2;
-  var createNonEnumerableProperty$3 = DESCRIPTORS$1 ? function (object, key, value) {
-    return definePropertyModule$1.f(object, key, createPropertyDescriptor(1, value));
-  } : function (object, key, value) {
-    object[key] = value;
-    return object;
-  };
-  var redefine$1 = {
+  var tT = tD,
+      t6 = k,
+      tI = c ? function (t, e, n) {
+    return tT.f(t, e, t6(1, n));
+  } : function (t, e, n) {
+    return t[e] = n, t;
+  },
+      t5 = {
     exports: {}
-  };
-  var store$1 = sharedStore;
-  var functionToString = Function.toString; // this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
+  },
+      t7 = Z,
+      t4 = Function.toString;
+  "function" != typeof t7.inspectSource && (t7.inspectSource = function (t) {
+    return t4.call(t);
+  });
 
-  if (typeof store$1.inspectSource != 'function') {
-    store$1.inspectSource = function (it) {
-      return functionToString.call(it);
-    };
-  }
-
-  var inspectSource$2 = store$1.inspectSource;
-  var global$5 = global$c;
-  var inspectSource$1 = inspectSource$2;
-  var WeakMap$1 = global$5.WeakMap;
-  var nativeWeakMap = typeof WeakMap$1 === 'function' && /native code/.test(inspectSource$1(WeakMap$1));
-  var shared$1 = shared$3.exports;
-  var uid = uid$2;
-  var keys = shared$1('keys');
-
-  var sharedKey$1 = function sharedKey$1(key) {
-    return keys[key] || (keys[key] = uid(key));
-  };
-
-  var hiddenKeys$3 = {};
-  var NATIVE_WEAK_MAP = nativeWeakMap;
-  var global$4 = global$c;
-  var isObject = isObject$5;
-  var createNonEnumerableProperty$2 = createNonEnumerableProperty$3;
-  var objectHas = has$6;
-  var shared = sharedStore;
-  var sharedKey = sharedKey$1;
-  var hiddenKeys$2 = hiddenKeys$3;
-  var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
-  var WeakMap = global$4.WeakMap;
-  var set$1, get, has$3;
-
-  var enforce = function enforce(it) {
-    return has$3(it) ? get(it) : set$1(it, {});
-  };
-
-  var getterFor = function getterFor(TYPE) {
-    return function (it) {
-      var state;
-
-      if (!isObject(it) || (state = get(it)).type !== TYPE) {
-        throw TypeError('Incompatible receiver, ' + TYPE + ' required');
-      }
-
-      return state;
+  var t3 = t7.inspectSource,
+      tR = o.WeakMap,
+      tO = "function" == typeof tR && /native code/.test(t3(tR)),
+      tV = U.exports,
+      t2 = ti,
+      tL = tV("keys"),
+      tN = {},
+      tj = b,
+      tH = tI,
+      tU = te,
+      tz = Z,
+      tG = tN,
+      tY = "Object already initialized",
+      tZ = o.WeakMap,
+      tK = function tK(t) {
+    return r(t) ? i(t) : u(t, {});
+  },
+      tW = function tW(t) {
+    return function (e) {
+      var n;
+      if (!tj(e) || (n = i(e)).type !== t) throw TypeError("Incompatible receiver, " + t + " required");
+      return n;
     };
   };
 
-  if (NATIVE_WEAK_MAP || shared.state) {
-    var store = shared.state || (shared.state = new WeakMap());
-    var wmget = store.get;
-    var wmhas = store.has;
-    var wmset = store.set;
-
-    set$1 = function set$1(it, metadata) {
-      if (wmhas.call(store, it)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
-      metadata.facade = it;
-      wmset.call(store, it, metadata);
-      return metadata;
-    };
-
-    get = function get(it) {
-      return wmget.call(store, it) || {};
-    };
-
-    has$3 = function has$3(it) {
-      return wmhas.call(store, it);
+  if (tO || tz.state) {
+    var t9 = tz.state || (tz.state = new tZ()),
+        tq = t9.get,
+        tX = t9.has,
+        tJ = t9.set;
+    u = function u(t, e) {
+      if (tX.call(t9, t)) throw TypeError(tY);
+      return e.facade = t, tJ.call(t9, t, e), e;
+    }, i = function i(t) {
+      return tq.call(t9, t) || {};
+    }, r = function r(t) {
+      return tX.call(t9, t);
     };
   } else {
-    var STATE = sharedKey('state');
-    hiddenKeys$2[STATE] = true;
-
-    set$1 = function set$1(it, metadata) {
-      if (objectHas(it, STATE)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
-      metadata.facade = it;
-      createNonEnumerableProperty$2(it, STATE, metadata);
-      return metadata;
-    };
-
-    get = function get(it) {
-      return objectHas(it, STATE) ? it[STATE] : {};
-    };
-
-    has$3 = function has$3(it) {
-      return objectHas(it, STATE);
+    var tQ = "state",
+        et = tL[tQ] || (tL[tQ] = t2(tQ));
+    tG[et] = !0, u = function u(t, e) {
+      if (tU(t, et)) throw TypeError(tY);
+      return e.facade = t, tH(t, et, e), e;
+    }, i = function i(t) {
+      return tU(t, et) ? t[et] : {};
+    }, r = function r(t) {
+      return tU(t, et);
     };
   }
 
-  var internalState = {
-    set: set$1,
-    get: get,
-    has: has$3,
-    enforce: enforce,
-    getterFor: getterFor
-  };
-  var global$3 = global$c;
-  var createNonEnumerableProperty$1 = createNonEnumerableProperty$3;
-  var has$2 = has$6;
-  var setGlobal$1 = setGlobal$3;
-  var inspectSource = inspectSource$2;
-  var InternalStateModule = internalState;
-  var getInternalState = InternalStateModule.get;
-  var enforceInternalState = InternalStateModule.enforce;
-  var TEMPLATE = String(String).split('String');
-  (redefine$1.exports = function (O, key, value, options) {
-    var unsafe = options ? !!options.unsafe : false;
-    var simple = options ? !!options.enumerable : false;
-    var noTargetGet = options ? !!options.noTargetGet : false;
-    var state;
+  var ee = {
+    set: u,
+    get: i,
+    has: r,
+    enforce: tK,
+    getterFor: tW
+  },
+      en = o,
+      eu = tI,
+      ei = te,
+      er = G,
+      ea = t3,
+      es = ee,
+      eo = es.get,
+      el = es.enforce,
+      eh = String(String).split("String");
+  (t5.exports = function (t, e, n, u) {
+    var i,
+        r = !!u && !!u.unsafe,
+        a = !!u && !!u.enumerable,
+        s = !!u && !!u.noTargetGet;
 
-    if (typeof value == 'function') {
-      if (typeof key == 'string' && !has$2(value, 'name')) {
-        createNonEnumerableProperty$1(value, 'name', key);
-      }
-
-      state = enforceInternalState(value);
-
-      if (!state.source) {
-        state.source = TEMPLATE.join(typeof key == 'string' ? key : '');
-      }
-    }
-
-    if (O === global$3) {
-      if (simple) O[key] = value;else setGlobal$1(key, value);
+    if ("function" != typeof n || ("string" != typeof e || ei(n, "name") || eu(n, "name", e), (i = el(n)).source || (i.source = eh.join("string" == typeof e ? e : ""))), t === en) {
+      a ? t[e] = n : er(e, n);
       return;
-    } else if (!unsafe) {
-      delete O[key];
-    } else if (!noTargetGet && O[key]) {
-      simple = true;
     }
 
-    if (simple) O[key] = value;else createNonEnumerableProperty$1(O, key, value); // add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-  })(Function.prototype, 'toString', function toString() {
-    return typeof this == 'function' && getInternalState(this).source || inspectSource(this);
+    r ? !s && t[e] && (a = !0) : delete t[e], a ? t[e] = n : eu(t, e, n);
+  })(Function.prototype, "toString", function t() {
+    return "function" == typeof this && eo(this).source || ea(this);
   });
-  var objectGetOwnPropertyNames = {};
-  var ceil$1 = Math.ceil;
-  var floor = Math.floor; // `ToInteger` abstract operation
-  // https://tc39.es/ecma262/#sec-tointeger
 
-  var toInteger$3 = function toInteger$3(argument) {
-    return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor : ceil$1)(argument);
-  };
+  var ec = {},
+      ef = Math.ceil,
+      e$ = Math.floor,
+      ep = function ep(t) {
+    return isNaN(t = +t) ? 0 : (t > 0 ? e$ : ef)(t);
+  },
+      ed = ep,
+      ev = Math.min,
+      ek = function ek(t) {
+    return t > 0 ? ev(ed(t), 9007199254740991) : 0;
+  },
+      eg = ep,
+      e_ = Math.max,
+      ey = Math.min,
+      em = E,
+      e8 = ek,
+      eC = function eC(t, e) {
+    var n = eg(t);
+    return n < 0 ? e_(n + e, 0) : ey(n, e);
+  },
+      eA = function eA(t) {
+    return function (e, n, u) {
+      var i,
+          r = em(e),
+          a = e8(r.length),
+          s = eC(u, a);
 
-  var toInteger$2 = toInteger$3;
-  var min$1 = Math.min; // `ToLength` abstract operation
-  // https://tc39.es/ecma262/#sec-tolength
-
-  var toLength$2 = function toLength$2(argument) {
-    return argument > 0 ? min$1(toInteger$2(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
-  };
-
-  var toInteger$1 = toInteger$3;
-  var max = Math.max;
-  var min = Math.min; // Helper for a popular repeating case of the spec:
-  // Let integer be ? ToInteger(index).
-  // If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
-
-  var toAbsoluteIndex$1 = function toAbsoluteIndex$1(index, length) {
-    var integer = toInteger$1(index);
-    return integer < 0 ? max(integer + length, 0) : min(integer, length);
-  };
-
-  var toIndexedObject$1 = toIndexedObject$3;
-  var toLength$1 = toLength$2;
-  var toAbsoluteIndex = toAbsoluteIndex$1; // `Array.prototype.{ indexOf, includes }` methods implementation
-
-  var createMethod$1 = function createMethod$1(IS_INCLUDES) {
-    return function ($this, el, fromIndex) {
-      var O = toIndexedObject$1($this);
-      var length = toLength$1(O.length);
-      var index = toAbsoluteIndex(fromIndex, length);
-      var value; // Array#includes uses SameValueZero equality algorithm
-      // eslint-disable-next-line no-self-compare -- NaN check
-
-      if (IS_INCLUDES && el != el) while (length > index) {
-        value = O[index++]; // eslint-disable-next-line no-self-compare -- NaN check
-
-        if (value != value) return true; // Array#indexOf ignores holes, Array#includes - not
-      } else for (; length > index; index++) {
-        if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
+      if (t && n != n) {
+        for (; a > s;) {
+          if ((i = r[s++]) != i) return !0;
+        }
+      } else for (; a > s; s++) {
+        if ((t || s in r) && r[s] === n) return t || s || 0;
       }
-      return !IS_INCLUDES && -1;
+
+      return !t && -1;
     };
+  },
+      eF = {
+    includes: eA(!0),
+    indexOf: eA(!1)
+  },
+      eE = te,
+      eb = E,
+      e0 = eF.indexOf,
+      eS = tN,
+      eD = function eD(t, e) {
+    var n,
+        u = eb(t),
+        i = 0,
+        r = [];
+
+    for (n in u) {
+      !eE(eS, n) && eE(u, n) && r.push(n);
+    }
+
+    for (; e.length > i;) {
+      eE(u, n = e[i++]) && (~e0(r, n) || r.push(n));
+    }
+
+    return r;
+  },
+      eB = ["constructor", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable", "toLocaleString", "toString", "valueOf"],
+      ew = eD,
+      eP = eB.concat("length", "prototype");
+
+  ec.f = Object.getOwnPropertyNames || function t(e) {
+    return ew(e, eP);
   };
 
-  var arrayIncludes = {
-    // `Array.prototype.includes` method
-    // https://tc39.es/ecma262/#sec-array.prototype.includes
-    includes: createMethod$1(true),
-    // `Array.prototype.indexOf` method
-    // https://tc39.es/ecma262/#sec-array.prototype.indexof
-    indexOf: createMethod$1(false)
-  };
-  var has$1 = has$6;
-  var toIndexedObject = toIndexedObject$3;
-  var indexOf = arrayIncludes.indexOf;
-  var hiddenKeys$1 = hiddenKeys$3;
+  var ex = {};
+  ex.f = Object.getOwnPropertySymbols;
 
-  var objectKeysInternal = function objectKeysInternal(object, names) {
-    var O = toIndexedObject(object);
-    var i = 0;
-    var result = [];
-    var key;
-
-    for (key in O) {
-      !has$1(hiddenKeys$1, key) && has$1(O, key) && result.push(key);
-    } // Don't enum bug & hidden keys
-
-
-    while (names.length > i) {
-      if (has$1(O, key = names[i++])) {
-        ~indexOf(result, key) || result.push(key);
+  var e1,
+      eM = ec,
+      eT = ex,
+      e6 = tw,
+      eI = D("Reflect", "ownKeys") || function t(e) {
+    var n = eM.f(e6(e)),
+        u = eT.f;
+    return u ? n.concat(u(e)) : n;
+  },
+      e5 = te,
+      e7 = eI,
+      e4 = l,
+      e3 = tD,
+      eR = function eR(t, e) {
+    for (var n = e7(e), u = e3.f, i = e4.f, r = 0; r < n.length; r++) {
+      var a = n[r];
+      e5(t, a) || u(t, a, i(e, a));
+    }
+  },
+      eO = h,
+      eV = /#|\.prototype\./,
+      e2 = function e2(t, e) {
+    var n = eN[eL(t)];
+    return n == eH || n != ej && ("function" == typeof e ? eO(e) : !!e);
+  },
+      eL = e2.normalize = function (t) {
+    return String(t).replace(eV, ".").toLowerCase();
+  },
+      eN = e2.data = {},
+      ej = e2.NATIVE = "N",
+      eH = e2.POLYFILL = "P",
+      eU = o,
+      ez = l.f,
+      eG = tI,
+      eY = t5.exports,
+      eZ = G,
+      eK = eR,
+      eW = e2,
+      e9 = function e9(t, e) {
+    var n,
+        u,
+        i,
+        r,
+        a,
+        s,
+        o = t.target,
+        l = t.global,
+        h = t.stat;
+    if (u = l ? eU : h ? eU[o] || eZ(o, {}) : (eU[o] || {}).prototype) for (i in e) {
+      if (a = e[i], r = t.noTargetGet ? (s = ez(u, i)) && s.value : u[i], !(n = eW(l ? i : o + (h ? "." : "#") + i, t.forced)) && void 0 !== r) {
+        if (_typeof(a) == _typeof(r)) continue;
+        eK(a, r);
       }
+
+      (t.sham || r && r.sham) && eG(a, "sham", !0), eY(u, i, a, t);
     }
-
-    return result;
-  }; // IE8- don't enum bug keys
-
-
-  var enumBugKeys$2 = ['constructor', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable', 'toLocaleString', 'toString', 'valueOf'];
-  var internalObjectKeys$1 = objectKeysInternal;
-  var enumBugKeys$1 = enumBugKeys$2;
-  var hiddenKeys = enumBugKeys$1.concat('length', 'prototype'); // `Object.getOwnPropertyNames` method
-  // https://tc39.es/ecma262/#sec-object.getownpropertynames
-  // eslint-disable-next-line es/no-object-getownpropertynames -- safe
-
-  objectGetOwnPropertyNames.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
-    return internalObjectKeys$1(O, hiddenKeys);
-  };
-
-  var objectGetOwnPropertySymbols = {}; // eslint-disable-next-line es/no-object-getownpropertysymbols -- safe
-
-  objectGetOwnPropertySymbols.f = Object.getOwnPropertySymbols;
-  var getBuiltIn = getBuiltIn$3;
-  var getOwnPropertyNamesModule = objectGetOwnPropertyNames;
-  var getOwnPropertySymbolsModule$1 = objectGetOwnPropertySymbols;
-  var anObject = anObject$2; // all object keys, includes non-enumerable and symbols
-
-  var ownKeys$1 = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
-    var keys = getOwnPropertyNamesModule.f(anObject(it));
-    var getOwnPropertySymbols = getOwnPropertySymbolsModule$1.f;
-    return getOwnPropertySymbols ? keys.concat(getOwnPropertySymbols(it)) : keys;
-  };
-
-  var has = has$6;
-  var ownKeys = ownKeys$1;
-  var getOwnPropertyDescriptorModule = objectGetOwnPropertyDescriptor;
-  var definePropertyModule = objectDefineProperty;
-
-  var copyConstructorProperties$1 = function copyConstructorProperties$1(target, source) {
-    var keys = ownKeys(source);
-    var defineProperty = definePropertyModule.f;
-    var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
-
-    for (var i = 0; i < keys.length; i++) {
-      var key = keys[i];
-      if (!has(target, key)) defineProperty(target, key, getOwnPropertyDescriptor(source, key));
-    }
-  };
-
-  var fails$1 = fails$6;
-  var replacement = /#|\.prototype\./;
-
-  var isForced$1 = function isForced$1(feature, detection) {
-    var value = data[normalize(feature)];
-    return value == POLYFILL ? true : value == NATIVE ? false : typeof detection == 'function' ? fails$1(detection) : !!detection;
-  };
-
-  var normalize = isForced$1.normalize = function (string) {
-    return String(string).replace(replacement, '.').toLowerCase();
-  };
-
-  var data = isForced$1.data = {};
-  var NATIVE = isForced$1.NATIVE = 'N';
-  var POLYFILL = isForced$1.POLYFILL = 'P';
-  var isForced_1 = isForced$1;
-  var global$2 = global$c;
-  var getOwnPropertyDescriptor = objectGetOwnPropertyDescriptor.f;
-  var createNonEnumerableProperty = createNonEnumerableProperty$3;
-  var redefine = redefine$1.exports;
-  var setGlobal = setGlobal$3;
-  var copyConstructorProperties = copyConstructorProperties$1;
-  var isForced = isForced_1;
-  /*
-  options.target      - name of the target object
-  options.global      - target is the global object
-  options.stat        - export as static methods of target
-  options.proto       - export as prototype methods of target
-  options.real        - real prototype method for the `pure` version
-  options.forced      - export even if the native feature is available
-  options.bind        - bind methods to the target, required for the `pure` version
-  options.wrap        - wrap constructors to preventing global pollution, required for the `pure` version
-  options.unsafe      - use the simple assignment of property instead of delete + defineProperty
-  options.sham        - add a flag to not completely full polyfills
-  options.enumerable  - export as enumerable property
-  options.noTargetGet - prevent calling a getter on target
-  */
-
-  var _export = function _export(options, source) {
-    var TARGET = options.target;
-    var GLOBAL = options.global;
-    var STATIC = options.stat;
-    var FORCED, target, key, targetProperty, sourceProperty, descriptor;
-
-    if (GLOBAL) {
-      target = global$2;
-    } else if (STATIC) {
-      target = global$2[TARGET] || setGlobal(TARGET, {});
-    } else {
-      target = (global$2[TARGET] || {}).prototype;
-    }
-
-    if (target) for (key in source) {
-      sourceProperty = source[key];
-
-      if (options.noTargetGet) {
-        descriptor = getOwnPropertyDescriptor(target, key);
-        targetProperty = descriptor && descriptor.value;
-      } else targetProperty = target[key];
-
-      FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced); // contained in target
-
-      if (!FORCED && targetProperty !== undefined) {
-        if (_typeof2(sourceProperty) === _typeof2(targetProperty)) continue;
-        copyConstructorProperties(sourceProperty, targetProperty);
-      } // add a flag to not completely full polyfills
-
-
-      if (options.sham || targetProperty && targetProperty.sham) {
-        createNonEnumerableProperty(sourceProperty, 'sham', true);
-      } // extend global
-
-
-      redefine(target, key, sourceProperty, options);
-    }
-  };
-
-  var internalObjectKeys = objectKeysInternal;
-  var enumBugKeys = enumBugKeys$2; // `Object.keys` method
-  // https://tc39.es/ecma262/#sec-object.keys
-  // eslint-disable-next-line es/no-object-keys -- safe
-
-  var objectKeys$1 = Object.keys || function keys(O) {
-    return internalObjectKeys(O, enumBugKeys);
-  };
-
-  var DESCRIPTORS = descriptors;
-  var fails = fails$6;
-  var objectKeys = objectKeys$1;
-  var getOwnPropertySymbolsModule = objectGetOwnPropertySymbols;
-  var propertyIsEnumerableModule = objectPropertyIsEnumerable;
-  var toObject = toObject$2;
-  var IndexedObject = indexedObject; // eslint-disable-next-line es/no-object-assign -- safe
-
-  var $assign = Object.assign; // eslint-disable-next-line es/no-object-defineproperty -- required for testing
-
-  var defineProperty = Object.defineProperty; // `Object.assign` method
-  // https://tc39.es/ecma262/#sec-object.assign
-
-  var objectAssign = !$assign || fails(function () {
-    // should have correct order of operations (Edge bug)
-    if (DESCRIPTORS && $assign({
+  },
+      eq = eD,
+      eX = eB,
+      eJ = Object.keys || function t(e) {
+    return eq(e, eX);
+  },
+      eQ = c,
+      nt = eJ,
+      ne = ex,
+      nn = f,
+      nu = J,
+      ni = m,
+      nr = Object.assign,
+      na = Object.defineProperty,
+      ns = !nr || h(function () {
+    if (eQ && 1 !== nr({
       b: 1
-    }, $assign(defineProperty({}, 'a', {
-      enumerable: true,
+    }, nr(na({}, "a", {
+      enumerable: !0,
       get: function get() {
-        defineProperty(this, 'b', {
+        na(this, "b", {
           value: 3,
-          enumerable: false
+          enumerable: !1
         });
       }
     }), {
       b: 2
-    })).b !== 1) return true; // should work with symbols and should have deterministic property order (V8 bug)
-
-    var A = {};
-    var B = {}; // eslint-disable-next-line es/no-symbol -- safe
-
-    var symbol = Symbol();
-    var alphabet = 'abcdefghijklmnopqrst';
-    A[symbol] = 7;
-    alphabet.split('').forEach(function (chr) {
-      B[chr] = chr;
-    });
-    return $assign({}, A)[symbol] != 7 || objectKeys($assign({}, B)).join('') != alphabet;
-  }) ? function assign(target, source) {
-    // eslint-disable-line no-unused-vars -- required for `.length`
-    var T = toObject(target);
-    var argumentsLength = arguments.length;
-    var index = 1;
-    var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
-    var propertyIsEnumerable = propertyIsEnumerableModule.f;
-
-    while (argumentsLength > index) {
-      var S = IndexedObject(arguments[index++]);
-      var keys = getOwnPropertySymbols ? objectKeys(S).concat(getOwnPropertySymbols(S)) : objectKeys(S);
-      var length = keys.length;
-      var j = 0;
-      var key;
-
-      while (length > j) {
-        key = keys[j++];
-        if (!DESCRIPTORS || propertyIsEnumerable.call(S, key)) T[key] = S[key];
+    })).b) return !0;
+    var t = {},
+        e = {},
+        n = Symbol(),
+        u = "abcdefghijklmnopqrst";
+    return t[n] = 7, u.split("").forEach(function (t) {
+      e[t] = t;
+    }), 7 != nr({}, t)[n] || nt(nr({}, e)).join("") != u;
+  }) ? function t(e, n) {
+    for (var u = nu(e), i = arguments.length, r = 1, a = ne.f, s = nn.f; i > r;) {
+      for (var o, l = ni(arguments[r++]), h = a ? nt(l).concat(a(l)) : nt(l), c = h.length, f = 0; c > f;) {
+        o = h[f++], (!eQ || s.call(l, o)) && (u[o] = l[o]);
       }
     }
 
-    return T;
-  } : $assign;
-  var $$4 = _export;
-  var assign = objectAssign; // `Object.assign` method
-  // https://tc39.es/ecma262/#sec-object.assign
-  // eslint-disable-next-line es/no-object-assign -- required for testing
+    return u;
+  } : nr;
 
-  $$4({
-    target: 'Object',
-    stat: true,
-    forced: Object.assign !== assign
+  e9({
+    target: "Object",
+    stat: !0,
+    forced: Object.assign !== ns
   }, {
-    assign: assign
+    assign: ns
   });
-  var isSymbol = isSymbol$3;
 
-  var toString$2 = function toString$2(argument) {
-    if (isSymbol(argument)) throw TypeError('Cannot convert a Symbol value to a string');
-    return String(argument);
-  };
+  var no = N,
+      nl = function nl(t) {
+    if (no(t)) throw TypeError("Cannot convert a Symbol value to a string");
+    return String(t);
+  },
+      nh = ep,
+      nc = nl,
+      nf = C,
+      n$ = function t(e) {
+    var n = nc(nf(this)),
+        u = "",
+        i = nh(e);
+    if (i < 0 || i == 1 / 0) throw RangeError("Wrong number of repetitions");
 
-  var toInteger = toInteger$3;
-  var toString$1 = toString$2;
-  var requireObjectCoercible$1 = requireObjectCoercible$4; // `String.prototype.repeat` method implementation
-  // https://tc39.es/ecma262/#sec-string.prototype.repeat
-
-  var stringRepeat = function repeat(count) {
-    var str = toString$1(requireObjectCoercible$1(this));
-    var result = '';
-    var n = toInteger(count);
-    if (n < 0 || n == Infinity) throw RangeError('Wrong number of repetitions');
-
-    for (; n > 0; (n >>>= 1) && (str += str)) {
-      if (n & 1) result += str;
+    for (; i > 0; (i >>>= 1) && (n += n)) {
+      1 & i && (u += n);
     }
 
-    return result;
+    return u;
   };
 
-  var $$3 = _export;
-  var repeat$1 = stringRepeat; // `String.prototype.repeat` method
-  // https://tc39.es/ecma262/#sec-string.prototype.repeat
-
-  $$3({
-    target: 'String',
-    proto: true
+  e9({
+    target: "String",
+    proto: !0
   }, {
-    repeat: repeat$1
-  }); // https://github.com/tc39/proposal-string-pad-start-end
+    repeat: n$
+  });
 
-  var toLength = toLength$2;
-  var toString = toString$2;
-  var repeat = stringRepeat;
-  var requireObjectCoercible = requireObjectCoercible$4;
-  var ceil = Math.ceil; // `String.prototype.{ padStart, padEnd }` methods implementation
-
-  var createMethod = function createMethod(IS_END) {
-    return function ($this, maxLength, fillString) {
-      var S = toString(requireObjectCoercible($this));
-      var stringLength = S.length;
-      var fillStr = fillString === undefined ? ' ' : toString(fillString);
-      var intMaxLength = toLength(maxLength);
-      var fillLen, stringFiller;
-      if (intMaxLength <= stringLength || fillStr == '') return S;
-      fillLen = intMaxLength - stringLength;
-      stringFiller = repeat.call(fillStr, ceil(fillLen / fillStr.length));
-      if (stringFiller.length > fillLen) stringFiller = stringFiller.slice(0, fillLen);
-      return IS_END ? S + stringFiller : stringFiller + S;
+  var np = ek,
+      nd = nl,
+      nv = n$,
+      nk = C,
+      ng = Math.ceil,
+      n_ = function n_(t) {
+    return function (e, n, u) {
+      var i,
+          r,
+          a = nd(nk(e)),
+          s = a.length,
+          o = void 0 === u ? " " : nd(u),
+          l = np(n);
+      return l <= s || "" == o ? a : (i = l - s, (r = nv.call(o, ng(i / o.length))).length > i && (r = r.slice(0, i)), t ? a + r : r + a);
     };
-  };
+  },
+      ny = {
+    start: n_(!1),
+    end: n_(!0)
+  },
+      nm = /Version\/10(?:\.\d+){1,2}(?: [\w./]+)?(?: Mobile\/\w+)? Safari\//.test(B),
+      n8 = ny.start;
 
-  var stringPad = {
-    // `String.prototype.padStart` method
-    // https://tc39.es/ecma262/#sec-string.prototype.padstart
-    start: createMethod(false),
-    // `String.prototype.padEnd` method
-    // https://tc39.es/ecma262/#sec-string.prototype.padend
-    end: createMethod(true)
-  }; // https://github.com/zloirock/core-js/issues/280
-
-  var userAgent = engineUserAgent; // eslint-disable-next-line unicorn/no-unsafe-regex -- safe
-
-  var stringPadWebkitBug = /Version\/10(?:\.\d+){1,2}(?: [\w./]+)?(?: Mobile\/\w+)? Safari\//.test(userAgent);
-  var $$2 = _export;
-  var $padStart = stringPad.start;
-  var WEBKIT_BUG$1 = stringPadWebkitBug; // `String.prototype.padStart` method
-  // https://tc39.es/ecma262/#sec-string.prototype.padstart
-
-  $$2({
-    target: 'String',
-    proto: true,
-    forced: WEBKIT_BUG$1
+  e9({
+    target: "String",
+    proto: !0,
+    forced: nm
   }, {
-    padStart: function padStart(maxLength
-    /* , fillString = ' ' */
-    ) {
-      return $padStart(this, maxLength, arguments.length > 1 ? arguments[1] : undefined);
+    padStart: function t(e) {
+      return n8(this, e, arguments.length > 1 ? arguments[1] : void 0);
     }
   });
-  var $$1 = _export;
-  var $padEnd = stringPad.end;
-  var WEBKIT_BUG = stringPadWebkitBug; // `String.prototype.padEnd` method
-  // https://tc39.es/ecma262/#sec-string.prototype.padend
+  var nC = ny.end;
 
-  $$1({
-    target: 'String',
-    proto: true,
-    forced: WEBKIT_BUG
-  }, {
-    padEnd: function padEnd(maxLength
-    /* , fillString = ' ' */
-    ) {
-      return $padEnd(this, maxLength, arguments.length > 1 ? arguments[1] : undefined);
-    }
-  });
-  var $ = _export;
-  var global$1 = global$c; // `globalThis` object
-  // https://tc39.es/ecma262/#sec-globalthis
-
-  $({
-    global: true
-  }, {
-    globalThis: global$1
-  });
-
-  function _typeof(obj) {
-    "@babel/helpers - typeof";
-
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof = function _typeof(obj) {
-        return typeof obj;
-      };
-    } else {
-      _typeof = function _typeof(obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-      };
-    }
-
-    return _typeof(obj);
+  function nA(t) {
+    return (nA = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (t) {
+      return _typeof(t);
+    } : function (t) {
+      return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : _typeof(t);
+    })(t);
   }
 
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
+  function nF(t, e) {
+    if (!(t instanceof e)) throw TypeError("Cannot call a class as a function");
+  }
+
+  function nE(t, e) {
+    for (var n = 0; n < e.length; n++) {
+      var u = e[n];
+      u.enumerable = u.enumerable || !1, u.configurable = !0, "value" in u && (u.writable = !0), Object.defineProperty(t, u.key, u);
     }
   }
 
-  function _defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
+  function nb(t, e, n) {
+    return e && nE(t.prototype, e), n && nE(t, n), t;
   }
 
-  function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    return Constructor;
-  }
-
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  }
-
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function");
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
+  function n0(t, e) {
+    if ("function" != typeof e && null !== e) throw TypeError("Super expression must either be null or a function");
+    t.prototype = Object.create(e && e.prototype, {
       constructor: {
-        value: subClass,
-        writable: true,
-        configurable: true
+        value: t,
+        writable: !0,
+        configurable: !0
       }
-    });
-    if (superClass) _setPrototypeOf(subClass, superClass);
+    }), e && nD(t, e);
   }
 
-  function _getPrototypeOf(o) {
-    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-      return o.__proto__ || Object.getPrototypeOf(o);
-    };
-    return _getPrototypeOf(o);
+  function nS(t) {
+    return (nS = Object.setPrototypeOf ? Object.getPrototypeOf : function t(e) {
+      return e.__proto__ || Object.getPrototypeOf(e);
+    })(t);
   }
 
-  function _setPrototypeOf(o, p) {
-    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-
-    return _setPrototypeOf(o, p);
+  function nD(t, e) {
+    return (nD = Object.setPrototypeOf || function t(e, n) {
+      return e.__proto__ = n, e;
+    })(t, e);
   }
 
-  function _isNativeReflectConstruct() {
-    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-    if (Reflect.construct.sham) return false;
-    if (typeof Proxy === "function") return true;
+  function nB(t, e) {
+    if (null == t) return {};
 
-    try {
-      Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function _objectWithoutPropertiesLoose(source, excluded) {
-    if (source == null) return {};
-    var target = {};
-    var sourceKeys = Object.keys(source);
-    var key, i;
-
-    for (i = 0; i < sourceKeys.length; i++) {
-      key = sourceKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      target[key] = source[key];
-    }
-
-    return target;
-  }
-
-  function _objectWithoutProperties(source, excluded) {
-    if (source == null) return {};
-
-    var target = _objectWithoutPropertiesLoose(source, excluded);
-
-    var key, i;
-
-    if (Object.getOwnPropertySymbols) {
-      var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-      for (i = 0; i < sourceSymbolKeys.length; i++) {
-        key = sourceSymbolKeys[i];
-        if (excluded.indexOf(key) >= 0) continue;
-        if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-        target[key] = source[key];
-      }
-    }
-
-    return target;
-  }
-
-  function _assertThisInitialized(self) {
-    if (self === void 0) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return self;
-  }
-
-  function _possibleConstructorReturn(self, call) {
-    if (call && (_typeof2(call) === "object" || typeof call === "function")) {
-      return call;
-    } else if (call !== void 0) {
-      throw new TypeError("Derived constructors may only return object or undefined");
-    }
-
-    return _assertThisInitialized(self);
-  }
-
-  function _createSuper(Derived) {
-    var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-    return function _createSuperInternal() {
-      var Super = _getPrototypeOf(Derived),
-          result;
-
-      if (hasNativeReflectConstruct) {
-        var NewTarget = _getPrototypeOf(this).constructor;
-
-        result = Reflect.construct(Super, arguments, NewTarget);
-      } else {
-        result = Super.apply(this, arguments);
-      }
-
-      return _possibleConstructorReturn(this, result);
-    };
-  }
-
-  function _superPropBase(object, property) {
-    while (!Object.prototype.hasOwnProperty.call(object, property)) {
-      object = _getPrototypeOf(object);
-      if (object === null) break;
-    }
-
-    return object;
-  }
-
-  function _get(target, property, receiver) {
-    if (typeof Reflect !== "undefined" && Reflect.get) {
-      _get = Reflect.get;
-    } else {
-      _get = function _get(target, property, receiver) {
-        var base = _superPropBase(target, property);
-
-        if (!base) return;
-        var desc = Object.getOwnPropertyDescriptor(base, property);
-
-        if (desc.get) {
-          return desc.get.call(receiver);
-        }
-
-        return desc.value;
-      };
-    }
-
-    return _get(target, property, receiver || target);
-  }
-
-  function set(target, property, value, receiver) {
-    if (typeof Reflect !== "undefined" && Reflect.set) {
-      set = Reflect.set;
-    } else {
-      set = function set(target, property, value, receiver) {
-        var base = _superPropBase(target, property);
-
-        var desc;
-
-        if (base) {
-          desc = Object.getOwnPropertyDescriptor(base, property);
-
-          if (desc.set) {
-            desc.set.call(receiver, value);
-            return true;
-          } else if (!desc.writable) {
-            return false;
-          }
-        }
-
-        desc = Object.getOwnPropertyDescriptor(receiver, property);
-
-        if (desc) {
-          if (!desc.writable) {
-            return false;
-          }
-
-          desc.value = value;
-          Object.defineProperty(receiver, property, desc);
-        } else {
-          _defineProperty(receiver, property, value);
-        }
-
-        return true;
-      };
-    }
-
-    return set(target, property, value, receiver);
-  }
-
-  function _set(target, property, value, receiver, isStrict) {
-    var s = set(target, property, value, receiver || target);
-
-    if (!s && isStrict) {
-      throw new Error('failed to set property');
-    }
-
-    return value;
-  }
-
-  function _slicedToArray(arr, i) {
-    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-  }
-
-  function _arrayWithHoles(arr) {
-    if (Array.isArray(arr)) return arr;
-  }
-
-  function _iterableToArrayLimit(arr, i) {
-    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-
-    if (_i == null) return;
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-
-    var _s, _e;
-
-    try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-        _arr.push(_s.value);
-
-        if (i && _arr.length === i) break;
-      }
-    } catch (err) {
-      _d = true;
-      _e = err;
-    } finally {
-      try {
-        if (!_n && _i["return"] != null) _i["return"]();
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-
-    return _arr;
-  }
-
-  function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-  }
-
-  function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-
-    for (var i = 0, arr2 = new Array(len); i < len; i++) {
-      arr2[i] = arr[i];
-    }
-
-    return arr2;
-  }
-
-  function _nonIterableRest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-  /** Checks if value is string */
-
-
-  function isString(str) {
-    return typeof str === 'string' || str instanceof String;
-  }
-  /**
-   Direction
-   @prop {string} NONE
-   @prop {string} LEFT
-   @prop {string} FORCE_LEFT
-   @prop {string} RIGHT
-   @prop {string} FORCE_RIGHT
-   */
-
-
-  var DIRECTION = {
-    NONE: 'NONE',
-    LEFT: 'LEFT',
-    FORCE_LEFT: 'FORCE_LEFT',
-    RIGHT: 'RIGHT',
-    FORCE_RIGHT: 'FORCE_RIGHT'
-  };
-  /** */
-
-  function forceDirection(direction) {
-    switch (direction) {
-      case DIRECTION.LEFT:
-        return DIRECTION.FORCE_LEFT;
-
-      case DIRECTION.RIGHT:
-        return DIRECTION.FORCE_RIGHT;
-
-      default:
-        return direction;
-    }
-  }
-  /** Escapes regular expression control chars */
-
-
-  function escapeRegExp(str) {
-    return str.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
-  } // cloned from https://github.com/epoberezkin/fast-deep-equal with small changes
-
-
-  function objectIncludes(b, a) {
-    if (a === b) return true;
-    var arrA = Array.isArray(a),
-        arrB = Array.isArray(b),
-        i;
-
-    if (arrA && arrB) {
-      if (a.length != b.length) return false;
+    var n,
+        u,
+        i = function t(e, n) {
+      if (null == e) return {};
+      var u,
+          i,
+          r = {},
+          a = Object.keys(e);
 
       for (i = 0; i < a.length; i++) {
-        if (!objectIncludes(a[i], b[i])) return false;
+        u = a[i], n.indexOf(u) >= 0 || (r[u] = e[u]);
       }
 
-      return true;
+      return r;
+    }(t, e);
+
+    if (Object.getOwnPropertySymbols) {
+      var r = Object.getOwnPropertySymbols(t);
+
+      for (u = 0; u < r.length; u++) {
+        n = r[u], !(e.indexOf(n) >= 0) && Object.prototype.propertyIsEnumerable.call(t, n) && (i[n] = t[n]);
+      }
     }
 
-    if (arrA != arrB) return false;
-
-    if (a && b && _typeof(a) === 'object' && _typeof(b) === 'object') {
-      var dateA = a instanceof Date,
-          dateB = b instanceof Date;
-      if (dateA && dateB) return a.getTime() == b.getTime();
-      if (dateA != dateB) return false;
-      var regexpA = a instanceof RegExp,
-          regexpB = b instanceof RegExp;
-      if (regexpA && regexpB) return a.toString() == b.toString();
-      if (regexpA != regexpB) return false;
-      var keys = Object.keys(a); // if (keys.length !== Object.keys(b).length) return false;
-
-      for (i = 0; i < keys.length; i++) {
-        if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
-      }
-
-      for (i = 0; i < keys.length; i++) {
-        if (!objectIncludes(b[keys[i]], a[keys[i]])) return false;
-      }
-
-      return true;
-    } else if (a && b && typeof a === 'function' && typeof b === 'function') {
-      return a.toString() === b.toString();
-    }
-
-    return false;
+    return i;
   }
-  /** Selection range */
 
-  /** Provides details of changing input */
+  function nw(t) {
+    var e = function t() {
+      if ("undefined" == typeof Reflect || !Reflect.construct || Reflect.construct.sham) return !1;
+      if ("function" == typeof Proxy) return !0;
 
+      try {
+        return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})), !0;
+      } catch (e) {
+        return !1;
+      }
+    }();
 
-  var ActionDetails = /*#__PURE__*/function () {
-    /** Current input value */
+    return function n() {
+      var u,
+          i = nS(t);
 
-    /** Current cursor position */
+      if (e) {
+        var r = nS(this).constructor;
+        u = Reflect.construct(i, arguments, r);
+      } else u = i.apply(this, arguments);
 
-    /** Old input value */
+      return function t(e, n) {
+        if (n && ("object" == _typeof(n) || "function" == typeof n)) return n;
+        if (void 0 !== n) throw TypeError("Derived constructors may only return object or undefined");
+        return function t(e) {
+          if (void 0 === e) throw ReferenceError("this hasn't been initialised - super() hasn't been called");
+          return e;
+        }(e);
+      }(this, u);
+    };
+  }
 
-    /** Old selection */
-    function ActionDetails(value, cursorPos, oldValue, oldSelection) {
-      _classCallCheck(this, ActionDetails);
+  function nP(t, e) {
+    for (; !Object.prototype.hasOwnProperty.call(t, e) && null !== (t = nS(t));) {
+      ;
+    }
 
-      this.value = value;
-      this.cursorPos = cursorPos;
-      this.oldValue = oldValue;
-      this.oldSelection = oldSelection; // double check if left part was changed (autofilling, other non-standard input triggers)
+    return t;
+  }
 
-      while (this.value.slice(0, this.startChangePos) !== this.oldValue.slice(0, this.startChangePos)) {
+  function nx(t, e, n) {
+    return (nx = "undefined" != typeof Reflect && Reflect.get ? Reflect.get : function t(e, n, u) {
+      var i = nP(e, n);
+
+      if (i) {
+        var r = Object.getOwnPropertyDescriptor(i, n);
+        return r.get ? r.get.call(u) : r.value;
+      }
+    })(t, e, n || t);
+  }
+
+  function n1(t, e, n, u) {
+    return (n1 = "undefined" != typeof Reflect && Reflect.set ? Reflect.set : function t(e, n, u, i) {
+      var r,
+          a,
+          s,
+          o,
+          l = nP(e, n);
+
+      if (l) {
+        if ((o = Object.getOwnPropertyDescriptor(l, n)).set) return o.set.call(i, u), !0;
+        if (!o.writable) return !1;
+      }
+
+      if (o = Object.getOwnPropertyDescriptor(i, n)) {
+        if (!o.writable) return !1;
+        o.value = u, Object.defineProperty(i, n, o);
+      } else r = i, a = n, s = u, a in r ? Object.defineProperty(r, a, {
+        value: s,
+        enumerable: !0,
+        configurable: !0,
+        writable: !0
+      }) : r[a] = s;
+
+      return !0;
+    })(t, e, n, u);
+  }
+
+  function nM(t, e, n, u, i) {
+    if (!n1(t, e, n, u || t) && i) throw Error("failed to set property");
+    return n;
+  }
+
+  function nT(t, e) {
+    return function t(e) {
+      if (Array.isArray(e)) return e;
+    }(t) || function t(e, n) {
+      var u,
+          i,
+          r = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+
+      if (null != r) {
+        var a = [],
+            s = !0,
+            o = !1;
+
+        try {
+          for (r = r.call(e); !(s = (u = r.next()).done) && (a.push(u.value), !n || a.length !== n); s = !0) {
+            ;
+          }
+        } catch (l) {
+          o = !0, i = l;
+        } finally {
+          try {
+            s || null == r.return || r.return();
+          } finally {
+            if (o) throw i;
+          }
+        }
+
+        return a;
+      }
+    }(t, e) || function t(e, n) {
+      if (e) {
+        if ("string" == typeof e) return n6(e, n);
+        var u = Object.prototype.toString.call(e).slice(8, -1);
+        if ("Object" === u && e.constructor && (u = e.constructor.name), "Map" === u || "Set" === u) return Array.from(e);
+        if ("Arguments" === u || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(u)) return n6(e, n);
+      }
+    }(t, e) || function t() {
+      throw TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    }();
+  }
+
+  function n6(t, e) {
+    (null == e || e > t.length) && (e = t.length);
+
+    for (var n = 0, u = Array(e); n < e; n++) {
+      u[n] = t[n];
+    }
+
+    return u;
+  }
+
+  function nI(t) {
+    return "string" == typeof t || t instanceof String;
+  }
+
+  e9({
+    target: "String",
+    proto: !0,
+    forced: nm
+  }, {
+    padEnd: function t(e) {
+      return nC(this, e, arguments.length > 1 ? arguments[1] : void 0);
+    }
+  }), e9({
+    global: !0
+  }, {
+    globalThis: o
+  });
+  var n5 = {
+    NONE: "NONE",
+    LEFT: "LEFT",
+    FORCE_LEFT: "FORCE_LEFT",
+    RIGHT: "RIGHT",
+    FORCE_RIGHT: "FORCE_RIGHT"
+  };
+
+  function n7(t) {
+    return t.replace(/([.*+?^=!:${}()|[\]\/\\])/g, "\\$1");
+  }
+
+  var n4 = function () {
+    function t(e, n, u, i) {
+      for (nF(this, t), this.value = e, this.cursorPos = n, this.oldValue = u, this.oldSelection = i; this.value.slice(0, this.startChangePos) !== this.oldValue.slice(0, this.startChangePos);) {
         --this.oldSelection.start;
       }
     }
-    /**
-     Start changing position
-     @readonly
-     */
 
-
-    _createClass(ActionDetails, [{
+    return nb(t, [{
       key: "startChangePos",
-      get: function get() {
+      get: function t() {
         return Math.min(this.cursorPos, this.oldSelection.start);
       }
-      /**
-       Inserted symbols count
-       @readonly
-       */
-
     }, {
       key: "insertedCount",
-      get: function get() {
+      get: function t() {
         return this.cursorPos - this.startChangePos;
       }
-      /**
-       Inserted symbols
-       @readonly
-       */
-
     }, {
       key: "inserted",
-      get: function get() {
+      get: function t() {
         return this.value.substr(this.startChangePos, this.insertedCount);
       }
-      /**
-       Removed symbols count
-       @readonly
-       */
-
     }, {
       key: "removedCount",
-      get: function get() {
-        // Math.max for opposite operation
-        return Math.max(this.oldSelection.end - this.startChangePos || // for Delete
-        this.oldValue.length - this.value.length, 0);
+      get: function t() {
+        return Math.max(this.oldSelection.end - this.startChangePos || this.oldValue.length - this.value.length, 0);
       }
-      /**
-       Removed symbols
-       @readonly
-       */
-
     }, {
       key: "removed",
-      get: function get() {
+      get: function t() {
         return this.oldValue.substr(this.startChangePos, this.removedCount);
       }
-      /**
-       Unchanged head symbols
-       @readonly
-       */
-
     }, {
       key: "head",
-      get: function get() {
+      get: function t() {
         return this.value.substring(0, this.startChangePos);
       }
-      /**
-       Unchanged tail symbols
-       @readonly
-       */
-
     }, {
       key: "tail",
-      get: function get() {
+      get: function t() {
         return this.value.substring(this.startChangePos + this.insertedCount);
       }
-      /**
-       Remove direction
-       @readonly
-       */
-
     }, {
       key: "removeDirection",
-      get: function get() {
-        if (!this.removedCount || this.insertedCount) return DIRECTION.NONE; // align right if delete at right or if range removed (event with backspace)
-
-        return this.oldSelection.end === this.cursorPos || this.oldSelection.start === this.cursorPos ? DIRECTION.RIGHT : DIRECTION.LEFT;
+      get: function t() {
+        return !this.removedCount || this.insertedCount ? n5.NONE : this.oldSelection.end === this.cursorPos || this.oldSelection.start === this.cursorPos ? n5.RIGHT : n5.LEFT;
       }
-    }]);
-
-    return ActionDetails;
-  }();
-  /**
-   Provides details of changing model value
-   @param {Object} [details]
-   @param {string} [details.inserted] - Inserted symbols
-   @param {boolean} [details.skip] - Can skip chars
-   @param {number} [details.removeCount] - Removed symbols count
-   @param {number} [details.tailShift] - Additional offset if any changes occurred before tail
-   */
-
-
-  var ChangeDetails = /*#__PURE__*/function () {
-    /** Inserted symbols */
-
-    /** Can skip chars */
-
-    /** Additional offset if any changes occurred before tail */
-
-    /** Raw inserted is used by dynamic mask */
-    function ChangeDetails(details) {
-      _classCallCheck(this, ChangeDetails);
-
-      Object.assign(this, {
-        inserted: '',
-        rawInserted: '',
-        skip: false,
+    }]), t;
+  }(),
+      n3 = function () {
+    function t(e) {
+      nF(this, t), Object.assign(this, {
+        inserted: "",
+        rawInserted: "",
+        skip: !1,
         tailShift: 0
-      }, details);
+      }, e);
     }
-    /**
-     Aggregate changes
-     @returns {ChangeDetails} `this`
-     */
 
-
-    _createClass(ChangeDetails, [{
+    return nb(t, [{
       key: "aggregate",
-      value: function aggregate(details) {
-        this.rawInserted += details.rawInserted;
-        this.skip = this.skip || details.skip;
-        this.inserted += details.inserted;
-        this.tailShift += details.tailShift;
-        return this;
+      value: function t(e) {
+        return this.rawInserted += e.rawInserted, this.skip = this.skip || e.skip, this.inserted += e.inserted, this.tailShift += e.tailShift, this;
       }
-      /** Total offset considering all changes */
-
     }, {
       key: "offset",
-      get: function get() {
+      get: function t() {
         return this.tailShift + this.inserted.length;
       }
-    }]);
-
-    return ChangeDetails;
-  }();
-  /** Provides details of continuous extracted tail */
-
-
-  var ContinuousTailDetails = /*#__PURE__*/function () {
-    /** Tail value as string */
-
-    /** Tail start position */
-
-    /** Start position */
-    function ContinuousTailDetails() {
-      var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-      var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      var stop = arguments.length > 2 ? arguments[2] : undefined;
-
-      _classCallCheck(this, ContinuousTailDetails);
-
-      this.value = value;
-      this.from = from;
-      this.stop = stop;
+    }]), t;
+  }(),
+      nR = function () {
+    function t() {
+      var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "",
+          n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0,
+          u = arguments.length > 2 ? arguments[2] : void 0;
+      nF(this, t), this.value = e, this.from = n, this.stop = u;
     }
 
-    _createClass(ContinuousTailDetails, [{
+    return nb(t, [{
       key: "toString",
-      value: function toString() {
+      value: function t() {
         return this.value;
       }
     }, {
       key: "extend",
-      value: function extend(tail) {
-        this.value += String(tail);
+      value: function t(e) {
+        this.value += String(e);
       }
     }, {
       key: "appendTo",
-      value: function appendTo(masked) {
-        return masked.append(this.toString(), {
-          tail: true
-        }).aggregate(masked._appendPlaceholder());
+      value: function t(e) {
+        return e.append(this.toString(), {
+          tail: !0
+        }).aggregate(e._appendPlaceholder());
       }
     }, {
       key: "state",
-      get: function get() {
+      get: function t() {
         return {
           value: this.value,
           from: this.from,
           stop: this.stop
         };
       },
-      set: function set(state) {
-        Object.assign(this, state);
+      set: function t(e) {
+        Object.assign(this, e);
       }
     }, {
       key: "shiftBefore",
-      value: function shiftBefore(pos) {
-        if (this.from >= pos || !this.value.length) return '';
-        var shiftChar = this.value[0];
-        this.value = this.value.slice(1);
-        return shiftChar;
+      value: function t(e) {
+        if (this.from >= e || !this.value.length) return "";
+        var n = this.value[0];
+        return this.value = this.value.slice(1), n;
       }
-    }]);
-
-    return ContinuousTailDetails;
+    }]), t;
   }();
-  /**
-   * Applies mask on element.
-   * @constructor
-   * @param {HTMLInputElement|HTMLTextAreaElement|MaskElement} el - Element to apply mask
-   * @param {Object} opts - Custom mask options
-   * @return {InputMask}
-   */
 
-
-  function IMask(el) {
-    var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {}; // currently available only for input-like elements
-
-    return new IMask.InputMask(el, opts);
+  function nO(t) {
+    var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
+    return new nO.InputMask(t, e);
   }
-  /** Supported mask type */
 
-  /** Provides common masking stuff */
-
-
-  var Masked = /*#__PURE__*/function () {
-    // $Shape<MaskedOptions>; TODO after fix https://github.com/facebook/flow/issues/4773
-
-    /** @type {Mask} */
-
-    /** */
-    // $FlowFixMe no ideas
-
-    /** Transforms value before mask processing */
-
-    /** Validates if value is acceptable */
-
-    /** Does additional processing in the end of editing */
-
-    /** Format typed value to string */
-
-    /** Parse strgin to get typed value */
-
-    /** Enable characters overwriting */
-
-    /** */
-    function Masked(opts) {
-      _classCallCheck(this, Masked);
-
-      this._value = '';
-
-      this._update(Object.assign({}, Masked.DEFAULTS, opts));
-
-      this.isInitialized = true;
+  var nV = function () {
+    function t(e) {
+      nF(this, t), this._value = "", this._update(Object.assign({}, t.DEFAULTS, e)), this.isInitialized = !0;
     }
-    /** Sets and applies new options */
 
-
-    _createClass(Masked, [{
+    return nb(t, [{
       key: "updateOptions",
-      value: function updateOptions(opts) {
-        if (!Object.keys(opts).length) return;
-        this.withValueRefresh(this._update.bind(this, opts));
+      value: function t(e) {
+        Object.keys(e).length && this.withValueRefresh(this._update.bind(this, e));
       }
-      /**
-       Sets new options
-       @protected
-       */
-
     }, {
       key: "_update",
-      value: function _update(opts) {
-        Object.assign(this, opts);
+      value: function t(e) {
+        Object.assign(this, e);
       }
-      /** Mask state */
-
     }, {
       key: "state",
-      get: function get() {
+      get: function t() {
         return {
           _value: this.value
         };
       },
-      set: function set(state) {
-        this._value = state._value;
+      set: function t(e) {
+        this._value = e._value;
       }
-      /** Resets value */
-
     }, {
       key: "reset",
-      value: function reset() {
-        this._value = '';
+      value: function t() {
+        this._value = "";
       }
-      /** */
-
     }, {
       key: "value",
-      get: function get() {
+      get: function t() {
         return this._value;
       },
-      set: function set(value) {
-        this.resolve(value);
+      set: function t(e) {
+        this.resolve(e);
       }
-      /** Resolve new value */
-
     }, {
       key: "resolve",
-      value: function resolve(value) {
-        this.reset();
-        this.append(value, {
-          input: true
-        }, '');
-        this.doCommit();
-        return this.value;
+      value: function t(e) {
+        return this.reset(), this.append(e, {
+          input: !0
+        }, ""), this.doCommit(), this.value;
       }
-      /** */
-
     }, {
       key: "unmaskedValue",
-      get: function get() {
+      get: function t() {
         return this.value;
       },
-      set: function set(value) {
-        this.reset();
-        this.append(value, {}, '');
-        this.doCommit();
+      set: function t(e) {
+        this.reset(), this.append(e, {}, ""), this.doCommit();
       }
-      /** */
-
     }, {
       key: "typedValue",
-      get: function get() {
+      get: function t() {
         return this.doParse(this.value);
       },
-      set: function set(value) {
-        this.value = this.doFormat(value);
+      set: function t(e) {
+        this.value = this.doFormat(e);
       }
-      /** Value that includes raw user input */
-
     }, {
       key: "rawInputValue",
-      get: function get() {
+      get: function t() {
         return this.extractInput(0, this.value.length, {
-          raw: true
+          raw: !0
         });
       },
-      set: function set(value) {
-        this.reset();
-        this.append(value, {
-          raw: true
-        }, '');
-        this.doCommit();
+      set: function t(e) {
+        this.reset(), this.append(e, {
+          raw: !0
+        }, ""), this.doCommit();
       }
-      /** */
-
     }, {
       key: "isComplete",
-      get: function get() {
-        return true;
+      get: function t() {
+        return !0;
       }
-      /** Finds nearest input position in direction */
-
     }, {
       key: "nearestInputPos",
-      value: function nearestInputPos(cursorPos, direction) {
-        return cursorPos;
+      value: function t(e, n) {
+        return e;
       }
-      /** Extracts value in range considering flags */
-
     }, {
       key: "extractInput",
-      value: function extractInput() {
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
-        return this.value.slice(fromPos, toPos);
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length;
+        return this.value.slice(e, n);
       }
-      /** Extracts tail in range */
-
     }, {
       key: "extractTail",
-      value: function extractTail() {
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
-        return new ContinuousTailDetails(this.extractInput(fromPos, toPos), fromPos);
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length;
+        return new nR(this.extractInput(e, n), e);
       }
-      /** Appends tail */
-      // $FlowFixMe no ideas
-
     }, {
       key: "appendTail",
-      value: function appendTail(tail) {
-        if (isString(tail)) tail = new ContinuousTailDetails(String(tail));
-        return tail.appendTo(this);
+      value: function t(e) {
+        return nI(e) && (e = new nR(String(e))), e.appendTo(this);
       }
-      /** Appends char */
-
     }, {
       key: "_appendCharRaw",
-      value: function _appendCharRaw(ch) {
-        if (!ch) return new ChangeDetails();
-        this._value += ch;
-        return new ChangeDetails({
-          inserted: ch,
-          rawInserted: ch
-        });
+      value: function t(e) {
+        return e ? (this._value += e, new n3({
+          inserted: e,
+          rawInserted: e
+        })) : new n3();
       }
-      /** Appends char */
-
     }, {
       key: "_appendChar",
-      value: function _appendChar(ch) {
-        var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var checkTail = arguments.length > 2 ? arguments[2] : undefined;
-        var consistentState = this.state;
+      value: function t(e) {
+        var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
+            u = arguments.length > 2 ? arguments[2] : void 0,
+            i = this.state,
+            r = this._appendCharRaw(this.doPrepare(e, n), n);
 
-        var details = this._appendCharRaw(this.doPrepare(ch, flags), flags);
+        if (r.inserted) {
+          var a,
+              s = !1 !== this.doValidate(n);
 
-        if (details.inserted) {
-          var consistentTail;
-          var appended = this.doValidate(flags) !== false;
-
-          if (appended && checkTail != null) {
-            // validation ok, check tail
-            var beforeTailState = this.state;
-
-            if (this.overwrite) {
-              consistentTail = checkTail.state;
-              checkTail.shiftBefore(this.value.length);
-            }
-
-            var tailDetails = this.appendTail(checkTail);
-            appended = tailDetails.rawInserted === checkTail.toString(); // if ok, rollback state after tail
-
-            if (appended && tailDetails.inserted) this.state = beforeTailState;
-          } // revert all if something went wrong
-
-
-          if (!appended) {
-            details = new ChangeDetails();
-            this.state = consistentState;
-            if (checkTail && consistentTail) checkTail.state = consistentTail;
+          if (s && null != u) {
+            var o = this.state;
+            this.overwrite && (a = u.state, u.shiftBefore(this.value.length));
+            var l = this.appendTail(u);
+            (s = l.rawInserted === u.toString()) && l.inserted && (this.state = o);
           }
+
+          !s && (r = new n3(), this.state = i, u && a && (u.state = a));
         }
 
-        return details;
+        return r;
       }
-      /** Appends optional placeholder at end */
-
     }, {
       key: "_appendPlaceholder",
-      value: function _appendPlaceholder() {
-        return new ChangeDetails();
+      value: function t() {
+        return new n3();
       }
-      /** Appends symbols considering flags */
-      // $FlowFixMe no ideas
-
     }, {
       key: "append",
-      value: function append(str, flags, tail) {
-        if (!isString(str)) throw new Error('value should be string');
-        var details = new ChangeDetails();
-        var checkTail = isString(tail) ? new ContinuousTailDetails(String(tail)) : tail;
-        if (flags && flags.tail) flags._beforeTailState = this.state;
+      value: function t(e, n, u) {
+        if (!nI(e)) throw Error("value should be string");
+        var i = new n3(),
+            r = nI(u) ? new nR(String(u)) : u;
+        n && n.tail && (n._beforeTailState = this.state);
 
-        for (var ci = 0; ci < str.length; ++ci) {
-          details.aggregate(this._appendChar(str[ci], flags, checkTail));
-        } // append tail but aggregate only tailShift
-
-
-        if (checkTail != null) {
-          details.tailShift += this.appendTail(checkTail).tailShift; // TODO it's a good idea to clear state after appending ends
-          // but it causes bugs when one append calls another (when dynamic dispatch set rawInputValue)
-          // this._resetBeforeTailState();
+        for (var a = 0; a < e.length; ++a) {
+          i.aggregate(this._appendChar(e[a], n, r));
         }
 
-        return details;
+        return null != r && (i.tailShift += this.appendTail(r).tailShift), i;
       }
-      /** */
-
     }, {
       key: "remove",
-      value: function remove() {
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
-        this._value = this.value.slice(0, fromPos) + this.value.slice(toPos);
-        return new ChangeDetails();
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length;
+        return this._value = this.value.slice(0, e) + this.value.slice(n), new n3();
       }
-      /** Calls function and reapplies current value */
-
     }, {
       key: "withValueRefresh",
-      value: function withValueRefresh(fn) {
-        if (this._refreshing || !this.isInitialized) return fn();
-        this._refreshing = true;
-        var rawInput = this.rawInputValue;
-        var value = this.value;
-        var ret = fn();
-        this.rawInputValue = rawInput; // append lost trailing chars at end
-
-        if (this.value && this.value !== value && value.indexOf(this.value) === 0) {
-          this.append(value.slice(this.value.length), {}, '');
-        }
-
-        delete this._refreshing;
-        return ret;
+      value: function t(e) {
+        if (this._refreshing || !this.isInitialized) return e();
+        this._refreshing = !0;
+        var n = this.rawInputValue,
+            u = this.value,
+            i = e();
+        return this.rawInputValue = n, this.value && this.value !== u && 0 === u.indexOf(this.value) && this.append(u.slice(this.value.length), {}, ""), delete this._refreshing, i;
       }
-      /** */
-
     }, {
       key: "runIsolated",
-      value: function runIsolated(fn) {
-        if (this._isolated || !this.isInitialized) return fn(this);
-        this._isolated = true;
-        var state = this.state;
-        var ret = fn(this);
-        this.state = state;
-        delete this._isolated;
-        return ret;
+      value: function t(e) {
+        if (this._isolated || !this.isInitialized) return e(this);
+        this._isolated = !0;
+        var n = this.state,
+            u = e(this);
+        return this.state = n, delete this._isolated, u;
       }
-      /**
-       Prepares string before mask processing
-       @protected
-       */
-
     }, {
       key: "doPrepare",
-      value: function doPrepare(str) {
-        var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        return this.prepare ? this.prepare(str, this, flags) : str;
+      value: function t(e) {
+        var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
+        return this.prepare ? this.prepare(e, this, n) : e;
       }
-      /**
-       Validates if value is acceptable
-       @protected
-       */
-
     }, {
       key: "doValidate",
-      value: function doValidate(flags) {
-        return (!this.validate || this.validate(this.value, this, flags)) && (!this.parent || this.parent.doValidate(flags));
+      value: function t(e) {
+        return (!this.validate || this.validate(this.value, this, e)) && (!this.parent || this.parent.doValidate(e));
       }
-      /**
-       Does additional processing in the end of editing
-       @protected
-       */
-
     }, {
       key: "doCommit",
-      value: function doCommit() {
-        if (this.commit) this.commit(this.value, this);
+      value: function t() {
+        this.commit && this.commit(this.value, this);
       }
-      /** */
-
     }, {
       key: "doFormat",
-      value: function doFormat(value) {
-        return this.format ? this.format(value, this) : value;
+      value: function t(e) {
+        return this.format ? this.format(e, this) : e;
       }
-      /** */
-
     }, {
       key: "doParse",
-      value: function doParse(str) {
-        return this.parse ? this.parse(str, this) : str;
+      value: function t(e) {
+        return this.parse ? this.parse(e, this) : e;
       }
-      /** */
-
     }, {
       key: "splice",
-      value: function splice(start, deleteCount, inserted, removeDirection) {
-        var tailPos = start + deleteCount;
-        var tail = this.extractTail(tailPos);
-        var startChangePos = this.nearestInputPos(start, removeDirection);
-        var changeDetails = new ChangeDetails({
-          tailShift: startChangePos - start // adjust tailShift if start was aligned
-
-        }).aggregate(this.remove(startChangePos)).aggregate(this.append(inserted, {
-          input: true
-        }, tail));
-        return changeDetails;
+      value: function t(e, n, u, i) {
+        var r = this.extractTail(e + n),
+            a = this.nearestInputPos(e, i);
+        return new n3({
+          tailShift: a - e
+        }).aggregate(this.remove(a)).aggregate(this.append(u, {
+          input: !0
+        }, r));
       }
-    }]);
-
-    return Masked;
+    }]), t;
   }();
 
-  Masked.DEFAULTS = {
-    format: function format(v) {
-      return v;
+  function n2(t) {
+    if (null == t) throw Error("mask property should be defined");
+    return t instanceof RegExp ? nO.MaskedRegExp : nI(t) ? nO.MaskedPattern : t instanceof Date || t === Date ? nO.MaskedDate : t instanceof Number || "number" == typeof t || t === Number ? nO.MaskedNumber : Array.isArray(t) || t === Array ? nO.MaskedDynamic : nO.Masked && t.prototype instanceof nO.Masked ? t : t instanceof Function ? nO.MaskedFunction : t instanceof nO.Masked ? t.constructor : (console.warn("Mask not found for mask", t), nO.Masked);
+  }
+
+  function nL(t) {
+    if (nO.Masked && t instanceof nO.Masked) return t;
+    var e = (t = Object.assign({}, t)).mask;
+    if (nO.Masked && e instanceof nO.Masked) return e;
+    var n = n2(e);
+    if (!n) throw Error("Masked class is not found for provided mask, appropriate module needs to be import manually before creating mask.");
+    return new n(t);
+  }
+
+  nV.DEFAULTS = {
+    format: function t(e) {
+      return e;
     },
-    parse: function parse(v) {
-      return v;
+    parse: function t(e) {
+      return e;
     }
-  };
-  IMask.Masked = Masked;
-  /** Get Masked class by mask type */
+  }, nO.Masked = nV, nO.createMask = nL;
 
-  function maskedClass(mask) {
-    if (mask == null) {
-      throw new Error('mask property should be defined');
-    } // $FlowFixMe
-
-
-    if (mask instanceof RegExp) return IMask.MaskedRegExp; // $FlowFixMe
-
-    if (isString(mask)) return IMask.MaskedPattern; // $FlowFixMe
-
-    if (mask instanceof Date || mask === Date) return IMask.MaskedDate; // $FlowFixMe
-
-    if (mask instanceof Number || typeof mask === 'number' || mask === Number) return IMask.MaskedNumber; // $FlowFixMe
-
-    if (Array.isArray(mask) || mask === Array) return IMask.MaskedDynamic; // $FlowFixMe
-
-    if (IMask.Masked && mask.prototype instanceof IMask.Masked) return mask; // $FlowFixMe
-
-    if (mask instanceof Function) return IMask.MaskedFunction; // $FlowFixMe
-
-    if (mask instanceof IMask.Masked) return mask.constructor;
-    console.warn('Mask not found for mask', mask); // eslint-disable-line no-console
-    // $FlowFixMe
-
-    return IMask.Masked;
-  }
-  /** Creates new {@link Masked} depending on mask type */
-
-
-  function createMask(opts) {
-    // $FlowFixMe
-    if (IMask.Masked && opts instanceof IMask.Masked) return opts;
-    opts = Object.assign({}, opts);
-    var mask = opts.mask; // $FlowFixMe
-
-    if (IMask.Masked && mask instanceof IMask.Masked) return mask;
-    var MaskedClass = maskedClass(mask);
-    if (!MaskedClass) throw new Error('Masked class is not found for provided mask, appropriate module needs to be import manually before creating mask.');
-    return new MaskedClass(opts);
-  }
-
-  IMask.createMask = createMask;
-  var _excluded$4 = ["mask"];
-  var DEFAULT_INPUT_DEFINITIONS = {
-    '0': /\d/,
-    'a': /[\u0041-\u005A\u0061-\u007A\u00AA\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u0527\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0\u08A2-\u08AC\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0977\u0979-\u097F\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C33\u0C35-\u0C39\u0C3D\u0C58\u0C59\u0C60\u0C61\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D60\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F4\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191C\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19C1-\u19C7\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FCC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA697\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA78E\uA790-\uA793\uA7A0-\uA7AA\uA7F8-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA80-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uABC0-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]/,
-    // http://stackoverflow.com/a/22075070
-    '*': /./
-  };
-  /** */
-
-  var PatternInputDefinition = /*#__PURE__*/function () {
-    /** */
-
-    /** */
-
-    /** */
-
-    /** */
-
-    /** */
-
-    /** */
-    function PatternInputDefinition(opts) {
-      _classCallCheck(this, PatternInputDefinition);
-
-      var mask = opts.mask,
-          blockOpts = _objectWithoutProperties(opts, _excluded$4);
-
-      this.masked = createMask({
-        mask: mask
-      });
-      Object.assign(this, blockOpts);
+  var nN = ["mask"],
+      nj = {
+    0: /\d/,
+    a: /[\u0041-\u005A\u0061-\u007A\u00AA\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u0527\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0\u08A2-\u08AC\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0977\u0979-\u097F\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C33\u0C35-\u0C39\u0C3D\u0C58\u0C59\u0C60\u0C61\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D60\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F4\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191C\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19C1-\u19C7\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FCC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA697\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA78E\uA790-\uA793\uA7A0-\uA7AA\uA7F8-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA80-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uABC0-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]/,
+    "*": /./
+  },
+      nH = function () {
+    function t(e) {
+      nF(this, t);
+      var n = e.mask,
+          u = nB(e, nN);
+      this.masked = nL({
+        mask: n
+      }), Object.assign(this, u);
     }
 
-    _createClass(PatternInputDefinition, [{
+    return nb(t, [{
       key: "reset",
-      value: function reset() {
-        this._isFilled = false;
-        this.masked.reset();
+      value: function t() {
+        this._isFilled = !1, this.masked.reset();
       }
     }, {
       key: "remove",
-      value: function remove() {
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
-
-        if (fromPos === 0 && toPos >= 1) {
-          this._isFilled = false;
-          return this.masked.remove(fromPos, toPos);
-        }
-
-        return new ChangeDetails();
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length;
+        return 0 === e && n >= 1 ? (this._isFilled = !1, this.masked.remove(e, n)) : new n3();
       }
     }, {
       key: "value",
-      get: function get() {
-        return this.masked.value || (this._isFilled && !this.isOptional ? this.placeholderChar : '');
+      get: function t() {
+        return this.masked.value || (this._isFilled && !this.isOptional ? this.placeholderChar : "");
       }
     }, {
       key: "unmaskedValue",
-      get: function get() {
+      get: function t() {
         return this.masked.unmaskedValue;
       }
     }, {
       key: "isComplete",
-      get: function get() {
+      get: function t() {
         return Boolean(this.masked.value) || this.isOptional;
       }
     }, {
       key: "_appendChar",
-      value: function _appendChar(str) {
-        var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        if (this._isFilled) return new ChangeDetails();
-        var state = this.masked.state; // simulate input
+      value: function t(e) {
+        var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
+        if (this._isFilled) return new n3();
 
-        var details = this.masked._appendChar(str, flags);
+        var u = this.masked.state,
+            i = this.masked._appendChar(e, n);
 
-        if (details.inserted && this.doValidate(flags) === false) {
-          details.inserted = details.rawInserted = '';
-          this.masked.state = state;
-        }
-
-        if (!details.inserted && !this.isOptional && !this.lazy && !flags.input) {
-          details.inserted = this.placeholderChar;
-        }
-
-        details.skip = !details.inserted && !this.isOptional;
-        this._isFilled = Boolean(details.inserted);
-        return details;
+        return i.inserted && !1 === this.doValidate(n) && (i.inserted = i.rawInserted = "", this.masked.state = u), i.inserted || this.isOptional || this.lazy || n.input || (i.inserted = this.placeholderChar), i.skip = !i.inserted && !this.isOptional, this._isFilled = Boolean(i.inserted), i;
       }
     }, {
       key: "append",
-      value: function append() {
-        var _this$masked;
-
-        return (_this$masked = this.masked).append.apply(_this$masked, arguments);
+      value: function t() {
+        var e;
+        return (e = this.masked).append.apply(e, arguments);
       }
     }, {
       key: "_appendPlaceholder",
-      value: function _appendPlaceholder() {
-        var details = new ChangeDetails();
-        if (this._isFilled || this.isOptional) return details;
-        this._isFilled = true;
-        details.inserted = this.placeholderChar;
-        return details;
+      value: function t() {
+        var e = new n3();
+        return this._isFilled || this.isOptional || (this._isFilled = !0, e.inserted = this.placeholderChar), e;
       }
     }, {
       key: "extractTail",
-      value: function extractTail() {
-        var _this$masked2;
-
-        return (_this$masked2 = this.masked).extractTail.apply(_this$masked2, arguments);
+      value: function t() {
+        var e;
+        return (e = this.masked).extractTail.apply(e, arguments);
       }
     }, {
       key: "appendTail",
-      value: function appendTail() {
-        var _this$masked3;
-
-        return (_this$masked3 = this.masked).appendTail.apply(_this$masked3, arguments);
+      value: function t() {
+        var e;
+        return (e = this.masked).appendTail.apply(e, arguments);
       }
     }, {
       key: "extractInput",
-      value: function extractInput() {
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
-        var flags = arguments.length > 2 ? arguments[2] : undefined;
-        return this.masked.extractInput(fromPos, toPos, flags);
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length,
+            u = arguments.length > 2 ? arguments[2] : void 0;
+        return this.masked.extractInput(e, n, u);
       }
     }, {
       key: "nearestInputPos",
-      value: function nearestInputPos(cursorPos) {
-        var direction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DIRECTION.NONE;
-        var minPos = 0;
-        var maxPos = this.value.length;
-        var boundPos = Math.min(Math.max(cursorPos, minPos), maxPos);
+      value: function t(e) {
+        var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : n5.NONE,
+            u = this.value.length,
+            i = Math.min(Math.max(e, 0), u);
 
-        switch (direction) {
-          case DIRECTION.LEFT:
-          case DIRECTION.FORCE_LEFT:
-            return this.isComplete ? boundPos : minPos;
+        switch (n) {
+          case n5.LEFT:
+          case n5.FORCE_LEFT:
+            return this.isComplete ? i : 0;
 
-          case DIRECTION.RIGHT:
-          case DIRECTION.FORCE_RIGHT:
-            return this.isComplete ? boundPos : maxPos;
+          case n5.RIGHT:
+          case n5.FORCE_RIGHT:
+            return this.isComplete ? i : u;
 
-          case DIRECTION.NONE:
+          case n5.NONE:
           default:
-            return boundPos;
+            return i;
         }
       }
     }, {
       key: "doValidate",
-      value: function doValidate() {
-        var _this$masked4, _this$parent;
-
-        return (_this$masked4 = this.masked).doValidate.apply(_this$masked4, arguments) && (!this.parent || (_this$parent = this.parent).doValidate.apply(_this$parent, arguments));
+      value: function t() {
+        var e, n;
+        return (e = this.masked).doValidate.apply(e, arguments) && (!this.parent || (n = this.parent).doValidate.apply(n, arguments));
       }
     }, {
       key: "doCommit",
-      value: function doCommit() {
+      value: function t() {
         this.masked.doCommit();
       }
     }, {
       key: "state",
-      get: function get() {
+      get: function t() {
         return {
           masked: this.masked.state,
           _isFilled: this._isFilled
         };
       },
-      set: function set(state) {
-        this.masked.state = state.masked;
-        this._isFilled = state._isFilled;
+      set: function t(e) {
+        this.masked.state = e.masked, this._isFilled = e._isFilled;
       }
-    }]);
-
-    return PatternInputDefinition;
-  }();
-
-  var PatternFixedDefinition = /*#__PURE__*/function () {
-    /** */
-
-    /** */
-
-    /** */
-
-    /** */
-    function PatternFixedDefinition(opts) {
-      _classCallCheck(this, PatternFixedDefinition);
-
-      Object.assign(this, opts);
-      this._value = '';
+    }]), t;
+  }(),
+      nU = function () {
+    function t(e) {
+      nF(this, t), Object.assign(this, e), this._value = "";
     }
 
-    _createClass(PatternFixedDefinition, [{
+    return nb(t, [{
       key: "value",
-      get: function get() {
+      get: function t() {
         return this._value;
       }
     }, {
       key: "unmaskedValue",
-      get: function get() {
-        return this.isUnmasking ? this.value : '';
+      get: function t() {
+        return this.isUnmasking ? this.value : "";
       }
     }, {
       key: "reset",
-      value: function reset() {
-        this._isRawInput = false;
-        this._value = '';
+      value: function t() {
+        this._isRawInput = !1, this._value = "";
       }
     }, {
       key: "remove",
-      value: function remove() {
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this._value.length;
-        this._value = this._value.slice(0, fromPos) + this._value.slice(toPos);
-        if (!this._value) this._isRawInput = false;
-        return new ChangeDetails();
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this._value.length;
+        return this._value = this._value.slice(0, e) + this._value.slice(n), this._value || (this._isRawInput = !1), new n3();
       }
     }, {
       key: "nearestInputPos",
-      value: function nearestInputPos(cursorPos) {
-        var direction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DIRECTION.NONE;
-        var minPos = 0;
-        var maxPos = this._value.length;
+      value: function t(e) {
+        var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : n5.NONE,
+            u = this._value.length;
 
-        switch (direction) {
-          case DIRECTION.LEFT:
-          case DIRECTION.FORCE_LEFT:
-            return minPos;
+        switch (n) {
+          case n5.LEFT:
+          case n5.FORCE_LEFT:
+            return 0;
 
-          case DIRECTION.NONE:
-          case DIRECTION.RIGHT:
-          case DIRECTION.FORCE_RIGHT:
+          case n5.NONE:
+          case n5.RIGHT:
+          case n5.FORCE_RIGHT:
           default:
-            return maxPos;
+            return u;
         }
       }
     }, {
       key: "extractInput",
-      value: function extractInput() {
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this._value.length;
-        var flags = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-        return flags.raw && this._isRawInput && this._value.slice(fromPos, toPos) || '';
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this._value.length,
+            u = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : {};
+        return u.raw && this._isRawInput && this._value.slice(e, n) || "";
       }
     }, {
       key: "isComplete",
-      get: function get() {
-        return true;
+      get: function t() {
+        return !0;
       }
     }, {
       key: "_appendChar",
-      value: function _appendChar(str) {
-        var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var details = new ChangeDetails();
-        if (this._value) return details;
-        var appended = this.char === str[0];
-        var isResolved = appended && (this.isUnmasking || flags.input || flags.raw) && !flags.tail;
-        if (isResolved) details.rawInserted = this.char;
-        this._value = details.inserted = this.char;
-        this._isRawInput = isResolved && (flags.raw || flags.input);
-        return details;
+      value: function t(e) {
+        var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
+            u = new n3();
+        if (this._value) return u;
+        var i = this.char === e[0] && (this.isUnmasking || n.input || n.raw) && !n.tail;
+        return i && (u.rawInserted = this.char), this._value = u.inserted = this.char, this._isRawInput = i && (n.raw || n.input), u;
       }
     }, {
       key: "_appendPlaceholder",
-      value: function _appendPlaceholder() {
-        var details = new ChangeDetails();
-        if (this._value) return details;
-        this._value = details.inserted = this.char;
-        return details;
+      value: function t() {
+        var e = new n3();
+        return this._value || (this._value = e.inserted = this.char), e;
       }
     }, {
       key: "extractTail",
-      value: function extractTail() {
-        arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
-        return new ContinuousTailDetails('');
-      } // $FlowFixMe no ideas
-
+      value: function t() {
+        return arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length, new nR("");
+      }
     }, {
       key: "appendTail",
-      value: function appendTail(tail) {
-        if (isString(tail)) tail = new ContinuousTailDetails(String(tail));
-        return tail.appendTo(this);
+      value: function t(e) {
+        return nI(e) && (e = new nR(String(e))), e.appendTo(this);
       }
     }, {
       key: "append",
-      value: function append(str, flags, tail) {
-        var details = this._appendChar(str, flags);
+      value: function t(e, n, u) {
+        var i = this._appendChar(e, n);
 
-        if (tail != null) {
-          details.tailShift += this.appendTail(tail).tailShift;
-        }
-
-        return details;
+        return null != u && (i.tailShift += this.appendTail(u).tailShift), i;
       }
     }, {
       key: "doCommit",
-      value: function doCommit() {}
+      value: function t() {}
     }, {
       key: "state",
-      get: function get() {
+      get: function t() {
         return {
           _value: this._value,
           _isRawInput: this._isRawInput
         };
       },
-      set: function set(state) {
-        Object.assign(this, state);
+      set: function t(e) {
+        Object.assign(this, e);
       }
-    }]);
-
-    return PatternFixedDefinition;
-  }();
-
-  var _excluded$3 = ["chunks"];
-
-  var ChunksTailDetails = /*#__PURE__*/function () {
-    /** */
-    function ChunksTailDetails() {
-      var chunks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
-      _classCallCheck(this, ChunksTailDetails);
-
-      this.chunks = chunks;
-      this.from = from;
+    }]), t;
+  }(),
+      nz = ["chunks"],
+      nG = function () {
+    function t() {
+      var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [],
+          n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0;
+      nF(this, t), this.chunks = e, this.from = n;
     }
 
-    _createClass(ChunksTailDetails, [{
+    return nb(t, [{
       key: "toString",
-      value: function toString() {
-        return this.chunks.map(String).join('');
-      } // $FlowFixMe no ideas
-
+      value: function t() {
+        return this.chunks.map(String).join("");
+      }
     }, {
       key: "extend",
-      value: function extend(tailChunk) {
-        if (!String(tailChunk)) return;
-        if (isString(tailChunk)) tailChunk = new ContinuousTailDetails(String(tailChunk));
-        var lastChunk = this.chunks[this.chunks.length - 1];
-        var extendLast = lastChunk && (lastChunk.stop === tailChunk.stop || tailChunk.stop == null) && // if tail chunk goes just after last chunk
-        tailChunk.from === lastChunk.from + lastChunk.toString().length;
-
-        if (tailChunk instanceof ContinuousTailDetails) {
-          // check the ability to extend previous chunk
-          if (extendLast) {
-            // extend previous chunk
-            lastChunk.extend(tailChunk.toString());
-          } else {
-            // append new chunk
-            this.chunks.push(tailChunk);
-          }
-        } else if (tailChunk instanceof ChunksTailDetails) {
-          if (tailChunk.stop == null) {
-            // unwrap floating chunks to parent, keeping `from` pos
-            var firstTailChunk;
-
-            while (tailChunk.chunks.length && tailChunk.chunks[0].stop == null) {
-              firstTailChunk = tailChunk.chunks.shift();
-              firstTailChunk.from += tailChunk.from;
-              this.extend(firstTailChunk);
+      value: function e(n) {
+        if (String(n)) {
+          nI(n) && (n = new nR(String(n)));
+          var u,
+              i = this.chunks[this.chunks.length - 1],
+              r = i && (i.stop === n.stop || null == n.stop) && n.from === i.from + i.toString().length;
+          if (n instanceof nR) r ? i.extend(n.toString()) : this.chunks.push(n);else if (n instanceof t) {
+            if (null == n.stop) for (; n.chunks.length && null == n.chunks[0].stop;) {
+              u = n.chunks.shift(), u.from += n.from, this.extend(u);
             }
-          } // if tail chunk still has value
-
-
-          if (tailChunk.toString()) {
-            // if chunks contains stops, then popup stop to container
-            tailChunk.stop = tailChunk.blockIndex;
-            this.chunks.push(tailChunk);
+            n.toString() && (n.stop = n.blockIndex, this.chunks.push(n));
           }
         }
       }
     }, {
       key: "appendTo",
-      value: function appendTo(masked) {
-        // $FlowFixMe
-        if (!(masked instanceof IMask.MaskedPattern)) {
-          var tail = new ContinuousTailDetails(this.toString());
-          return tail.appendTo(masked);
+      value: function e(n) {
+        if (!(n instanceof nO.MaskedPattern)) return new nR(this.toString()).appendTo(n);
+
+        for (var u = new n3(), i = 0; i < this.chunks.length && !u.skip; ++i) {
+          var r = this.chunks[i],
+              a = n._mapPosToBlock(n.value.length),
+              s = r.stop,
+              o = void 0;
+
+          if (null != s && (!a || a.index <= s) && ((r instanceof t || n._stops.indexOf(s) >= 0) && u.aggregate(n._appendPlaceholder(s)), o = r instanceof t && n._blocks[s]), o) {
+            var l = o.appendTail(r);
+            l.skip = !1, u.aggregate(l), n._value += l.inserted;
+            var h = r.toString().slice(l.rawInserted.length);
+            h && u.aggregate(n.append(h, {
+              tail: !0
+            }));
+          } else u.aggregate(n.append(r.toString(), {
+            tail: !0
+          }));
         }
 
-        var details = new ChangeDetails();
-
-        for (var ci = 0; ci < this.chunks.length && !details.skip; ++ci) {
-          var chunk = this.chunks[ci];
-
-          var lastBlockIter = masked._mapPosToBlock(masked.value.length);
-
-          var stop = chunk.stop;
-          var chunkBlock = void 0;
-
-          if (stop != null && (!lastBlockIter || lastBlockIter.index <= stop)) {
-            if (chunk instanceof ChunksTailDetails || // for continuous block also check if stop is exist
-            masked._stops.indexOf(stop) >= 0) {
-              details.aggregate(masked._appendPlaceholder(stop));
-            }
-
-            chunkBlock = chunk instanceof ChunksTailDetails && masked._blocks[stop];
-          }
-
-          if (chunkBlock) {
-            var tailDetails = chunkBlock.appendTail(chunk);
-            tailDetails.skip = false; // always ignore skip, it will be set on last
-
-            details.aggregate(tailDetails);
-            masked._value += tailDetails.inserted; // get not inserted chars
-
-            var remainChars = chunk.toString().slice(tailDetails.rawInserted.length);
-            if (remainChars) details.aggregate(masked.append(remainChars, {
-              tail: true
-            }));
-          } else {
-            details.aggregate(masked.append(chunk.toString(), {
-              tail: true
-            }));
-          }
-        }
-
-        return details;
+        return u;
       }
     }, {
       key: "state",
-      get: function get() {
+      get: function t() {
         return {
-          chunks: this.chunks.map(function (c) {
-            return c.state;
+          chunks: this.chunks.map(function (t) {
+            return t.state;
           }),
           from: this.from,
           stop: this.stop,
           blockIndex: this.blockIndex
         };
       },
-      set: function set(state) {
-        var chunks = state.chunks,
-            props = _objectWithoutProperties(state, _excluded$3);
-
-        Object.assign(this, props);
-        this.chunks = chunks.map(function (cstate) {
-          var chunk = "chunks" in cstate ? new ChunksTailDetails() : new ContinuousTailDetails(); // $FlowFixMe already checked above
-
-          chunk.state = cstate;
-          return chunk;
+      set: function e(n) {
+        var u = n.chunks;
+        Object.assign(this, nB(n, nz)), this.chunks = u.map(function (e) {
+          var n = "chunks" in e ? new t() : new nR();
+          return n.state = e, n;
         });
       }
     }, {
       key: "shiftBefore",
-      value: function shiftBefore(pos) {
-        if (this.from >= pos || !this.chunks.length) return '';
-        var chunkShiftPos = pos - this.from;
-        var ci = 0;
+      value: function t(e) {
+        if (this.from >= e || !this.chunks.length) return "";
 
-        while (ci < this.chunks.length) {
-          var chunk = this.chunks[ci];
-          var shiftChar = chunk.shiftBefore(chunkShiftPos);
+        for (var n = e - this.from, u = 0; u < this.chunks.length;) {
+          var i = this.chunks[u],
+              r = i.shiftBefore(n);
 
-          if (chunk.toString()) {
-            // chunk still contains value
-            // but not shifted - means no more available chars to shift
-            if (!shiftChar) break;
-            ++ci;
-          } else {
-            // clean if chunk has no value
-            this.chunks.splice(ci, 1);
-          }
+          if (i.toString()) {
+            if (!r) break;
+            ++u;
+          } else this.chunks.splice(u, 1);
 
-          if (shiftChar) return shiftChar;
+          if (r) return r;
         }
 
-        return '';
+        return "";
       }
-    }]);
+    }]), t;
+  }(),
+      nY = function (t) {
+    n0(n, t);
+    var e = nw(n);
 
-    return ChunksTailDetails;
-  }();
-  /** Masking by RegExp */
-
-
-  var MaskedRegExp = /*#__PURE__*/function (_Masked) {
-    _inherits(MaskedRegExp, _Masked);
-
-    var _super = _createSuper(MaskedRegExp);
-
-    function MaskedRegExp() {
-      _classCallCheck(this, MaskedRegExp);
-
-      return _super.apply(this, arguments);
+    function n() {
+      return nF(this, n), e.apply(this, arguments);
     }
 
-    _createClass(MaskedRegExp, [{
+    return nb(n, [{
       key: "_update",
-      value:
-      /**
-       @override
-       @param {Object} opts
-       */
-      function _update(opts) {
-        if (opts.mask) opts.validate = function (value) {
-          return value.search(opts.mask) >= 0;
-        };
-
-        _get(_getPrototypeOf(MaskedRegExp.prototype), "_update", this).call(this, opts);
+      value: function t(e) {
+        e.mask && (e.validate = function (t) {
+          return t.search(e.mask) >= 0;
+        }), nx(nS(n.prototype), "_update", this).call(this, e);
       }
-    }]);
+    }]), n;
+  }(nV);
 
-    return MaskedRegExp;
-  }(Masked);
+  nO.MaskedRegExp = nY;
 
-  IMask.MaskedRegExp = MaskedRegExp;
-  var _excluded$2 = ["_blocks"];
-  /**
-   Pattern mask
-   @param {Object} opts
-   @param {Object} opts.blocks
-   @param {Object} opts.definitions
-   @param {string} opts.placeholderChar
-   @param {boolean} opts.lazy
-   */
+  var nZ = ["_blocks"],
+      nK = function (t) {
+    n0(n, t);
+    var e = nw(n);
 
-  var MaskedPattern = /*#__PURE__*/function (_Masked) {
-    _inherits(MaskedPattern, _Masked);
-
-    var _super = _createSuper(MaskedPattern);
-    /** */
-
-    /** */
-
-    /** Single char for empty input */
-
-    /** Show placeholder only when needed */
-
-
-    function MaskedPattern() {
-      var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      _classCallCheck(this, MaskedPattern); // TODO type $Shape<MaskedPatternOptions>={} does not work
-
-
-      opts.definitions = Object.assign({}, DEFAULT_INPUT_DEFINITIONS, opts.definitions);
-      return _super.call(this, Object.assign({}, MaskedPattern.DEFAULTS, opts));
+    function n() {
+      var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {};
+      return nF(this, n), t.definitions = Object.assign({}, nj, t.definitions), e.call(this, Object.assign({}, n.DEFAULTS, t));
     }
-    /**
-     @override
-     @param {Object} opts
-     */
 
-
-    _createClass(MaskedPattern, [{
+    return nb(n, [{
       key: "_update",
-      value: function _update() {
-        var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        opts.definitions = Object.assign({}, this.definitions, opts.definitions);
-
-        _get(_getPrototypeOf(MaskedPattern.prototype), "_update", this).call(this, opts);
-
-        this._rebuildMask();
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {};
+        e.definitions = Object.assign({}, this.definitions, e.definitions), nx(nS(n.prototype), "_update", this).call(this, e), this._rebuildMask();
       }
-      /** */
-
     }, {
       key: "_rebuildMask",
-      value: function _rebuildMask() {
-        var _this = this;
+      value: function t() {
+        var e = this,
+            u = this.definitions;
+        this._blocks = [], this._stops = [], this._maskedBlocks = {};
+        var i = this.mask;
+        if (i && u) for (var r = !1, a = !1, s = 0; s < i.length; ++s) {
+          if (!this.blocks || "continue" !== function () {
+            var t = i.slice(s),
+                n = Object.keys(e.blocks).filter(function (e) {
+              return 0 === t.indexOf(e);
+            });
+            n.sort(function (t, e) {
+              return e.length - t.length;
+            });
+            var u = n[0];
 
-        var defs = this.definitions;
-        this._blocks = [];
-        this._stops = [];
-        this._maskedBlocks = {};
-        var pattern = this.mask;
-        if (!pattern || !defs) return;
-        var unmaskingBlock = false;
-        var optionalBlock = false;
+            if (u) {
+              var r = nL(Object.assign({
+                parent: e,
+                lazy: e.lazy,
+                placeholderChar: e.placeholderChar,
+                overwrite: e.overwrite
+              }, e.blocks[u]));
+              return r && (e._blocks.push(r), e._maskedBlocks[u] || (e._maskedBlocks[u] = []), e._maskedBlocks[u].push(e._blocks.length - 1)), s += u.length - 1, "continue";
+            }
+          }()) {
+            var o = i[s],
+                l = (o in u);
 
-        for (var i = 0; i < pattern.length; ++i) {
-          if (this.blocks) {
-            var _ret = function () {
-              var p = pattern.slice(i);
-              var bNames = Object.keys(_this.blocks).filter(function (bName) {
-                return p.indexOf(bName) === 0;
-              }); // order by key length
+            if (o === n.STOP_CHAR) {
+              this._stops.push(this._blocks.length);
 
-              bNames.sort(function (a, b) {
-                return b.length - a.length;
-              }); // use block name with max length
+              continue;
+            }
 
-              var bName = bNames[0];
+            if ("{" === o || "}" === o) {
+              r = !r;
+              continue;
+            }
 
-              if (bName) {
-                // $FlowFixMe no ideas
-                var maskedBlock = createMask(Object.assign({
-                  parent: _this,
-                  lazy: _this.lazy,
-                  placeholderChar: _this.placeholderChar,
-                  overwrite: _this.overwrite
-                }, _this.blocks[bName]));
+            if ("[" === o || "]" === o) {
+              a = !a;
+              continue;
+            }
 
-                if (maskedBlock) {
-                  _this._blocks.push(maskedBlock); // store block index
+            if (o === n.ESCAPE_CHAR) {
+              if (!(o = i[++s])) break;
+              l = !1;
+            }
 
+            var h = l ? new nH({
+              parent: this,
+              lazy: this.lazy,
+              placeholderChar: this.placeholderChar,
+              mask: u[o],
+              isOptional: a
+            }) : new nU({
+              char: o,
+              isUnmasking: r
+            });
 
-                  if (!_this._maskedBlocks[bName]) _this._maskedBlocks[bName] = [];
-
-                  _this._maskedBlocks[bName].push(_this._blocks.length - 1);
-                }
-
-                i += bName.length - 1;
-                return "continue";
-              }
-            }();
-
-            if (_ret === "continue") continue;
+            this._blocks.push(h);
           }
-
-          var _char = pattern[i];
-
-          var _isInput = (_char in defs);
-
-          if (_char === MaskedPattern.STOP_CHAR) {
-            this._stops.push(this._blocks.length);
-
-            continue;
-          }
-
-          if (_char === '{' || _char === '}') {
-            unmaskingBlock = !unmaskingBlock;
-            continue;
-          }
-
-          if (_char === '[' || _char === ']') {
-            optionalBlock = !optionalBlock;
-            continue;
-          }
-
-          if (_char === MaskedPattern.ESCAPE_CHAR) {
-            ++i;
-            _char = pattern[i];
-            if (!_char) break;
-            _isInput = false;
-          }
-
-          var def = _isInput ? new PatternInputDefinition({
-            parent: this,
-            lazy: this.lazy,
-            placeholderChar: this.placeholderChar,
-            mask: defs[_char],
-            isOptional: optionalBlock
-          }) : new PatternFixedDefinition({
-            char: _char,
-            isUnmasking: unmaskingBlock
-          });
-
-          this._blocks.push(def);
         }
       }
-      /**
-       @override
-       */
-
     }, {
       key: "state",
-      get: function get() {
-        return Object.assign({}, _get(_getPrototypeOf(MaskedPattern.prototype), "state", this), {
-          _blocks: this._blocks.map(function (b) {
-            return b.state;
+      get: function t() {
+        return Object.assign({}, nx(nS(n.prototype), "state", this), {
+          _blocks: this._blocks.map(function (t) {
+            return t.state;
           })
         });
       },
-      set: function set(state) {
-        var _blocks = state._blocks,
-            maskedState = _objectWithoutProperties(state, _excluded$2);
-
-        this._blocks.forEach(function (b, bi) {
-          return b.state = _blocks[bi];
-        });
-
-        _set(_getPrototypeOf(MaskedPattern.prototype), "state", maskedState, this, true);
+      set: function t(e) {
+        var u = e._blocks,
+            i = nB(e, nZ);
+        this._blocks.forEach(function (t, e) {
+          return t.state = u[e];
+        }), nM(nS(n.prototype), "state", i, this, !0);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "reset",
-      value: function reset() {
-        _get(_getPrototypeOf(MaskedPattern.prototype), "reset", this).call(this);
-
-        this._blocks.forEach(function (b) {
-          return b.reset();
+      value: function t() {
+        nx(nS(n.prototype), "reset", this).call(this), this._blocks.forEach(function (t) {
+          return t.reset();
         });
       }
-      /**
-       @override
-       */
-
     }, {
       key: "isComplete",
-      get: function get() {
-        return this._blocks.every(function (b) {
-          return b.isComplete;
+      get: function t() {
+        return this._blocks.every(function (t) {
+          return t.isComplete;
         });
       }
-      /**
-       @override
-       */
-
     }, {
       key: "doCommit",
-      value: function doCommit() {
-        this._blocks.forEach(function (b) {
-          return b.doCommit();
-        });
-
-        _get(_getPrototypeOf(MaskedPattern.prototype), "doCommit", this).call(this);
+      value: function t() {
+        this._blocks.forEach(function (t) {
+          return t.doCommit();
+        }), nx(nS(n.prototype), "doCommit", this).call(this);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "unmaskedValue",
-      get: function get() {
-        return this._blocks.reduce(function (str, b) {
-          return str += b.unmaskedValue;
-        }, '');
+      get: function t() {
+        return this._blocks.reduce(function (t, e) {
+          return t + e.unmaskedValue;
+        }, "");
       },
-      set: function set(unmaskedValue) {
-        _set(_getPrototypeOf(MaskedPattern.prototype), "unmaskedValue", unmaskedValue, this, true);
+      set: function t(e) {
+        nM(nS(n.prototype), "unmaskedValue", e, this, !0);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "value",
-      get: function get() {
-        // TODO return _value when not in change?
-        return this._blocks.reduce(function (str, b) {
-          return str += b.value;
-        }, '');
+      get: function t() {
+        return this._blocks.reduce(function (t, e) {
+          return t + e.value;
+        }, "");
       },
-      set: function set(value) {
-        _set(_getPrototypeOf(MaskedPattern.prototype), "value", value, this, true);
+      set: function t(e) {
+        nM(nS(n.prototype), "value", e, this, !0);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "appendTail",
-      value: function appendTail(tail) {
-        return _get(_getPrototypeOf(MaskedPattern.prototype), "appendTail", this).call(this, tail).aggregate(this._appendPlaceholder());
+      value: function t(e) {
+        return nx(nS(n.prototype), "appendTail", this).call(this, e).aggregate(this._appendPlaceholder());
       }
-      /**
-       @override
-       */
-
     }, {
       key: "_appendCharRaw",
-      value: function _appendCharRaw(ch) {
-        var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      value: function t(e) {
+        var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
+            u = this._mapPosToBlock(this.value.length),
+            i = new n3();
 
-        var blockIter = this._mapPosToBlock(this.value.length);
+        if (!u) return i;
 
-        var details = new ChangeDetails();
-        if (!blockIter) return details;
+        for (var r = u.index;; ++r) {
+          var a = this._blocks[r];
+          if (!a) break;
 
-        for (var bi = blockIter.index;; ++bi) {
-          var _block = this._blocks[bi];
-          if (!_block) break;
+          var s = a._appendChar(e, n),
+              o = s.skip;
 
-          var blockDetails = _block._appendChar(ch, flags);
-
-          var skip = blockDetails.skip;
-          details.aggregate(blockDetails);
-          if (skip || blockDetails.rawInserted) break; // go next char
+          if (i.aggregate(s), o || s.rawInserted) break;
         }
 
-        return details;
+        return i;
       }
-      /**
-       @override
-       */
-
     }, {
       key: "extractTail",
-      value: function extractTail() {
-        var _this2 = this;
-
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
-        var chunkTail = new ChunksTailDetails();
-        if (fromPos === toPos) return chunkTail;
-
-        this._forEachBlocksInRange(fromPos, toPos, function (b, bi, bFromPos, bToPos) {
-          var blockChunk = b.extractTail(bFromPos, bToPos);
-          blockChunk.stop = _this2._findStopBefore(bi);
-          blockChunk.from = _this2._blockStartPos(bi);
-          if (blockChunk instanceof ChunksTailDetails) blockChunk.blockIndex = bi;
-          chunkTail.extend(blockChunk);
-        });
-
-        return chunkTail;
+      value: function t() {
+        var e = this,
+            n = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            u = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length,
+            i = new nG();
+        return n === u || this._forEachBlocksInRange(n, u, function (t, n, u, r) {
+          var a = t.extractTail(u, r);
+          a.stop = e._findStopBefore(n), a.from = e._blockStartPos(n), a instanceof nG && (a.blockIndex = n), i.extend(a);
+        }), i;
       }
-      /**
-       @override
-       */
-
     }, {
       key: "extractInput",
-      value: function extractInput() {
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
-        var flags = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-        if (fromPos === toPos) return '';
-        var input = '';
-
-        this._forEachBlocksInRange(fromPos, toPos, function (b, _, fromPos, toPos) {
-          input += b.extractInput(fromPos, toPos, flags);
-        });
-
-        return input;
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length,
+            u = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : {};
+        if (e === n) return "";
+        var i = "";
+        return this._forEachBlocksInRange(e, n, function (t, e, n, r) {
+          i += t.extractInput(n, r, u);
+        }), i;
       }
     }, {
       key: "_findStopBefore",
-      value: function _findStopBefore(blockIndex) {
-        var stopBefore;
-
-        for (var si = 0; si < this._stops.length; ++si) {
-          var stop = this._stops[si];
-          if (stop <= blockIndex) stopBefore = stop;else break;
+      value: function t(e) {
+        for (var n, u = 0; u < this._stops.length; ++u) {
+          var i = this._stops[u];
+          if (i <= e) n = i;else break;
         }
 
-        return stopBefore;
+        return n;
       }
-      /** Appends placeholder depending on laziness */
-
     }, {
       key: "_appendPlaceholder",
-      value: function _appendPlaceholder(toBlockIndex) {
-        var _this3 = this;
+      value: function t(e) {
+        var n = this,
+            u = new n3();
+        if (this.lazy && null == e) return u;
 
-        var details = new ChangeDetails();
-        if (this.lazy && toBlockIndex == null) return details;
+        var i = this._mapPosToBlock(this.value.length);
 
-        var startBlockIter = this._mapPosToBlock(this.value.length);
+        if (!i) return u;
+        var r = i.index,
+            a = null != e ? e : this._blocks.length;
+        return this._blocks.slice(r, a).forEach(function (t) {
+          if (!t.lazy || null != e) {
+            var i = null != t._blocks ? [t._blocks.length] : [],
+                r = t._appendPlaceholder.apply(t, i);
 
-        if (!startBlockIter) return details;
-        var startBlockIndex = startBlockIter.index;
-        var endBlockIndex = toBlockIndex != null ? toBlockIndex : this._blocks.length;
-
-        this._blocks.slice(startBlockIndex, endBlockIndex).forEach(function (b) {
-          if (!b.lazy || toBlockIndex != null) {
-            // $FlowFixMe `_blocks` may not be present
-            var args = b._blocks != null ? [b._blocks.length] : [];
-
-            var bDetails = b._appendPlaceholder.apply(b, args);
-
-            _this3._value += bDetails.inserted;
-            details.aggregate(bDetails);
+            n._value += r.inserted, u.aggregate(r);
           }
-        });
-
-        return details;
+        }), u;
       }
-      /** Finds block in pos */
-
     }, {
       key: "_mapPosToBlock",
-      value: function _mapPosToBlock(pos) {
-        var accVal = '';
-
-        for (var bi = 0; bi < this._blocks.length; ++bi) {
-          var _block2 = this._blocks[bi];
-          var blockStartPos = accVal.length;
-          accVal += _block2.value;
-
-          if (pos <= accVal.length) {
-            return {
-              index: bi,
-              offset: pos - blockStartPos
-            };
-          }
+      value: function t(e) {
+        for (var n = "", u = 0; u < this._blocks.length; ++u) {
+          var i = this._blocks[u],
+              r = n.length;
+          if (e <= (n += i.value).length) return {
+            index: u,
+            offset: e - r
+          };
         }
       }
-      /** */
-
     }, {
       key: "_blockStartPos",
-      value: function _blockStartPos(blockIndex) {
-        return this._blocks.slice(0, blockIndex).reduce(function (pos, b) {
-          return pos += b.value.length;
+      value: function t(e) {
+        return this._blocks.slice(0, e).reduce(function (t, e) {
+          return t + e.value.length;
         }, 0);
       }
-      /** */
-
     }, {
       key: "_forEachBlocksInRange",
-      value: function _forEachBlocksInRange(fromPos) {
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
-        var fn = arguments.length > 2 ? arguments[2] : undefined;
+      value: function t(e) {
+        var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length,
+            u = arguments.length > 2 ? arguments[2] : void 0,
+            i = this._mapPosToBlock(e);
 
-        var fromBlockIter = this._mapPosToBlock(fromPos);
+        if (i) {
+          var r = this._mapPosToBlock(n),
+              a = r && i.index === r.index,
+              s = i.offset,
+              o = r && a ? r.offset : this._blocks[i.index].value.length;
 
-        if (fromBlockIter) {
-          var toBlockIter = this._mapPosToBlock(toPos); // process first block
+          if (u(this._blocks[i.index], i.index, s, o), r && !a) {
+            for (var l = i.index + 1; l < r.index; ++l) {
+              u(this._blocks[l], l, 0, this._blocks[l].value.length);
+            }
 
-
-          var isSameBlock = toBlockIter && fromBlockIter.index === toBlockIter.index;
-          var fromBlockStartPos = fromBlockIter.offset;
-          var fromBlockEndPos = toBlockIter && isSameBlock ? toBlockIter.offset : this._blocks[fromBlockIter.index].value.length;
-          fn(this._blocks[fromBlockIter.index], fromBlockIter.index, fromBlockStartPos, fromBlockEndPos);
-
-          if (toBlockIter && !isSameBlock) {
-            // process intermediate blocks
-            for (var bi = fromBlockIter.index + 1; bi < toBlockIter.index; ++bi) {
-              fn(this._blocks[bi], bi, 0, this._blocks[bi].value.length);
-            } // process last block
-
-
-            fn(this._blocks[toBlockIter.index], toBlockIter.index, 0, toBlockIter.offset);
+            u(this._blocks[r.index], r.index, 0, r.offset);
           }
         }
       }
-      /**
-       @override
-       */
-
     }, {
       key: "remove",
-      value: function remove() {
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
-
-        var removeDetails = _get(_getPrototypeOf(MaskedPattern.prototype), "remove", this).call(this, fromPos, toPos);
-
-        this._forEachBlocksInRange(fromPos, toPos, function (b, _, bFromPos, bToPos) {
-          removeDetails.aggregate(b.remove(bFromPos, bToPos));
-        });
-
-        return removeDetails;
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            u = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length,
+            i = nx(nS(n.prototype), "remove", this).call(this, e, u);
+        return this._forEachBlocksInRange(e, u, function (t, e, n, u) {
+          i.aggregate(t.remove(n, u));
+        }), i;
       }
-      /**
-       @override
-       */
-
     }, {
       key: "nearestInputPos",
-      value: function nearestInputPos(cursorPos) {
-        var direction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DIRECTION.NONE; // TODO refactor - extract alignblock
-
-        var beginBlockData = this._mapPosToBlock(cursorPos) || {
+      value: function t(e) {
+        var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : n5.NONE,
+            u = this._mapPosToBlock(e) || {
           index: 0,
           offset: 0
-        };
-        var beginBlockOffset = beginBlockData.offset,
-            beginBlockIndex = beginBlockData.index;
-        var beginBlock = this._blocks[beginBlockIndex];
-        if (!beginBlock) return cursorPos;
-        var beginBlockCursorPos = beginBlockOffset; // if position inside block - try to adjust it
+        },
+            i = u.offset,
+            r = u.index,
+            a = this._blocks[r];
+        if (!a) return e;
+        var s = i;
+        0 !== s && s < a.value.length && (s = a.nearestInputPos(i, function t(e) {
+          switch (e) {
+            case n5.LEFT:
+              return n5.FORCE_LEFT;
 
-        if (beginBlockCursorPos !== 0 && beginBlockCursorPos < beginBlock.value.length) {
-          beginBlockCursorPos = beginBlock.nearestInputPos(beginBlockOffset, forceDirection(direction));
-        }
+            case n5.RIGHT:
+              return n5.FORCE_RIGHT;
 
-        var cursorAtRight = beginBlockCursorPos === beginBlock.value.length;
-        var cursorAtLeft = beginBlockCursorPos === 0; //  cursor is INSIDE first block (not at bounds)
+            default:
+              return e;
+          }
+        }(n)));
+        var o = s === a.value.length;
+        if (0 !== s && !o) return this._blockStartPos(r) + s;
+        var l = o ? r + 1 : r;
 
-        if (!cursorAtLeft && !cursorAtRight) return this._blockStartPos(beginBlockIndex) + beginBlockCursorPos;
-        var searchBlockIndex = cursorAtRight ? beginBlockIndex + 1 : beginBlockIndex;
-
-        if (direction === DIRECTION.NONE) {
-          // NONE direction used to calculate start input position if no chars were removed
-          // FOR NONE:
-          // -
-          // input|any
-          // ->
-          //  any|input
-          // <-
-          //  filled-input|any
-          // check if first block at left is input
-          if (searchBlockIndex > 0) {
-            var blockIndexAtLeft = searchBlockIndex - 1;
-            var blockAtLeft = this._blocks[blockIndexAtLeft];
-            var blockInputPos = blockAtLeft.nearestInputPos(0, DIRECTION.NONE); // is input
-
-            if (!blockAtLeft.value.length || blockInputPos !== blockAtLeft.value.length) {
-              return this._blockStartPos(searchBlockIndex);
-            }
-          } // ->
-
-
-          var firstInputAtRight = searchBlockIndex;
-
-          for (var bi = firstInputAtRight; bi < this._blocks.length; ++bi) {
-            var blockAtRight = this._blocks[bi];
-
-            var _blockInputPos = blockAtRight.nearestInputPos(0, DIRECTION.NONE);
-
-            if (!blockAtRight.value.length || _blockInputPos !== blockAtRight.value.length) {
-              return this._blockStartPos(bi) + _blockInputPos;
-            }
-          } // <-
-          // find first non-fixed symbol
-
-
-          for (var _bi = searchBlockIndex - 1; _bi >= 0; --_bi) {
-            var _block3 = this._blocks[_bi];
-
-            var _blockInputPos2 = _block3.nearestInputPos(0, DIRECTION.NONE); // is input
-
-
-            if (!_block3.value.length || _blockInputPos2 !== _block3.value.length) {
-              return this._blockStartPos(_bi) + _block3.value.length;
-            }
+        if (n === n5.NONE) {
+          if (l > 0) {
+            var h = this._blocks[l - 1],
+                c = h.nearestInputPos(0, n5.NONE);
+            if (!h.value.length || c !== h.value.length) return this._blockStartPos(l);
           }
 
-          return cursorPos;
+          for (var f = l, $ = f; $ < this._blocks.length; ++$) {
+            var p = this._blocks[$],
+                d = p.nearestInputPos(0, n5.NONE);
+            if (!p.value.length || d !== p.value.length) return this._blockStartPos($) + d;
+          }
+
+          for (var v = l - 1; v >= 0; --v) {
+            var k = this._blocks[v],
+                g = k.nearestInputPos(0, n5.NONE);
+            if (!k.value.length || g !== k.value.length) return this._blockStartPos(v) + k.value.length;
+          }
+
+          return e;
         }
 
-        if (direction === DIRECTION.LEFT || direction === DIRECTION.FORCE_LEFT) {
-          // -
-          //  any|filled-input
-          // <-
-          //  any|first not empty is not-len-aligned
-          //  not-0-aligned|any
-          // ->
-          //  any|not-len-aligned or end
-          // check if first block at right is filled input
-          var firstFilledBlockIndexAtRight;
-
-          for (var _bi2 = searchBlockIndex; _bi2 < this._blocks.length; ++_bi2) {
-            if (this._blocks[_bi2].value) {
-              firstFilledBlockIndexAtRight = _bi2;
+        if (n === n5.LEFT || n === n5.FORCE_LEFT) {
+          for (var _, y, m = l; m < this._blocks.length; ++m) {
+            if (this._blocks[m].value) {
+              _ = m;
               break;
             }
           }
 
-          if (firstFilledBlockIndexAtRight != null) {
-            var filledBlock = this._blocks[firstFilledBlockIndexAtRight];
+          if (null != _) {
+            var C = this._blocks[_],
+                A = C.nearestInputPos(0, n5.RIGHT);
+            if (0 === A && C.unmaskedValue.length) return this._blockStartPos(_) + A;
+          }
 
-            var _blockInputPos3 = filledBlock.nearestInputPos(0, DIRECTION.RIGHT);
+          for (var F = -1, E = l - 1; E >= 0; --E) {
+            var b = this._blocks[E],
+                S = b.nearestInputPos(b.value.length, n5.FORCE_LEFT);
 
-            if (_blockInputPos3 === 0 && filledBlock.unmaskedValue.length) {
-              // filled block is input
-              return this._blockStartPos(firstFilledBlockIndexAtRight) + _blockInputPos3;
-            }
-          } // <-
-          // find this vars
-
-
-          var firstFilledInputBlockIndex = -1;
-          var firstEmptyInputBlockIndex; // TODO consider nested empty inputs
-
-          for (var _bi3 = searchBlockIndex - 1; _bi3 >= 0; --_bi3) {
-            var _block4 = this._blocks[_bi3];
-
-            var _blockInputPos4 = _block4.nearestInputPos(_block4.value.length, DIRECTION.FORCE_LEFT);
-
-            if (!_block4.value || _blockInputPos4 !== 0) firstEmptyInputBlockIndex = _bi3;
-
-            if (_blockInputPos4 !== 0) {
-              if (_blockInputPos4 !== _block4.value.length) {
-                // aligned inside block - return immediately
-                return this._blockStartPos(_bi3) + _blockInputPos4;
-              } else {
-                // found filled
-                firstFilledInputBlockIndex = _bi3;
-                break;
-              }
+            if (b.value && 0 === S || (y = E), 0 !== S) {
+              if (S !== b.value.length) return this._blockStartPos(E) + S;
+              F = E;
+              break;
             }
           }
 
-          if (direction === DIRECTION.LEFT) {
-            // try find first empty input before start searching position only when not forced
-            for (var _bi4 = firstFilledInputBlockIndex + 1; _bi4 <= Math.min(searchBlockIndex, this._blocks.length - 1); ++_bi4) {
-              var _block5 = this._blocks[_bi4];
-
-              var _blockInputPos5 = _block5.nearestInputPos(0, DIRECTION.NONE);
-
-              var blockAlignedPos = this._blockStartPos(_bi4) + _blockInputPos5;
-
-              if (blockAlignedPos > cursorPos) break; // if block is not lazy input
-
-              if (_blockInputPos5 !== _block5.value.length) return blockAlignedPos;
-            }
-          } // process overflow
-
-
-          if (firstFilledInputBlockIndex >= 0) {
-            return this._blockStartPos(firstFilledInputBlockIndex) + this._blocks[firstFilledInputBlockIndex].value.length;
-          } // for lazy if has aligned left inside fixed and has came to the start - use start position
-
-
-          if (direction === DIRECTION.FORCE_LEFT || this.lazy && !this.extractInput() && !isInput(this._blocks[searchBlockIndex])) {
-            return 0;
+          if (n === n5.LEFT) for (var D = F + 1; D <= Math.min(l, this._blocks.length - 1); ++D) {
+            var B = this._blocks[D],
+                w = B.nearestInputPos(0, n5.NONE),
+                P = this._blockStartPos(D) + w;
+            if (P > e) break;
+            if (w !== B.value.length) return P;
           }
+          if (F >= 0) return this._blockStartPos(F) + this._blocks[F].value.length;
+          if (n === n5.FORCE_LEFT || this.lazy && !this.extractInput() && !function t(e) {
+            if (!e) return !1;
+            var n = e.value;
+            return !n || e.nearestInputPos(0, n5.NONE) !== n.length;
+          }(this._blocks[l])) return 0;
+          if (null != y) return this._blockStartPos(y);
 
-          if (firstEmptyInputBlockIndex != null) {
-            return this._blockStartPos(firstEmptyInputBlockIndex);
-          } // find first input
-
-
-          for (var _bi5 = searchBlockIndex; _bi5 < this._blocks.length; ++_bi5) {
-            var _block6 = this._blocks[_bi5];
-
-            var _blockInputPos6 = _block6.nearestInputPos(0, DIRECTION.NONE); // is input
-
-
-            if (!_block6.value.length || _blockInputPos6 !== _block6.value.length) {
-              return this._blockStartPos(_bi5) + _blockInputPos6;
-            }
+          for (var x = l; x < this._blocks.length; ++x) {
+            var M = this._blocks[x],
+                T = M.nearestInputPos(0, n5.NONE);
+            if (!M.value.length || T !== M.value.length) return this._blockStartPos(x) + T;
           }
 
           return 0;
         }
 
-        if (direction === DIRECTION.RIGHT || direction === DIRECTION.FORCE_RIGHT) {
-          // ->
-          //  any|not-len-aligned and filled
-          //  any|not-len-aligned
-          // <-
-          //  not-0-aligned or start|any
-          var firstInputBlockAlignedIndex;
-          var firstInputBlockAlignedPos;
+        if (n === n5.RIGHT || n === n5.FORCE_RIGHT) {
+          for (var I, R, O = l; O < this._blocks.length; ++O) {
+            var V = this._blocks[O],
+                L = V.nearestInputPos(0, n5.NONE);
 
-          for (var _bi6 = searchBlockIndex; _bi6 < this._blocks.length; ++_bi6) {
-            var _block7 = this._blocks[_bi6];
-
-            var _blockInputPos7 = _block7.nearestInputPos(0, DIRECTION.NONE);
-
-            if (_blockInputPos7 !== _block7.value.length) {
-              firstInputBlockAlignedPos = this._blockStartPos(_bi6) + _blockInputPos7;
-              firstInputBlockAlignedIndex = _bi6;
+            if (L !== V.value.length) {
+              R = this._blockStartPos(O) + L, I = O;
               break;
             }
           }
 
-          if (firstInputBlockAlignedIndex != null && firstInputBlockAlignedPos != null) {
-            for (var _bi7 = firstInputBlockAlignedIndex; _bi7 < this._blocks.length; ++_bi7) {
-              var _block8 = this._blocks[_bi7];
-
-              var _blockInputPos8 = _block8.nearestInputPos(0, DIRECTION.FORCE_RIGHT);
-
-              if (_blockInputPos8 !== _block8.value.length) {
-                return this._blockStartPos(_bi7) + _blockInputPos8;
-              }
+          if (null != I && null != R) {
+            for (var N = I; N < this._blocks.length; ++N) {
+              var j = this._blocks[N],
+                  H = j.nearestInputPos(0, n5.FORCE_RIGHT);
+              if (H !== j.value.length) return this._blockStartPos(N) + H;
             }
 
-            return direction === DIRECTION.FORCE_RIGHT ? this.value.length : firstInputBlockAlignedPos;
+            return n === n5.FORCE_RIGHT ? this.value.length : R;
           }
 
-          for (var _bi8 = Math.min(searchBlockIndex, this._blocks.length - 1); _bi8 >= 0; --_bi8) {
-            var _block9 = this._blocks[_bi8];
+          for (var U = Math.min(l, this._blocks.length - 1); U >= 0; --U) {
+            var z = this._blocks[U],
+                G = z.nearestInputPos(z.value.length, n5.LEFT);
 
-            var _blockInputPos9 = _block9.nearestInputPos(_block9.value.length, DIRECTION.LEFT);
-
-            if (_blockInputPos9 !== 0) {
-              var alignedPos = this._blockStartPos(_bi8) + _blockInputPos9;
-
-              if (alignedPos >= cursorPos) return alignedPos;
+            if (0 !== G) {
+              var Y = this._blockStartPos(U) + G;
+              if (Y >= e) return Y;
               break;
             }
           }
         }
 
-        return cursorPos;
+        return e;
       }
-      /** Get block by name */
-
     }, {
       key: "maskedBlock",
-      value: function maskedBlock(name) {
-        return this.maskedBlocks(name)[0];
+      value: function t(e) {
+        return this.maskedBlocks(e)[0];
       }
-      /** Get all blocks by name */
-
     }, {
       key: "maskedBlocks",
-      value: function maskedBlocks(name) {
-        var _this4 = this;
-
-        var indices = this._maskedBlocks[name];
-        if (!indices) return [];
-        return indices.map(function (gi) {
-          return _this4._blocks[gi];
-        });
+      value: function t(e) {
+        var n = this,
+            u = this._maskedBlocks[e];
+        return u ? u.map(function (t) {
+          return n._blocks[t];
+        }) : [];
       }
-    }]);
+    }]), n;
+  }(nV);
 
-    return MaskedPattern;
-  }(Masked);
+  nK.DEFAULTS = {
+    lazy: !0,
+    placeholderChar: "_"
+  }, nK.STOP_CHAR = "`", nK.ESCAPE_CHAR = "\\", nK.InputDefinition = nH, nK.FixedDefinition = nU, nO.MaskedPattern = nK;
 
-  MaskedPattern.DEFAULTS = {
-    lazy: true,
-    placeholderChar: '_'
-  };
-  MaskedPattern.STOP_CHAR = '`';
-  MaskedPattern.ESCAPE_CHAR = '\\';
-  MaskedPattern.InputDefinition = PatternInputDefinition;
-  MaskedPattern.FixedDefinition = PatternFixedDefinition;
+  var nW = function (t) {
+    n0(n, t);
+    var e = nw(n);
 
-  function isInput(block) {
-    if (!block) return false;
-    var value = block.value;
-    return !value || block.nearestInputPos(0, DIRECTION.NONE) !== value.length;
-  }
-
-  IMask.MaskedPattern = MaskedPattern;
-  /** Pattern which accepts ranges */
-
-  var MaskedRange = /*#__PURE__*/function (_MaskedPattern) {
-    _inherits(MaskedRange, _MaskedPattern);
-
-    var _super = _createSuper(MaskedRange);
-
-    function MaskedRange() {
-      _classCallCheck(this, MaskedRange);
-
-      return _super.apply(this, arguments);
+    function n() {
+      return nF(this, n), e.apply(this, arguments);
     }
 
-    _createClass(MaskedRange, [{
+    return nb(n, [{
       key: "_matchFrom",
-      get:
-      /**
-       Optionally sets max length of pattern.
-       Used when pattern length is longer then `to` param length. Pads zeros at start in this case.
-       */
-
-      /** Min bound */
-
-      /** Max bound */
-
-      /** */
-      function get() {
+      get: function t() {
         return this.maxLength - String(this.from).length;
       }
-      /**
-       @override
-       */
-
     }, {
       key: "_update",
-      value: function _update(opts) {
-        // TODO type
-        opts = Object.assign({
+      value: function t(e) {
+        var u = String((e = Object.assign({
           to: this.to || 0,
           from: this.from || 0
-        }, opts);
-        var maxLength = String(opts.to).length;
-        if (opts.maxLength != null) maxLength = Math.max(maxLength, opts.maxLength);
-        opts.maxLength = maxLength;
-        var fromStr = String(opts.from).padStart(maxLength, '0');
-        var toStr = String(opts.to).padStart(maxLength, '0');
-        var sameCharsCount = 0;
+        }, e)).to).length;
+        null != e.maxLength && (u = Math.max(u, e.maxLength)), e.maxLength = u;
 
-        while (sameCharsCount < toStr.length && toStr[sameCharsCount] === fromStr[sameCharsCount]) {
-          ++sameCharsCount;
+        for (var i = String(e.from).padStart(u, "0"), r = String(e.to).padStart(u, "0"), a = 0; a < r.length && r[a] === i[a];) {
+          ++a;
         }
 
-        opts.mask = toStr.slice(0, sameCharsCount).replace(/0/g, '\\0') + '0'.repeat(maxLength - sameCharsCount);
-
-        _get(_getPrototypeOf(MaskedRange.prototype), "_update", this).call(this, opts);
+        e.mask = r.slice(0, a).replace(/0/g, "\\0") + "0".repeat(u - a), nx(nS(n.prototype), "_update", this).call(this, e);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "isComplete",
-      get: function get() {
-        return _get(_getPrototypeOf(MaskedRange.prototype), "isComplete", this) && Boolean(this.value);
+      get: function t() {
+        return nx(nS(n.prototype), "isComplete", this) && Boolean(this.value);
       }
     }, {
       key: "boundaries",
-      value: function boundaries(str) {
-        var minstr = '';
-        var maxstr = '';
-
-        var _ref = str.match(/^(\D*)(\d*)(\D*)/) || [],
-            _ref2 = _slicedToArray(_ref, 3),
-            placeholder = _ref2[1],
-            num = _ref2[2];
-
-        if (num) {
-          minstr = '0'.repeat(placeholder.length) + num;
-          maxstr = '9'.repeat(placeholder.length) + num;
-        }
-
-        minstr = minstr.padEnd(this.maxLength, '0');
-        maxstr = maxstr.padEnd(this.maxLength, '9');
-        return [minstr, maxstr];
+      value: function t(e) {
+        var n = "",
+            u = "",
+            i = nT(e.match(/^(\D*)(\d*)(\D*)/) || [], 3),
+            r = i[1],
+            a = i[2];
+        return a && (n = "0".repeat(r.length) + a, u = "9".repeat(r.length) + a), [n = n.padEnd(this.maxLength, "0"), u = u.padEnd(this.maxLength, "9")];
       }
-      /**
-       @override
-       */
-
     }, {
       key: "doPrepare",
-      value: function doPrepare(str) {
-        var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        str = _get(_getPrototypeOf(MaskedRange.prototype), "doPrepare", this).call(this, str, flags).replace(/\D/g, '');
-        if (!this.autofix) return str;
-        var fromStr = String(this.from).padStart(this.maxLength, '0');
-        var toStr = String(this.to).padStart(this.maxLength, '0');
-        var val = this.value;
-        var prepStr = '';
+      value: function t(e) {
+        var u = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
+        if (e = nx(nS(n.prototype), "doPrepare", this).call(this, e, u).replace(/\D/g, ""), !this.autofix) return e;
 
-        for (var ci = 0; ci < str.length; ++ci) {
-          var nextVal = val + prepStr + str[ci];
-
-          var _this$boundaries = this.boundaries(nextVal),
-              _this$boundaries2 = _slicedToArray(_this$boundaries, 2),
-              minstr = _this$boundaries2[0],
-              maxstr = _this$boundaries2[1];
-
-          if (Number(maxstr) < this.from) prepStr += fromStr[nextVal.length - 1];else if (Number(minstr) > this.to) prepStr += toStr[nextVal.length - 1];else prepStr += str[ci];
+        for (var i = String(this.from).padStart(this.maxLength, "0"), r = String(this.to).padStart(this.maxLength, "0"), a = this.value, s = "", o = 0; o < e.length; ++o) {
+          var l = a + s + e[o],
+              h = this.boundaries(l),
+              c = nT(h, 2),
+              f = c[0];
+          Number(c[1]) < this.from ? s += i[l.length - 1] : Number(f) > this.to ? s += r[l.length - 1] : s += e[o];
         }
 
-        return prepStr;
+        return s;
       }
-      /**
-       @override
-       */
-
     }, {
       key: "doValidate",
-      value: function doValidate() {
-        var _get2;
+      value: function t() {
+        var e,
+            u = this.value;
+        if (-1 === u.search(/[^0]/) && u.length <= this._matchFrom) return !0;
 
-        var str = this.value;
-        var firstNonZero = str.search(/[^0]/);
-        if (firstNonZero === -1 && str.length <= this._matchFrom) return true;
-
-        var _this$boundaries3 = this.boundaries(str),
-            _this$boundaries4 = _slicedToArray(_this$boundaries3, 2),
-            minstr = _this$boundaries4[0],
-            maxstr = _this$boundaries4[1];
-
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments[_key];
+        for (var i = this.boundaries(u), r = nT(i, 2), a = r[0], s = r[1], o = arguments.length, l = Array(o), h = 0; h < o; h++) {
+          l[h] = arguments[h];
         }
 
-        return this.from <= Number(maxstr) && Number(minstr) <= this.to && (_get2 = _get(_getPrototypeOf(MaskedRange.prototype), "doValidate", this)).call.apply(_get2, [this].concat(args));
+        return this.from <= Number(s) && Number(a) <= this.to && (e = nx(nS(n.prototype), "doValidate", this)).call.apply(e, [this].concat(l));
       }
-    }]);
+    }]), n;
+  }(nK);
 
-    return MaskedRange;
-  }(MaskedPattern);
+  nO.MaskedRange = nW;
 
-  IMask.MaskedRange = MaskedRange;
-  /** Date mask */
+  var n9 = function (t) {
+    n0(n, t);
+    var e = nw(n);
 
-  var MaskedDate = /*#__PURE__*/function (_MaskedPattern) {
-    _inherits(MaskedDate, _MaskedPattern);
-
-    var _super = _createSuper(MaskedDate);
-    /** Pattern mask for date according to {@link MaskedDate#format} */
-
-    /** Start date */
-
-    /** End date */
-
-    /** */
-
-    /**
-     @param {Object} opts
-     */
-
-
-    function MaskedDate(opts) {
-      _classCallCheck(this, MaskedDate);
-
-      return _super.call(this, Object.assign({}, MaskedDate.DEFAULTS, opts));
+    function n(t) {
+      return nF(this, n), e.call(this, Object.assign({}, n.DEFAULTS, t));
     }
-    /**
-     @override
-     */
 
-
-    _createClass(MaskedDate, [{
+    return nb(n, [{
       key: "_update",
-      value: function _update(opts) {
-        if (opts.mask === Date) delete opts.mask;
-        if (opts.pattern) opts.mask = opts.pattern;
-        var blocks = opts.blocks;
-        opts.blocks = Object.assign({}, MaskedDate.GET_DEFAULT_BLOCKS()); // adjust year block
-
-        if (opts.min) opts.blocks.Y.from = opts.min.getFullYear();
-        if (opts.max) opts.blocks.Y.to = opts.max.getFullYear();
-
-        if (opts.min && opts.max && opts.blocks.Y.from === opts.blocks.Y.to) {
-          opts.blocks.m.from = opts.min.getMonth() + 1;
-          opts.blocks.m.to = opts.max.getMonth() + 1;
-
-          if (opts.blocks.m.from === opts.blocks.m.to) {
-            opts.blocks.d.from = opts.min.getDate();
-            opts.blocks.d.to = opts.max.getDate();
-          }
-        }
-
-        Object.assign(opts.blocks, blocks); // add autofix
-
-        Object.keys(opts.blocks).forEach(function (bk) {
-          var b = opts.blocks[bk];
-          if (!('autofix' in b)) b.autofix = opts.autofix;
-        });
-
-        _get(_getPrototypeOf(MaskedDate.prototype), "_update", this).call(this, opts);
+      value: function t(e) {
+        e.mask === Date && delete e.mask, e.pattern && (e.mask = e.pattern);
+        var u = e.blocks;
+        e.blocks = Object.assign({}, n.GET_DEFAULT_BLOCKS()), e.min && (e.blocks.Y.from = e.min.getFullYear()), e.max && (e.blocks.Y.to = e.max.getFullYear()), e.min && e.max && e.blocks.Y.from === e.blocks.Y.to && (e.blocks.m.from = e.min.getMonth() + 1, e.blocks.m.to = e.max.getMonth() + 1, e.blocks.m.from === e.blocks.m.to && (e.blocks.d.from = e.min.getDate(), e.blocks.d.to = e.max.getDate())), Object.assign(e.blocks, u), Object.keys(e.blocks).forEach(function (t) {
+          var n = e.blocks[t];
+          "autofix" in n || (n.autofix = e.autofix);
+        }), nx(nS(n.prototype), "_update", this).call(this, e);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "doValidate",
-      value: function doValidate() {
-        var _get2;
-
-        var date = this.date;
-
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments[_key];
+      value: function t() {
+        for (var e, u = this.date, i = arguments.length, r = Array(i), a = 0; a < i; a++) {
+          r[a] = arguments[a];
         }
 
-        return (_get2 = _get(_getPrototypeOf(MaskedDate.prototype), "doValidate", this)).call.apply(_get2, [this].concat(args)) && (!this.isComplete || this.isDateExist(this.value) && date != null && (this.min == null || this.min <= date) && (this.max == null || date <= this.max));
+        return (e = nx(nS(n.prototype), "doValidate", this)).call.apply(e, [this].concat(r)) && (!this.isComplete || this.isDateExist(this.value) && null != u && (null == this.min || this.min <= u) && (null == this.max || u <= this.max));
       }
-      /** Checks if date is exists */
-
     }, {
       key: "isDateExist",
-      value: function isDateExist(str) {
-        return this.format(this.parse(str, this), this).indexOf(str) >= 0;
+      value: function t(e) {
+        return this.format(this.parse(e, this), this).indexOf(e) >= 0;
       }
-      /** Parsed Date */
-
     }, {
       key: "date",
-      get: function get() {
+      get: function t() {
         return this.typedValue;
       },
-      set: function set(date) {
-        this.typedValue = date;
+      set: function t(e) {
+        this.typedValue = e;
       }
-      /**
-       @override
-       */
-
     }, {
       key: "typedValue",
-      get: function get() {
-        return this.isComplete ? _get(_getPrototypeOf(MaskedDate.prototype), "typedValue", this) : null;
+      get: function t() {
+        return this.isComplete ? nx(nS(n.prototype), "typedValue", this) : null;
       },
-      set: function set(value) {
-        _set(_getPrototypeOf(MaskedDate.prototype), "typedValue", value, this, true);
+      set: function t(e) {
+        nM(nS(n.prototype), "typedValue", e, this, !0);
       }
-    }]);
+    }]), n;
+  }(nK);
 
-    return MaskedDate;
-  }(MaskedPattern);
-
-  MaskedDate.DEFAULTS = {
-    pattern: 'd{.}`m{.}`Y',
-    format: function format(date) {
-      var day = String(date.getDate()).padStart(2, '0');
-      var month = String(date.getMonth() + 1).padStart(2, '0');
-      var year = date.getFullYear();
-      return [day, month, year].join('.');
+  n9.DEFAULTS = {
+    pattern: "d{.}`m{.}`Y",
+    format: function t(e) {
+      var n,
+          u = String(e.getDate()).padStart(2, "0");
+      return [u, String(e.getMonth() + 1).padStart(2, "0"), e.getFullYear()].join(".");
     },
-    parse: function parse(str) {
-      var _str$split = str.split('.'),
-          _str$split2 = _slicedToArray(_str$split, 3),
-          day = _str$split2[0],
-          month = _str$split2[1],
-          year = _str$split2[2];
-
-      return new Date(year, month - 1, day);
+    parse: function t(e) {
+      var n = nT(e.split("."), 3),
+          u = n[0],
+          i = n[1],
+          r = n[2];
+      return new Date(r, i - 1, u);
     }
-  };
-
-  MaskedDate.GET_DEFAULT_BLOCKS = function () {
+  }, n9.GET_DEFAULT_BLOCKS = function () {
     return {
       d: {
-        mask: MaskedRange,
+        mask: nW,
         from: 1,
         to: 31,
         maxLength: 2
       },
       m: {
-        mask: MaskedRange,
+        mask: nW,
         from: 1,
         to: 12,
         maxLength: 2
       },
       Y: {
-        mask: MaskedRange,
+        mask: nW,
         from: 1900,
         to: 9999
       }
     };
-  };
+  }, nO.MaskedDate = n9;
 
-  IMask.MaskedDate = MaskedDate;
-  /**
-   Generic element API to use with mask
-   @interface
-   */
-
-  var MaskElement = /*#__PURE__*/function () {
-    function MaskElement() {
-      _classCallCheck(this, MaskElement);
+  var nq = function () {
+    function t() {
+      nF(this, t);
     }
 
-    _createClass(MaskElement, [{
+    return nb(t, [{
       key: "selectionStart",
-      get:
-      /** */
-
-      /** */
-
-      /** */
-
-      /** Safely returns selection start */
-      function get() {
-        var start;
+      get: function t() {
+        var e;
 
         try {
-          start = this._unsafeSelectionStart;
-        } catch (e) {}
+          e = this._unsafeSelectionStart;
+        } catch (n) {}
 
-        return start != null ? start : this.value.length;
+        return null != e ? e : this.value.length;
       }
-      /** Safely returns selection end */
-
     }, {
       key: "selectionEnd",
-      get: function get() {
-        var end;
+      get: function t() {
+        var e;
 
         try {
-          end = this._unsafeSelectionEnd;
-        } catch (e) {}
+          e = this._unsafeSelectionEnd;
+        } catch (n) {}
 
-        return end != null ? end : this.value.length;
+        return null != e ? e : this.value.length;
       }
-      /** Safely sets element selection */
-
     }, {
       key: "select",
-      value: function select(start, end) {
-        if (start == null || end == null || start === this.selectionStart && end === this.selectionEnd) return;
-
-        try {
-          this._unsafeSelect(start, end);
-        } catch (e) {}
+      value: function t(e, n) {
+        if (null != e && null != n && (e !== this.selectionStart || n !== this.selectionEnd)) try {
+          this._unsafeSelect(e, n);
+        } catch (u) {}
       }
-      /** Should be overriden in subclasses */
-
     }, {
       key: "_unsafeSelect",
-      value: function _unsafeSelect(start, end) {}
-      /** Should be overriden in subclasses */
-
+      value: function t(e, n) {}
     }, {
       key: "isActive",
-      get: function get() {
-        return false;
+      get: function t() {
+        return !1;
       }
-      /** Should be overriden in subclasses */
-
     }, {
       key: "bindEvents",
-      value: function bindEvents(handlers) {}
-      /** Should be overriden in subclasses */
-
+      value: function t(e) {}
     }, {
       key: "unbindEvents",
-      value: function unbindEvents() {}
-    }]);
-
-    return MaskElement;
+      value: function t() {}
+    }]), t;
   }();
 
-  IMask.MaskElement = MaskElement;
-  /** Bridge between HTMLElement and {@link Masked} */
+  nO.MaskElement = nq;
 
-  var HTMLMaskElement = /*#__PURE__*/function (_MaskElement) {
-    _inherits(HTMLMaskElement, _MaskElement);
+  var nX = function (t) {
+    n0(n, t);
+    var e = nw(n);
 
-    var _super = _createSuper(HTMLMaskElement);
-    /** Mapping between HTMLElement events and mask internal events */
-
-    /** HTMLElement to use mask on */
-
-    /**
-     @param {HTMLInputElement|HTMLTextAreaElement} input
-     */
-
-
-    function HTMLMaskElement(input) {
-      var _this;
-
-      _classCallCheck(this, HTMLMaskElement);
-
-      _this = _super.call(this);
-      _this.input = input;
-      _this._handlers = {};
-      return _this;
+    function n(t) {
+      var u;
+      return nF(this, n), (u = e.call(this)).input = t, u._handlers = {}, u;
     }
-    /** */
-    // $FlowFixMe https://github.com/facebook/flow/issues/2839
 
-
-    _createClass(HTMLMaskElement, [{
+    return nb(n, [{
       key: "rootElement",
-      get: function get() {
+      get: function t() {
         return this.input.getRootNode ? this.input.getRootNode() : document;
       }
-      /**
-       Is element in focus
-       @readonly
-       */
-
     }, {
       key: "isActive",
-      get: function get() {
-        //$FlowFixMe
+      get: function t() {
         return this.input === this.rootElement.activeElement;
       }
-      /**
-       Returns HTMLElement selection start
-       @override
-       */
-
     }, {
       key: "_unsafeSelectionStart",
-      get: function get() {
+      get: function t() {
         return this.input.selectionStart;
       }
-      /**
-       Returns HTMLElement selection end
-       @override
-       */
-
     }, {
       key: "_unsafeSelectionEnd",
-      get: function get() {
+      get: function t() {
         return this.input.selectionEnd;
       }
-      /**
-       Sets HTMLElement selection
-       @override
-       */
-
     }, {
       key: "_unsafeSelect",
-      value: function _unsafeSelect(start, end) {
-        this.input.setSelectionRange(start, end);
+      value: function t(e, n) {
+        this.input.setSelectionRange(e, n);
       }
-      /**
-       HTMLElement value
-       @override
-       */
-
     }, {
       key: "value",
-      get: function get() {
+      get: function t() {
         return this.input.value;
       },
-      set: function set(value) {
-        this.input.value = value;
+      set: function t(e) {
+        this.input.value = e;
       }
-      /**
-       Binds HTMLElement events to mask internal events
-       @override
-       */
-
     }, {
       key: "bindEvents",
-      value: function bindEvents(handlers) {
-        var _this2 = this;
-
-        Object.keys(handlers).forEach(function (event) {
-          return _this2._toggleEventHandler(HTMLMaskElement.EVENTS_MAP[event], handlers[event]);
+      value: function t(e) {
+        var u = this;
+        Object.keys(e).forEach(function (t) {
+          return u._toggleEventHandler(n.EVENTS_MAP[t], e[t]);
         });
       }
-      /**
-       Unbinds HTMLElement events to mask internal events
-       @override
-       */
-
     }, {
       key: "unbindEvents",
-      value: function unbindEvents() {
-        var _this3 = this;
-
-        Object.keys(this._handlers).forEach(function (event) {
-          return _this3._toggleEventHandler(event);
+      value: function t() {
+        var e = this;
+        Object.keys(this._handlers).forEach(function (t) {
+          return e._toggleEventHandler(t);
         });
       }
-      /** */
-
     }, {
       key: "_toggleEventHandler",
-      value: function _toggleEventHandler(event, handler) {
-        if (this._handlers[event]) {
-          this.input.removeEventListener(event, this._handlers[event]);
-          delete this._handlers[event];
-        }
-
-        if (handler) {
-          this.input.addEventListener(event, handler);
-          this._handlers[event] = handler;
-        }
+      value: function t(e, n) {
+        this._handlers[e] && (this.input.removeEventListener(e, this._handlers[e]), delete this._handlers[e]), n && (this.input.addEventListener(e, n), this._handlers[e] = n);
       }
-    }]);
+    }]), n;
+  }(nq);
 
-    return HTMLMaskElement;
-  }(MaskElement);
+  nX.EVENTS_MAP = {
+    selectionChange: "keydown",
+    input: "input",
+    drop: "drop",
+    click: "click",
+    focus: "focus",
+    commit: "blur"
+  }, nO.HTMLMaskElement = nX;
 
-  HTMLMaskElement.EVENTS_MAP = {
-    selectionChange: 'keydown',
-    input: 'input',
-    drop: 'drop',
-    click: 'click',
-    focus: 'focus',
-    commit: 'blur'
-  };
-  IMask.HTMLMaskElement = HTMLMaskElement;
+  var nJ = function (t) {
+    n0(n, t);
+    var e = nw(n);
 
-  var HTMLContenteditableMaskElement = /*#__PURE__*/function (_HTMLMaskElement) {
-    _inherits(HTMLContenteditableMaskElement, _HTMLMaskElement);
-
-    var _super = _createSuper(HTMLContenteditableMaskElement);
-
-    function HTMLContenteditableMaskElement() {
-      _classCallCheck(this, HTMLContenteditableMaskElement);
-
-      return _super.apply(this, arguments);
+    function n() {
+      return nF(this, n), e.apply(this, arguments);
     }
 
-    _createClass(HTMLContenteditableMaskElement, [{
+    return nb(n, [{
       key: "_unsafeSelectionStart",
-      get:
-      /**
-       Returns HTMLElement selection start
-       @override
-       */
-      function get() {
-        var root = this.rootElement;
-        var selection = root.getSelection && root.getSelection();
-        return selection && selection.anchorOffset;
+      get: function t() {
+        var e = this.rootElement,
+            n = e.getSelection && e.getSelection();
+        return n && n.anchorOffset;
       }
-      /**
-       Returns HTMLElement selection end
-       @override
-       */
-
     }, {
       key: "_unsafeSelectionEnd",
-      get: function get() {
-        var root = this.rootElement;
-        var selection = root.getSelection && root.getSelection();
-        return selection && this._unsafeSelectionStart + String(selection).length;
+      get: function t() {
+        var e = this.rootElement,
+            n = e.getSelection && e.getSelection();
+        return n && this._unsafeSelectionStart + String(n).length;
       }
-      /**
-       Sets HTMLElement selection
-       @override
-       */
-
     }, {
       key: "_unsafeSelect",
-      value: function _unsafeSelect(start, end) {
-        if (!this.rootElement.createRange) return;
-        var range = this.rootElement.createRange();
-        range.setStart(this.input.firstChild || this.input, start);
-        range.setEnd(this.input.lastChild || this.input, end);
-        var root = this.rootElement;
-        var selection = root.getSelection && root.getSelection();
-
-        if (selection) {
-          selection.removeAllRanges();
-          selection.addRange(range);
+      value: function t(e, n) {
+        if (this.rootElement.createRange) {
+          var u = this.rootElement.createRange();
+          u.setStart(this.input.firstChild || this.input, e), u.setEnd(this.input.lastChild || this.input, n);
+          var i = this.rootElement,
+              r = i.getSelection && i.getSelection();
+          r && (r.removeAllRanges(), r.addRange(u));
         }
       }
-      /**
-       HTMLElement value
-       @override
-       */
-
     }, {
       key: "value",
-      get: function get() {
-        // $FlowFixMe
+      get: function t() {
         return this.input.textContent;
       },
-      set: function set(value) {
-        this.input.textContent = value;
+      set: function t(e) {
+        this.input.textContent = e;
       }
-    }]);
+    }]), n;
+  }(nX);
 
-    return HTMLContenteditableMaskElement;
-  }(HTMLMaskElement);
+  nO.HTMLContenteditableMaskElement = nJ;
 
-  IMask.HTMLContenteditableMaskElement = HTMLContenteditableMaskElement;
-  var _excluded$1 = ["mask"];
-  /** Listens to element events and controls changes between element and {@link Masked} */
-
-  var InputMask = /*#__PURE__*/function () {
-    /**
-     View element
-     @readonly
-     */
-
-    /**
-     Internal {@link Masked} model
-     @readonly
-     */
-
-    /**
-     @param {MaskElement|HTMLInputElement|HTMLTextAreaElement} el
-     @param {Object} opts
-     */
-    function InputMask(el, opts) {
-      _classCallCheck(this, InputMask);
-
-      this.el = el instanceof MaskElement ? el : el.isContentEditable && el.tagName !== 'INPUT' && el.tagName !== 'TEXTAREA' ? new HTMLContenteditableMaskElement(el) : new HTMLMaskElement(el);
-      this.masked = createMask(opts);
-      this._listeners = {};
-      this._value = '';
-      this._unmaskedValue = '';
-      this._saveSelection = this._saveSelection.bind(this);
-      this._onInput = this._onInput.bind(this);
-      this._onChange = this._onChange.bind(this);
-      this._onDrop = this._onDrop.bind(this);
-      this._onFocus = this._onFocus.bind(this);
-      this._onClick = this._onClick.bind(this);
-      this.alignCursor = this.alignCursor.bind(this);
-      this.alignCursorFriendly = this.alignCursorFriendly.bind(this);
-
-      this._bindEvents(); // refresh
-
-
-      this.updateValue();
-
-      this._onChange();
+  var nQ = ["mask"],
+      ut = function () {
+    function t(e, n) {
+      nF(this, t), this.el = e instanceof nq ? e : e.isContentEditable && "INPUT" !== e.tagName && "TEXTAREA" !== e.tagName ? new nJ(e) : new nX(e), this.masked = nL(n), this._listeners = {}, this._value = "", this._unmaskedValue = "", this._saveSelection = this._saveSelection.bind(this), this._onInput = this._onInput.bind(this), this._onChange = this._onChange.bind(this), this._onDrop = this._onDrop.bind(this), this._onFocus = this._onFocus.bind(this), this._onClick = this._onClick.bind(this), this.alignCursor = this.alignCursor.bind(this), this.alignCursorFriendly = this.alignCursorFriendly.bind(this), this._bindEvents(), this.updateValue(), this._onChange();
     }
-    /** Read or update mask */
 
-
-    _createClass(InputMask, [{
+    return nb(t, [{
       key: "mask",
-      get: function get() {
+      get: function t() {
         return this.masked.mask;
       },
-      set: function set(mask) {
-        if (this.maskEquals(mask)) return;
+      set: function t(e) {
+        if (!this.maskEquals(e)) {
+          if (!(e instanceof nO.Masked) && this.masked.constructor === n2(e)) {
+            this.masked.updateOptions({
+              mask: e
+            });
+            return;
+          }
 
-        if (!(mask instanceof IMask.Masked) && this.masked.constructor === maskedClass(mask)) {
-          this.masked.updateOptions({
-            mask: mask
+          var n = nL({
+            mask: e
           });
-          return;
+          n.unmaskedValue = this.masked.unmaskedValue, this.masked = n;
         }
-
-        var masked = createMask({
-          mask: mask
-        });
-        masked.unmaskedValue = this.masked.unmaskedValue;
-        this.masked = masked;
       }
-      /** Raw value */
-
     }, {
       key: "maskEquals",
-      value: function maskEquals(mask) {
-        return mask == null || mask === this.masked.mask || mask === Date && this.masked instanceof MaskedDate;
+      value: function t(e) {
+        return null == e || e === this.masked.mask || e === Date && this.masked instanceof n9;
       }
     }, {
       key: "value",
-      get: function get() {
+      get: function t() {
         return this._value;
       },
-      set: function set(str) {
-        this.masked.value = str;
-        this.updateControl();
-        this.alignCursor();
+      set: function t(e) {
+        this.masked.value = e, this.updateControl(), this.alignCursor();
       }
-      /** Unmasked value */
-
     }, {
       key: "unmaskedValue",
-      get: function get() {
+      get: function t() {
         return this._unmaskedValue;
       },
-      set: function set(str) {
-        this.masked.unmaskedValue = str;
-        this.updateControl();
-        this.alignCursor();
+      set: function t(e) {
+        this.masked.unmaskedValue = e, this.updateControl(), this.alignCursor();
       }
-      /** Typed unmasked value */
-
     }, {
       key: "typedValue",
-      get: function get() {
+      get: function t() {
         return this.masked.typedValue;
       },
-      set: function set(val) {
-        this.masked.typedValue = val;
-        this.updateControl();
-        this.alignCursor();
+      set: function t(e) {
+        this.masked.typedValue = e, this.updateControl(), this.alignCursor();
       }
-      /**
-       Starts listening to element events
-       @protected
-       */
-
     }, {
       key: "_bindEvents",
-      value: function _bindEvents() {
+      value: function t() {
         this.el.bindEvents({
           selectionChange: this._saveSelection,
           input: this._onInput,
@@ -8152,1173 +6625,715 @@ function _typeof2(obj) { "@babel/helpers - typeof"; return _typeof2 = "function"
           commit: this._onChange
         });
       }
-      /**
-       Stops listening to element events
-       @protected
-       */
-
     }, {
       key: "_unbindEvents",
-      value: function _unbindEvents() {
-        if (this.el) this.el.unbindEvents();
+      value: function t() {
+        this.el && this.el.unbindEvents();
       }
-      /**
-       Fires custom event
-       @protected
-       */
-
     }, {
       key: "_fireEvent",
-      value: function _fireEvent(ev) {
-        for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-          args[_key - 1] = arguments[_key];
+      value: function t(e) {
+        for (var n = arguments.length, u = Array(n > 1 ? n - 1 : 0), i = 1; i < n; i++) {
+          u[i - 1] = arguments[i];
         }
 
-        var listeners = this._listeners[ev];
-        if (!listeners) return;
-        listeners.forEach(function (l) {
-          return l.apply(void 0, args);
+        var r = this._listeners[e];
+        r && r.forEach(function (t) {
+          return t.apply(void 0, u);
         });
       }
-      /**
-       Current selection start
-       @readonly
-       */
-
     }, {
       key: "selectionStart",
-      get: function get() {
+      get: function t() {
         return this._cursorChanging ? this._changingCursorPos : this.el.selectionStart;
       }
-      /** Current cursor position */
-
     }, {
       key: "cursorPos",
-      get: function get() {
+      get: function t() {
         return this._cursorChanging ? this._changingCursorPos : this.el.selectionEnd;
       },
-      set: function set(pos) {
-        if (!this.el || !this.el.isActive) return;
-        this.el.select(pos, pos);
-
-        this._saveSelection();
+      set: function t(e) {
+        this.el && this.el.isActive && (this.el.select(e, e), this._saveSelection());
       }
-      /**
-       Stores current selection
-       @protected
-       */
-
     }, {
       key: "_saveSelection",
-      value: function _saveSelection() {
-        if (this.value !== this.el.value) {
-          console.warn('Element value was changed outside of mask. Syncronize mask using `mask.updateValue()` to work properly.'); // eslint-disable-line no-console
-        }
-
-        this._selection = {
+      value: function t() {
+        this.value !== this.el.value && console.warn("Element value was changed outside of mask. Syncronize mask using `mask.updateValue()` to work properly."), this._selection = {
           start: this.selectionStart,
           end: this.cursorPos
         };
       }
-      /** Syncronizes model value from view */
-
     }, {
       key: "updateValue",
-      value: function updateValue() {
-        this.masked.value = this.el.value;
-        this._value = this.masked.value;
+      value: function t() {
+        this.masked.value = this.el.value, this._value = this.masked.value;
       }
-      /** Syncronizes view from model value, fires change events */
-
     }, {
       key: "updateControl",
-      value: function updateControl() {
-        var newUnmaskedValue = this.masked.unmaskedValue;
-        var newValue = this.masked.value;
-        var isChanged = this.unmaskedValue !== newUnmaskedValue || this.value !== newValue;
-        this._unmaskedValue = newUnmaskedValue;
-        this._value = newValue;
-        if (this.el.value !== newValue) this.el.value = newValue;
-        if (isChanged) this._fireChangeEvents();
+      value: function t() {
+        var e = this.masked.unmaskedValue,
+            n = this.masked.value,
+            u = this.unmaskedValue !== e || this.value !== n;
+        this._unmaskedValue = e, this._value = n, this.el.value !== n && (this.el.value = n), u && this._fireChangeEvents();
       }
-      /** Updates options with deep equal check, recreates @{link Masked} model if mask type changes */
-
     }, {
       key: "updateOptions",
-      value: function updateOptions(opts) {
-        var mask = opts.mask,
-            restOpts = _objectWithoutProperties(opts, _excluded$1);
+      value: function t(e) {
+        var n = e.mask,
+            u = nB(e, nQ),
+            i = !this.maskEquals(n),
+            r = !function t(e, n) {
+          if (n === e) return !0;
+          var u,
+              i = Array.isArray(n),
+              r = Array.isArray(e);
 
-        var updateMask = !this.maskEquals(mask);
-        var updateOpts = !objectIncludes(this.masked, restOpts);
-        if (updateMask) this.mask = mask;
-        if (updateOpts) this.masked.updateOptions(restOpts);
-        if (updateMask || updateOpts) this.updateControl();
+          if (i && r) {
+            if (n.length != e.length) return !1;
+
+            for (u = 0; u < n.length; u++) {
+              if (!t(n[u], e[u])) return !1;
+            }
+
+            return !0;
+          }
+
+          if (i != r) return !1;
+
+          if (n && e && "object" === nA(n) && "object" === nA(e)) {
+            var a = n instanceof Date,
+                s = e instanceof Date;
+            if (a && s) return n.getTime() == e.getTime();
+            if (a != s) return !1;
+            var o = n instanceof RegExp,
+                l = e instanceof RegExp;
+            if (o && l) return n.toString() == e.toString();
+            if (o != l) return !1;
+            var h = Object.keys(n);
+
+            for (u = 0; u < h.length; u++) {
+              if (!Object.prototype.hasOwnProperty.call(e, h[u])) return !1;
+            }
+
+            for (u = 0; u < h.length; u++) {
+              if (!t(e[h[u]], n[h[u]])) return !1;
+            }
+
+            return !0;
+          }
+
+          return !!n && !!e && "function" == typeof n && "function" == typeof e && n.toString() === e.toString();
+        }(this.masked, u);
+        i && (this.mask = n), r && this.masked.updateOptions(u), (i || r) && this.updateControl();
       }
-      /** Updates cursor */
-
     }, {
       key: "updateCursor",
-      value: function updateCursor(cursorPos) {
-        if (cursorPos == null) return;
-        this.cursorPos = cursorPos; // also queue change cursor for mobile browsers
-
-        this._delayUpdateCursor(cursorPos);
+      value: function t(e) {
+        null != e && (this.cursorPos = e, this._delayUpdateCursor(e));
       }
-      /**
-       Delays cursor update to support mobile browsers
-       @private
-       */
-
     }, {
       key: "_delayUpdateCursor",
-      value: function _delayUpdateCursor(cursorPos) {
-        var _this = this;
-
-        this._abortUpdateCursor();
-
-        this._changingCursorPos = cursorPos;
-        this._cursorChanging = setTimeout(function () {
-          if (!_this.el) return; // if was destroyed
-
-          _this.cursorPos = _this._changingCursorPos;
-
-          _this._abortUpdateCursor();
+      value: function t(e) {
+        var n = this;
+        this._abortUpdateCursor(), this._changingCursorPos = e, this._cursorChanging = setTimeout(function () {
+          n.el && (n.cursorPos = n._changingCursorPos, n._abortUpdateCursor());
         }, 10);
       }
-      /**
-       Fires custom events
-       @protected
-       */
-
     }, {
       key: "_fireChangeEvents",
-      value: function _fireChangeEvents() {
-        this._fireEvent('accept', this._inputEvent);
-
-        if (this.masked.isComplete) this._fireEvent('complete', this._inputEvent);
+      value: function t() {
+        this._fireEvent("accept", this._inputEvent), this.masked.isComplete && this._fireEvent("complete", this._inputEvent);
       }
-      /**
-       Aborts delayed cursor update
-       @private
-       */
-
     }, {
       key: "_abortUpdateCursor",
-      value: function _abortUpdateCursor() {
-        if (this._cursorChanging) {
-          clearTimeout(this._cursorChanging);
-          delete this._cursorChanging;
-        }
+      value: function t() {
+        this._cursorChanging && (clearTimeout(this._cursorChanging), delete this._cursorChanging);
       }
-      /** Aligns cursor to nearest available position */
-
     }, {
       key: "alignCursor",
-      value: function alignCursor() {
-        this.cursorPos = this.masked.nearestInputPos(this.cursorPos, DIRECTION.LEFT);
+      value: function t() {
+        this.cursorPos = this.masked.nearestInputPos(this.cursorPos, n5.LEFT);
       }
-      /** Aligns cursor only if selection is empty */
-
     }, {
       key: "alignCursorFriendly",
-      value: function alignCursorFriendly() {
-        if (this.selectionStart !== this.cursorPos) return; // skip if range is selected
-
-        this.alignCursor();
+      value: function t() {
+        this.selectionStart === this.cursorPos && this.alignCursor();
       }
-      /** Adds listener on custom event */
-
     }, {
       key: "on",
-      value: function on(ev, handler) {
-        if (!this._listeners[ev]) this._listeners[ev] = [];
-
-        this._listeners[ev].push(handler);
-
-        return this;
+      value: function t(e, n) {
+        return this._listeners[e] || (this._listeners[e] = []), this._listeners[e].push(n), this;
       }
-      /** Removes custom event listener */
-
     }, {
       key: "off",
-      value: function off(ev, handler) {
-        if (!this._listeners[ev]) return this;
+      value: function t(e, n) {
+        if (!this._listeners[e]) return this;
+        if (!n) return delete this._listeners[e], this;
 
-        if (!handler) {
-          delete this._listeners[ev];
-          return this;
-        }
+        var u = this._listeners[e].indexOf(n);
 
-        var hIndex = this._listeners[ev].indexOf(handler);
-
-        if (hIndex >= 0) this._listeners[ev].splice(hIndex, 1);
-        return this;
+        return u >= 0 && this._listeners[e].splice(u, 1), this;
       }
-      /** Handles view input event */
-
     }, {
       key: "_onInput",
-      value: function _onInput(e) {
-        this._inputEvent = e;
-
-        this._abortUpdateCursor(); // fix strange IE behavior
-
-
-        if (!this._selection) return this.updateValue();
-        var details = new ActionDetails( // new state
-        this.el.value, this.cursorPos, // old state
-        this.value, this._selection);
-        var oldRawValue = this.masked.rawInputValue;
-        var offset = this.masked.splice(details.startChangePos, details.removed.length, details.inserted, details.removeDirection).offset; // force align in remove direction only if no input chars were removed
-        // otherwise we still need to align with NONE (to get out from fixed symbols for instance)
-
-        var removeDirection = oldRawValue === this.masked.rawInputValue ? details.removeDirection : DIRECTION.NONE;
-        var cursorPos = this.masked.nearestInputPos(details.startChangePos + offset, removeDirection);
-        this.updateControl();
-        this.updateCursor(cursorPos);
-        delete this._inputEvent;
+      value: function t(e) {
+        if (this._inputEvent = e, this._abortUpdateCursor(), !this._selection) return this.updateValue();
+        var n = new n4(this.el.value, this.cursorPos, this.value, this._selection),
+            u = this.masked.rawInputValue,
+            i = this.masked.splice(n.startChangePos, n.removed.length, n.inserted, n.removeDirection).offset,
+            r = u === this.masked.rawInputValue ? n.removeDirection : n5.NONE,
+            a = this.masked.nearestInputPos(n.startChangePos + i, r);
+        this.updateControl(), this.updateCursor(a), delete this._inputEvent;
       }
-      /** Handles view change event and commits model value */
-
     }, {
       key: "_onChange",
-      value: function _onChange() {
-        if (this.value !== this.el.value) {
-          this.updateValue();
-        }
-
-        this.masked.doCommit();
-        this.updateControl();
-
-        this._saveSelection();
+      value: function t() {
+        this.value !== this.el.value && this.updateValue(), this.masked.doCommit(), this.updateControl(), this._saveSelection();
       }
-      /** Handles view drop event, prevents by default */
-
     }, {
       key: "_onDrop",
-      value: function _onDrop(ev) {
-        ev.preventDefault();
-        ev.stopPropagation();
+      value: function t(e) {
+        e.preventDefault(), e.stopPropagation();
       }
-      /** Restore last selection on focus */
-
     }, {
       key: "_onFocus",
-      value: function _onFocus(ev) {
+      value: function t(e) {
         this.alignCursorFriendly();
       }
-      /** Restore last selection on focus */
-
     }, {
       key: "_onClick",
-      value: function _onClick(ev) {
+      value: function t(e) {
         this.alignCursorFriendly();
       }
-      /** Unbind view events and removes element reference */
-
     }, {
       key: "destroy",
-      value: function destroy() {
-        this._unbindEvents(); // $FlowFixMe why not do so?
-
-
-        this._listeners.length = 0; // $FlowFixMe
-
-        delete this.el;
+      value: function t() {
+        this._unbindEvents(), this._listeners.length = 0, delete this.el;
       }
-    }]);
-
-    return InputMask;
+    }]), t;
   }();
 
-  IMask.InputMask = InputMask;
-  /** Pattern which validates enum values */
+  nO.InputMask = ut;
 
-  var MaskedEnum = /*#__PURE__*/function (_MaskedPattern) {
-    _inherits(MaskedEnum, _MaskedPattern);
+  var ue = function (t) {
+    n0(n, t);
+    var e = nw(n);
 
-    var _super = _createSuper(MaskedEnum);
-
-    function MaskedEnum() {
-      _classCallCheck(this, MaskedEnum);
-
-      return _super.apply(this, arguments);
+    function n() {
+      return nF(this, n), e.apply(this, arguments);
     }
 
-    _createClass(MaskedEnum, [{
+    return nb(n, [{
       key: "_update",
-      value:
-      /**
-       @override
-       @param {Object} opts
-       */
-      function _update(opts) {
-        // TODO type
-        if (opts.enum) opts.mask = '*'.repeat(opts.enum[0].length);
-
-        _get(_getPrototypeOf(MaskedEnum.prototype), "_update", this).call(this, opts);
+      value: function t(e) {
+        e.enum && (e.mask = "*".repeat(e.enum[0].length)), nx(nS(n.prototype), "_update", this).call(this, e);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "doValidate",
-      value: function doValidate() {
-        var _this = this,
-            _get2;
-
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments[_key];
+      value: function t() {
+        for (var e, u = this, i = arguments.length, r = Array(i), a = 0; a < i; a++) {
+          r[a] = arguments[a];
         }
 
-        return this.enum.some(function (e) {
-          return e.indexOf(_this.unmaskedValue) >= 0;
-        }) && (_get2 = _get(_getPrototypeOf(MaskedEnum.prototype), "doValidate", this)).call.apply(_get2, [this].concat(args));
+        return this.enum.some(function (t) {
+          return t.indexOf(u.unmaskedValue) >= 0;
+        }) && (e = nx(nS(n.prototype), "doValidate", this)).call.apply(e, [this].concat(r));
       }
-    }]);
+    }]), n;
+  }(nK);
 
-    return MaskedEnum;
-  }(MaskedPattern);
+  nO.MaskedEnum = ue;
 
-  IMask.MaskedEnum = MaskedEnum;
-  /**
-   Number mask
-   @param {Object} opts
-   @param {string} opts.radix - Single char
-   @param {string} opts.thousandsSeparator - Single char
-   @param {Array<string>} opts.mapToRadix - Array of single chars
-   @param {number} opts.min
-   @param {number} opts.max
-   @param {number} opts.scale - Digits after point
-   @param {boolean} opts.signed - Allow negative
-   @param {boolean} opts.normalizeZeros - Flag to remove leading and trailing zeros in the end of editing
-   @param {boolean} opts.padFractionalZeros - Flag to pad trailing zeros after point in the end of editing
-   */
+  var un = function (t) {
+    n0(n, t);
+    var e = nw(n);
 
-  var MaskedNumber = /*#__PURE__*/function (_Masked) {
-    _inherits(MaskedNumber, _Masked);
-
-    var _super = _createSuper(MaskedNumber);
-    /** Single char */
-
-    /** Single char */
-
-    /** Array of single chars */
-
-    /** */
-
-    /** */
-
-    /** Digits after point */
-
-    /** */
-
-    /** Flag to remove leading and trailing zeros in the end of editing */
-
-    /** Flag to pad trailing zeros after point in the end of editing */
-
-
-    function MaskedNumber(opts) {
-      _classCallCheck(this, MaskedNumber);
-
-      return _super.call(this, Object.assign({}, MaskedNumber.DEFAULTS, opts));
+    function n(t) {
+      return nF(this, n), e.call(this, Object.assign({}, n.DEFAULTS, t));
     }
-    /**
-     @override
-     */
 
-
-    _createClass(MaskedNumber, [{
+    return nb(n, [{
       key: "_update",
-      value: function _update(opts) {
-        _get(_getPrototypeOf(MaskedNumber.prototype), "_update", this).call(this, opts);
-
-        this._updateRegExps();
+      value: function t(e) {
+        nx(nS(n.prototype), "_update", this).call(this, e), this._updateRegExps();
       }
-      /** */
-
     }, {
       key: "_updateRegExps",
-      value: function _updateRegExps() {
-        // use different regexp to process user input (more strict, input suffix) and tail shifting
-        var start = '^' + (this.allowNegative ? '[+|\\-]?' : '');
-        var midInput = '(0|([1-9]+\\d*))?';
-        var mid = '\\d*';
-        var end = (this.scale ? '(' + escapeRegExp(this.radix) + '\\d{0,' + this.scale + '})?' : '') + '$';
-        this._numberRegExpInput = new RegExp(start + midInput + end);
-        this._numberRegExp = new RegExp(start + mid + end);
-        this._mapToRadixRegExp = new RegExp('[' + this.mapToRadix.map(escapeRegExp).join('') + ']', 'g');
-        this._thousandsSeparatorRegExp = new RegExp(escapeRegExp(this.thousandsSeparator), 'g');
+      value: function t() {
+        var e = "^" + (this.allowNegative ? "[+|\\-]?" : ""),
+            n = (this.scale ? "(" + n7(this.radix) + "\\d{0," + this.scale + "})?" : "") + "$";
+        this._numberRegExpInput = RegExp(e + "(0|([1-9]+\\d*))?" + n), this._numberRegExp = RegExp(e + "\\d*" + n), this._mapToRadixRegExp = RegExp("[" + this.mapToRadix.map(n7).join("") + "]", "g"), this._thousandsSeparatorRegExp = RegExp(n7(this.thousandsSeparator), "g");
       }
-      /** */
-
     }, {
       key: "_removeThousandsSeparators",
-      value: function _removeThousandsSeparators(value) {
-        return value.replace(this._thousandsSeparatorRegExp, '');
+      value: function t(e) {
+        return e.replace(this._thousandsSeparatorRegExp, "");
       }
-      /** */
-
     }, {
       key: "_insertThousandsSeparators",
-      value: function _insertThousandsSeparators(value) {
-        // https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
-        var parts = value.split(this.radix);
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, this.thousandsSeparator);
-        return parts.join(this.radix);
+      value: function t(e) {
+        var n = e.split(this.radix);
+        return n[0] = n[0].replace(/\B(?=(\d{3})+(?!\d))/g, this.thousandsSeparator), n.join(this.radix);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "doPrepare",
-      value: function doPrepare(str) {
-        var _get2;
-
-        for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-          args[_key - 1] = arguments[_key];
+      value: function t(e) {
+        for (var u, i = arguments.length, r = Array(i > 1 ? i - 1 : 0), a = 1; a < i; a++) {
+          r[a - 1] = arguments[a];
         }
 
-        return (_get2 = _get(_getPrototypeOf(MaskedNumber.prototype), "doPrepare", this)).call.apply(_get2, [this, this._removeThousandsSeparators(str.replace(this._mapToRadixRegExp, this.radix))].concat(args));
+        return (u = nx(nS(n.prototype), "doPrepare", this)).call.apply(u, [this, this._removeThousandsSeparators(e.replace(this._mapToRadixRegExp, this.radix))].concat(r));
       }
-      /** */
-
     }, {
       key: "_separatorsCount",
-      value: function _separatorsCount(to) {
-        var extendOnSeparators = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-        var count = 0;
-
-        for (var pos = 0; pos < to; ++pos) {
-          if (this._value.indexOf(this.thousandsSeparator, pos) === pos) {
-            ++count;
-            if (extendOnSeparators) to += this.thousandsSeparator.length;
-          }
+      value: function t(e) {
+        for (var n = arguments.length > 1 && void 0 !== arguments[1] && arguments[1], u = 0, i = 0; i < e; ++i) {
+          this._value.indexOf(this.thousandsSeparator, i) === i && (++u, n && (e += this.thousandsSeparator.length));
         }
 
-        return count;
+        return u;
       }
-      /** */
-
     }, {
       key: "_separatorsCountFromSlice",
-      value: function _separatorsCountFromSlice() {
-        var slice = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this._value;
-        return this._separatorsCount(this._removeThousandsSeparators(slice).length, true);
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : this._value;
+        return this._separatorsCount(this._removeThousandsSeparators(e).length, !0);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "extractInput",
-      value: function extractInput() {
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
-        var flags = arguments.length > 2 ? arguments[2] : undefined;
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            u = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length,
+            i = arguments.length > 2 ? arguments[2] : void 0,
+            r = this._adjustRangeWithSeparators(e, u),
+            a = nT(r, 2);
 
-        var _this$_adjustRangeWit = this._adjustRangeWithSeparators(fromPos, toPos);
-
-        var _this$_adjustRangeWit2 = _slicedToArray(_this$_adjustRangeWit, 2);
-
-        fromPos = _this$_adjustRangeWit2[0];
-        toPos = _this$_adjustRangeWit2[1];
-        return this._removeThousandsSeparators(_get(_getPrototypeOf(MaskedNumber.prototype), "extractInput", this).call(this, fromPos, toPos, flags));
+        return e = a[0], u = a[1], this._removeThousandsSeparators(nx(nS(n.prototype), "extractInput", this).call(this, e, u, i));
       }
-      /**
-       @override
-       */
-
     }, {
       key: "_appendCharRaw",
-      value: function _appendCharRaw(ch) {
-        var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        if (!this.thousandsSeparator) return _get(_getPrototypeOf(MaskedNumber.prototype), "_appendCharRaw", this).call(this, ch, flags);
-        var prevBeforeTailValue = flags.tail && flags._beforeTailState ? flags._beforeTailState._value : this._value;
+      value: function t(e) {
+        var u = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
+        if (!this.thousandsSeparator) return nx(nS(n.prototype), "_appendCharRaw", this).call(this, e, u);
 
-        var prevBeforeTailSeparatorsCount = this._separatorsCountFromSlice(prevBeforeTailValue);
+        var i = u.tail && u._beforeTailState ? u._beforeTailState._value : this._value,
+            r = this._separatorsCountFromSlice(i);
 
         this._value = this._removeThousandsSeparators(this.value);
-
-        var appendDetails = _get(_getPrototypeOf(MaskedNumber.prototype), "_appendCharRaw", this).call(this, ch, flags);
-
+        var a = nx(nS(n.prototype), "_appendCharRaw", this).call(this, e, u);
         this._value = this._insertThousandsSeparators(this._value);
-        var beforeTailValue = flags.tail && flags._beforeTailState ? flags._beforeTailState._value : this._value;
 
-        var beforeTailSeparatorsCount = this._separatorsCountFromSlice(beforeTailValue);
+        var s = u.tail && u._beforeTailState ? u._beforeTailState._value : this._value,
+            o = this._separatorsCountFromSlice(s);
 
-        appendDetails.tailShift += (beforeTailSeparatorsCount - prevBeforeTailSeparatorsCount) * this.thousandsSeparator.length;
-        appendDetails.skip = !appendDetails.rawInserted && ch === this.thousandsSeparator;
-        return appendDetails;
+        return a.tailShift += (o - r) * this.thousandsSeparator.length, a.skip = !a.rawInserted && e === this.thousandsSeparator, a;
       }
-      /** */
-
     }, {
       key: "_findSeparatorAround",
-      value: function _findSeparatorAround(pos) {
+      value: function t(e) {
         if (this.thousandsSeparator) {
-          var searchFrom = pos - this.thousandsSeparator.length + 1;
-          var separatorPos = this.value.indexOf(this.thousandsSeparator, searchFrom);
-          if (separatorPos <= pos) return separatorPos;
+          var n = e - this.thousandsSeparator.length + 1,
+              u = this.value.indexOf(this.thousandsSeparator, n);
+          if (u <= e) return u;
         }
 
         return -1;
       }
     }, {
       key: "_adjustRangeWithSeparators",
-      value: function _adjustRangeWithSeparators(from, to) {
-        var separatorAroundFromPos = this._findSeparatorAround(from);
+      value: function t(e, n) {
+        var u = this._findSeparatorAround(e);
 
-        if (separatorAroundFromPos >= 0) from = separatorAroundFromPos;
+        u >= 0 && (e = u);
 
-        var separatorAroundToPos = this._findSeparatorAround(to);
+        var i = this._findSeparatorAround(n);
 
-        if (separatorAroundToPos >= 0) to = separatorAroundToPos + this.thousandsSeparator.length;
-        return [from, to];
+        return i >= 0 && (n = i + this.thousandsSeparator.length), [e, n];
       }
-      /**
-       @override
-       */
-
     }, {
       key: "remove",
-      value: function remove() {
-        var fromPos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        var toPos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.value.length;
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : this.value.length,
+            u = this._adjustRangeWithSeparators(e, n),
+            i = nT(u, 2);
 
-        var _this$_adjustRangeWit3 = this._adjustRangeWithSeparators(fromPos, toPos);
+        e = i[0], n = i[1];
 
-        var _this$_adjustRangeWit4 = _slicedToArray(_this$_adjustRangeWit3, 2);
+        var r = this.value.slice(0, e),
+            a = this.value.slice(n),
+            s = this._separatorsCount(r.length);
 
-        fromPos = _this$_adjustRangeWit4[0];
-        toPos = _this$_adjustRangeWit4[1];
-        var valueBeforePos = this.value.slice(0, fromPos);
-        var valueAfterPos = this.value.slice(toPos);
+        this._value = this._insertThousandsSeparators(this._removeThousandsSeparators(r + a));
 
-        var prevBeforeTailSeparatorsCount = this._separatorsCount(valueBeforePos.length);
+        var o = this._separatorsCountFromSlice(r);
 
-        this._value = this._insertThousandsSeparators(this._removeThousandsSeparators(valueBeforePos + valueAfterPos));
-
-        var beforeTailSeparatorsCount = this._separatorsCountFromSlice(valueBeforePos);
-
-        return new ChangeDetails({
-          tailShift: (beforeTailSeparatorsCount - prevBeforeTailSeparatorsCount) * this.thousandsSeparator.length
+        return new n3({
+          tailShift: (o - s) * this.thousandsSeparator.length
         });
       }
-      /**
-       @override
-       */
-
     }, {
       key: "nearestInputPos",
-      value: function nearestInputPos(cursorPos, direction) {
-        if (!this.thousandsSeparator) return cursorPos;
+      value: function t(e, n) {
+        if (!this.thousandsSeparator) return e;
 
-        switch (direction) {
-          case DIRECTION.NONE:
-          case DIRECTION.LEFT:
-          case DIRECTION.FORCE_LEFT:
-            {
-              var separatorAtLeftPos = this._findSeparatorAround(cursorPos - 1);
+        switch (n) {
+          case n5.NONE:
+          case n5.LEFT:
+          case n5.FORCE_LEFT:
+            var u = this._findSeparatorAround(e - 1);
 
-              if (separatorAtLeftPos >= 0) {
-                var separatorAtLeftEndPos = separatorAtLeftPos + this.thousandsSeparator.length;
-
-                if (cursorPos < separatorAtLeftEndPos || this.value.length <= separatorAtLeftEndPos || direction === DIRECTION.FORCE_LEFT) {
-                  return separatorAtLeftPos;
-                }
-              }
-
-              break;
+            if (u >= 0) {
+              var i = u + this.thousandsSeparator.length;
+              if (e < i || this.value.length <= i || n === n5.FORCE_LEFT) return u;
             }
 
-          case DIRECTION.RIGHT:
-          case DIRECTION.FORCE_RIGHT:
-            {
-              var separatorAtRightPos = this._findSeparatorAround(cursorPos);
+            break;
 
-              if (separatorAtRightPos >= 0) {
-                return separatorAtRightPos + this.thousandsSeparator.length;
-              }
-            }
+          case n5.RIGHT:
+          case n5.FORCE_RIGHT:
+            var r = this._findSeparatorAround(e);
+
+            if (r >= 0) return r + this.thousandsSeparator.length;
         }
 
-        return cursorPos;
+        return e;
       }
-      /**
-       @override
-       */
-
     }, {
       key: "doValidate",
-      value: function doValidate(flags) {
-        var regexp = flags.input ? this._numberRegExpInput : this._numberRegExp; // validate as string
+      value: function t(e) {
+        var u = (e.input ? this._numberRegExpInput : this._numberRegExp).test(this._removeThousandsSeparators(this.value));
 
-        var valid = regexp.test(this._removeThousandsSeparators(this.value));
-
-        if (valid) {
-          // validate as number
-          var number = this.number;
-          valid = valid && !isNaN(number) && (this.min == null || this.min >= 0 || this.min <= this.number) && (this.max == null || this.max <= 0 || this.number <= this.max);
+        if (u) {
+          var i = this.number;
+          u = u && !isNaN(i) && (null == this.min || this.min >= 0 || this.min <= this.number) && (null == this.max || this.max <= 0 || this.number <= this.max);
         }
 
-        return valid && _get(_getPrototypeOf(MaskedNumber.prototype), "doValidate", this).call(this, flags);
+        return u && nx(nS(n.prototype), "doValidate", this).call(this, e);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "doCommit",
-      value: function doCommit() {
+      value: function t() {
         if (this.value) {
-          var number = this.number;
-          var validnum = number; // check bounds
-
-          if (this.min != null) validnum = Math.max(validnum, this.min);
-          if (this.max != null) validnum = Math.min(validnum, this.max);
-          if (validnum !== number) this.unmaskedValue = String(validnum);
-          var formatted = this.value;
-          if (this.normalizeZeros) formatted = this._normalizeZeros(formatted);
-          if (this.padFractionalZeros) formatted = this._padFractionalZeros(formatted);
-          this._value = formatted;
+          var e = this.number,
+              u = e;
+          null != this.min && (u = Math.max(u, this.min)), null != this.max && (u = Math.min(u, this.max)), u !== e && (this.unmaskedValue = String(u));
+          var i = this.value;
+          this.normalizeZeros && (i = this._normalizeZeros(i)), this.padFractionalZeros && (i = this._padFractionalZeros(i)), this._value = i;
         }
 
-        _get(_getPrototypeOf(MaskedNumber.prototype), "doCommit", this).call(this);
+        nx(nS(n.prototype), "doCommit", this).call(this);
       }
-      /** */
-
     }, {
       key: "_normalizeZeros",
-      value: function _normalizeZeros(value) {
-        var parts = this._removeThousandsSeparators(value).split(this.radix); // remove leading zeros
+      value: function t(e) {
+        var n = this._removeThousandsSeparators(e).split(this.radix);
 
-
-        parts[0] = parts[0].replace(/^(\D*)(0*)(\d*)/, function (match, sign, zeros, num) {
-          return sign + num;
-        }); // add leading zero
-
-        if (value.length && !/\d$/.test(parts[0])) parts[0] = parts[0] + '0';
-
-        if (parts.length > 1) {
-          parts[1] = parts[1].replace(/0*$/, ''); // remove trailing zeros
-
-          if (!parts[1].length) parts.length = 1; // remove fractional
-        }
-
-        return this._insertThousandsSeparators(parts.join(this.radix));
+        return n[0] = n[0].replace(/^(\D*)(0*)(\d*)/, function (t, e, n, u) {
+          return e + u;
+        }), e.length && !/\d$/.test(n[0]) && (n[0] = n[0] + "0"), n.length > 1 && (n[1] = n[1].replace(/0*$/, ""), n[1].length || (n.length = 1)), this._insertThousandsSeparators(n.join(this.radix));
       }
-      /** */
-
     }, {
       key: "_padFractionalZeros",
-      value: function _padFractionalZeros(value) {
-        if (!value) return value;
-        var parts = value.split(this.radix);
-        if (parts.length < 2) parts.push('');
-        parts[1] = parts[1].padEnd(this.scale, '0');
-        return parts.join(this.radix);
+      value: function t(e) {
+        if (!e) return e;
+        var n = e.split(this.radix);
+        return n.length < 2 && n.push(""), n[1] = n[1].padEnd(this.scale, "0"), n.join(this.radix);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "unmaskedValue",
-      get: function get() {
-        return this._removeThousandsSeparators(this._normalizeZeros(this.value)).replace(this.radix, '.');
+      get: function t() {
+        return this._removeThousandsSeparators(this._normalizeZeros(this.value)).replace(this.radix, ".");
       },
-      set: function set(unmaskedValue) {
-        _set(_getPrototypeOf(MaskedNumber.prototype), "unmaskedValue", unmaskedValue.replace('.', this.radix), this, true);
+      set: function t(e) {
+        nM(nS(n.prototype), "unmaskedValue", e.replace(".", this.radix), this, !0);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "typedValue",
-      get: function get() {
+      get: function t() {
         return Number(this.unmaskedValue);
       },
-      set: function set(n) {
-        _set(_getPrototypeOf(MaskedNumber.prototype), "unmaskedValue", String(n), this, true);
+      set: function t(e) {
+        nM(nS(n.prototype), "unmaskedValue", String(e), this, !0);
       }
-      /** Parsed Number */
-
     }, {
       key: "number",
-      get: function get() {
+      get: function t() {
         return this.typedValue;
       },
-      set: function set(number) {
-        this.typedValue = number;
+      set: function t(e) {
+        this.typedValue = e;
       }
-      /**
-       Is negative allowed
-       @readonly
-       */
-
     }, {
       key: "allowNegative",
-      get: function get() {
-        return this.signed || this.min != null && this.min < 0 || this.max != null && this.max < 0;
+      get: function t() {
+        return this.signed || null != this.min && this.min < 0 || null != this.max && this.max < 0;
       }
-    }]);
+    }]), n;
+  }(nV);
 
-    return MaskedNumber;
-  }(Masked);
-
-  MaskedNumber.DEFAULTS = {
-    radix: ',',
-    thousandsSeparator: '',
-    mapToRadix: ['.'],
+  un.DEFAULTS = {
+    radix: ",",
+    thousandsSeparator: "",
+    mapToRadix: ["."],
     scale: 2,
-    signed: false,
-    normalizeZeros: true,
-    padFractionalZeros: false
-  };
-  IMask.MaskedNumber = MaskedNumber;
-  /** Masking by custom Function */
+    signed: !1,
+    normalizeZeros: !0,
+    padFractionalZeros: !1
+  }, nO.MaskedNumber = un;
 
-  var MaskedFunction = /*#__PURE__*/function (_Masked) {
-    _inherits(MaskedFunction, _Masked);
+  var uu = function (t) {
+    n0(n, t);
+    var e = nw(n);
 
-    var _super = _createSuper(MaskedFunction);
-
-    function MaskedFunction() {
-      _classCallCheck(this, MaskedFunction);
-
-      return _super.apply(this, arguments);
+    function n() {
+      return nF(this, n), e.apply(this, arguments);
     }
 
-    _createClass(MaskedFunction, [{
+    return nb(n, [{
       key: "_update",
-      value:
-      /**
-       @override
-       @param {Object} opts
-       */
-      function _update(opts) {
-        if (opts.mask) opts.validate = opts.mask;
-
-        _get(_getPrototypeOf(MaskedFunction.prototype), "_update", this).call(this, opts);
+      value: function t(e) {
+        e.mask && (e.validate = e.mask), nx(nS(n.prototype), "_update", this).call(this, e);
       }
-    }]);
+    }]), n;
+  }(nV);
 
-    return MaskedFunction;
-  }(Masked);
+  nO.MaskedFunction = uu;
 
-  IMask.MaskedFunction = MaskedFunction;
-  var _excluded = ["compiledMasks", "currentMaskRef", "currentMask"];
-  /** Dynamic mask for choosing apropriate mask in run-time */
+  var ui = ["compiledMasks", "currentMaskRef", "currentMask"],
+      ur = function (t) {
+    n0(n, t);
+    var e = nw(n);
 
-  var MaskedDynamic = /*#__PURE__*/function (_Masked) {
-    _inherits(MaskedDynamic, _Masked);
-
-    var _super = _createSuper(MaskedDynamic);
-    /** Currently chosen mask */
-
-    /** Compliled {@link Masked} options */
-
-    /** Chooses {@link Masked} depending on input value */
-
-    /**
-     @param {Object} opts
-     */
-
-
-    function MaskedDynamic(opts) {
-      var _this;
-
-      _classCallCheck(this, MaskedDynamic);
-
-      _this = _super.call(this, Object.assign({}, MaskedDynamic.DEFAULTS, opts));
-      _this.currentMask = null;
-      return _this;
+    function n(t) {
+      var u;
+      return nF(this, n), (u = e.call(this, Object.assign({}, n.DEFAULTS, t))).currentMask = null, u;
     }
-    /**
-     @override
-     */
 
-
-    _createClass(MaskedDynamic, [{
+    return nb(n, [{
       key: "_update",
-      value: function _update(opts) {
-        _get(_getPrototypeOf(MaskedDynamic.prototype), "_update", this).call(this, opts);
-
-        if ('mask' in opts) {
-          // mask could be totally dynamic with only `dispatch` option
-          this.compiledMasks = Array.isArray(opts.mask) ? opts.mask.map(function (m) {
-            return createMask(m);
-          }) : [];
-        }
+      value: function t(e) {
+        nx(nS(n.prototype), "_update", this).call(this, e), "mask" in e && (this.compiledMasks = Array.isArray(e.mask) ? e.mask.map(function (t) {
+          return nL(t);
+        }) : []);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "_appendCharRaw",
-      value: function _appendCharRaw(ch) {
-        var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      value: function t(e) {
+        var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
+            u = this._applyDispatch(e, n);
 
-        var details = this._applyDispatch(ch, flags);
-
-        if (this.currentMask) {
-          details.aggregate(this.currentMask._appendChar(ch, flags));
-        }
-
-        return details;
+        return this.currentMask && u.aggregate(this.currentMask._appendChar(e, n)), u;
       }
     }, {
       key: "_applyDispatch",
-      value: function _applyDispatch() {
-        var appended = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var prevValueBeforeTail = flags.tail && flags._beforeTailState != null ? flags._beforeTailState._value : this.value;
-        var inputValue = this.rawInputValue;
-        var insertValue = flags.tail && flags._beforeTailState != null ? // $FlowFixMe - tired to fight with type system
-        flags._beforeTailState._rawInputValue : inputValue;
-        var tailValue = inputValue.slice(insertValue.length);
-        var prevMask = this.currentMask;
-        var details = new ChangeDetails();
-        var prevMaskState = prevMask && prevMask.state; // clone flags to prevent overwriting `_beforeTailState`
+      value: function t() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "",
+            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
+            u = n.tail && null != n._beforeTailState ? n._beforeTailState._value : this.value,
+            i = this.rawInputValue,
+            r = n.tail && null != n._beforeTailState ? n._beforeTailState._rawInputValue : i,
+            a = i.slice(r.length),
+            s = this.currentMask,
+            o = new n3(),
+            l = s && s.state;
 
-        this.currentMask = this.doDispatch(appended, Object.assign({}, flags)); // restore state after dispatch
-
-        if (this.currentMask) {
-          if (this.currentMask !== prevMask) {
-            // if mask changed reapply input
-            this.currentMask.reset();
-
-            if (insertValue) {
-              // $FlowFixMe - it's ok, we don't change current mask above
-              var d = this.currentMask.append(insertValue, {
-                raw: true
+        if (this.currentMask = this.doDispatch(e, Object.assign({}, n)), this.currentMask) {
+          if (this.currentMask !== s) {
+            if (this.currentMask.reset(), r) {
+              var h = this.currentMask.append(r, {
+                raw: !0
               });
-              details.tailShift = d.inserted.length - prevValueBeforeTail.length;
+              o.tailShift = h.inserted.length - u.length;
             }
 
-            if (tailValue) {
-              // $FlowFixMe - it's ok, we don't change current mask above
-              details.tailShift += this.currentMask.append(tailValue, {
-                raw: true,
-                tail: true
-              }).tailShift;
-            }
-          } else {
-            // Dispatch can do something bad with state, so
-            // restore prev mask state
-            this.currentMask.state = prevMaskState;
-          }
+            a && (o.tailShift += this.currentMask.append(a, {
+              raw: !0,
+              tail: !0
+            }).tailShift);
+          } else this.currentMask.state = l;
         }
 
-        return details;
+        return o;
       }
     }, {
       key: "_appendPlaceholder",
-      value: function _appendPlaceholder() {
-        var details = this._applyDispatch.apply(this, arguments);
+      value: function t() {
+        var e = this._applyDispatch.apply(this, arguments);
 
-        if (this.currentMask) {
-          details.aggregate(this.currentMask._appendPlaceholder());
-        }
-
-        return details;
+        return this.currentMask && e.aggregate(this.currentMask._appendPlaceholder()), e;
       }
-      /**
-       @override
-       */
-
     }, {
       key: "doDispatch",
-      value: function doDispatch(appended) {
-        var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        return this.dispatch(appended, this, flags);
+      value: function t(e) {
+        var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
+        return this.dispatch(e, this, n);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "doValidate",
-      value: function doValidate() {
-        var _get2, _this$currentMask;
-
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments[_key];
+      value: function t() {
+        for (var e, u, i = arguments.length, r = Array(i), a = 0; a < i; a++) {
+          r[a] = arguments[a];
         }
 
-        return (_get2 = _get(_getPrototypeOf(MaskedDynamic.prototype), "doValidate", this)).call.apply(_get2, [this].concat(args)) && (!this.currentMask || (_this$currentMask = this.currentMask).doValidate.apply(_this$currentMask, args));
+        return (e = nx(nS(n.prototype), "doValidate", this)).call.apply(e, [this].concat(r)) && (!this.currentMask || (u = this.currentMask).doValidate.apply(u, r));
       }
-      /**
-       @override
-       */
-
     }, {
       key: "reset",
-      value: function reset() {
-        if (this.currentMask) this.currentMask.reset();
-        this.compiledMasks.forEach(function (m) {
-          return m.reset();
+      value: function t() {
+        this.currentMask && this.currentMask.reset(), this.compiledMasks.forEach(function (t) {
+          return t.reset();
         });
       }
-      /**
-       @override
-       */
-
     }, {
       key: "value",
-      get: function get() {
-        return this.currentMask ? this.currentMask.value : '';
+      get: function t() {
+        return this.currentMask ? this.currentMask.value : "";
       },
-      set: function set(value) {
-        _set(_getPrototypeOf(MaskedDynamic.prototype), "value", value, this, true);
+      set: function t(e) {
+        nM(nS(n.prototype), "value", e, this, !0);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "unmaskedValue",
-      get: function get() {
-        return this.currentMask ? this.currentMask.unmaskedValue : '';
+      get: function t() {
+        return this.currentMask ? this.currentMask.unmaskedValue : "";
       },
-      set: function set(unmaskedValue) {
-        _set(_getPrototypeOf(MaskedDynamic.prototype), "unmaskedValue", unmaskedValue, this, true);
+      set: function t(e) {
+        nM(nS(n.prototype), "unmaskedValue", e, this, !0);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "typedValue",
-      get: function get() {
-        return this.currentMask ? this.currentMask.typedValue : '';
-      } // probably typedValue should not be used with dynamic
-      ,
-      set: function set(value) {
-        var unmaskedValue = String(value); // double check it
-
-        if (this.currentMask) {
-          this.currentMask.typedValue = value;
-          unmaskedValue = this.currentMask.unmaskedValue;
-        }
-
-        this.unmaskedValue = unmaskedValue;
+      get: function t() {
+        return this.currentMask ? this.currentMask.typedValue : "";
+      },
+      set: function t(e) {
+        var n = String(e);
+        this.currentMask && (this.currentMask.typedValue = e, n = this.currentMask.unmaskedValue), this.unmaskedValue = n;
       }
-      /**
-       @override
-       */
-
     }, {
       key: "isComplete",
-      get: function get() {
+      get: function t() {
         return !!this.currentMask && this.currentMask.isComplete;
       }
-      /**
-       @override
-       */
-
     }, {
       key: "remove",
-      value: function remove() {
-        var details = new ChangeDetails();
-
-        if (this.currentMask) {
-          var _this$currentMask2;
-
-          details.aggregate((_this$currentMask2 = this.currentMask).remove.apply(_this$currentMask2, arguments)) // update with dispatch
-          .aggregate(this._applyDispatch());
-        }
-
-        return details;
+      value: function t() {
+        var e,
+            n = new n3();
+        return this.currentMask && n.aggregate((e = this.currentMask).remove.apply(e, arguments)).aggregate(this._applyDispatch()), n;
       }
-      /**
-       @override
-       */
-
     }, {
       key: "state",
-      get: function get() {
-        return Object.assign({}, _get(_getPrototypeOf(MaskedDynamic.prototype), "state", this), {
+      get: function t() {
+        return Object.assign({}, nx(nS(n.prototype), "state", this), {
           _rawInputValue: this.rawInputValue,
-          compiledMasks: this.compiledMasks.map(function (m) {
-            return m.state;
+          compiledMasks: this.compiledMasks.map(function (t) {
+            return t.state;
           }),
           currentMaskRef: this.currentMask,
           currentMask: this.currentMask && this.currentMask.state
         });
       },
-      set: function set(state) {
-        var compiledMasks = state.compiledMasks,
-            currentMaskRef = state.currentMaskRef,
-            currentMask = state.currentMask,
-            maskedState = _objectWithoutProperties(state, _excluded);
-
-        this.compiledMasks.forEach(function (m, mi) {
-          return m.state = compiledMasks[mi];
-        });
-
-        if (currentMaskRef != null) {
-          this.currentMask = currentMaskRef;
-          this.currentMask.state = currentMask;
-        }
-
-        _set(_getPrototypeOf(MaskedDynamic.prototype), "state", maskedState, this, true);
+      set: function t(e) {
+        var u = e.compiledMasks,
+            i = e.currentMaskRef,
+            r = e.currentMask,
+            a = nB(e, ui);
+        this.compiledMasks.forEach(function (t, e) {
+          return t.state = u[e];
+        }), null != i && (this.currentMask = i, this.currentMask.state = r), nM(nS(n.prototype), "state", a, this, !0);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "extractInput",
-      value: function extractInput() {
-        var _this$currentMask3;
-
-        return this.currentMask ? (_this$currentMask3 = this.currentMask).extractInput.apply(_this$currentMask3, arguments) : '';
+      value: function t() {
+        var e;
+        return this.currentMask ? (e = this.currentMask).extractInput.apply(e, arguments) : "";
       }
-      /**
-       @override
-       */
-
     }, {
       key: "extractTail",
-      value: function extractTail() {
-        var _this$currentMask4, _get3;
-
-        for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-          args[_key2] = arguments[_key2];
+      value: function t() {
+        for (var e, u, i = arguments.length, r = Array(i), a = 0; a < i; a++) {
+          r[a] = arguments[a];
         }
 
-        return this.currentMask ? (_this$currentMask4 = this.currentMask).extractTail.apply(_this$currentMask4, args) : (_get3 = _get(_getPrototypeOf(MaskedDynamic.prototype), "extractTail", this)).call.apply(_get3, [this].concat(args));
+        return this.currentMask ? (e = this.currentMask).extractTail.apply(e, r) : (u = nx(nS(n.prototype), "extractTail", this)).call.apply(u, [this].concat(r));
       }
-      /**
-       @override
-       */
-
     }, {
       key: "doCommit",
-      value: function doCommit() {
-        if (this.currentMask) this.currentMask.doCommit();
-
-        _get(_getPrototypeOf(MaskedDynamic.prototype), "doCommit", this).call(this);
+      value: function t() {
+        this.currentMask && this.currentMask.doCommit(), nx(nS(n.prototype), "doCommit", this).call(this);
       }
-      /**
-       @override
-       */
-
     }, {
       key: "nearestInputPos",
-      value: function nearestInputPos() {
-        var _this$currentMask5, _get4;
-
-        for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-          args[_key3] = arguments[_key3];
+      value: function t() {
+        for (var e, u, i = arguments.length, r = Array(i), a = 0; a < i; a++) {
+          r[a] = arguments[a];
         }
 
-        return this.currentMask ? (_this$currentMask5 = this.currentMask).nearestInputPos.apply(_this$currentMask5, args) : (_get4 = _get(_getPrototypeOf(MaskedDynamic.prototype), "nearestInputPos", this)).call.apply(_get4, [this].concat(args));
+        return this.currentMask ? (e = this.currentMask).nearestInputPos.apply(e, r) : (u = nx(nS(n.prototype), "nearestInputPos", this)).call.apply(u, [this].concat(r));
       }
     }, {
       key: "overwrite",
-      get: function get() {
-        return this.currentMask ? this.currentMask.overwrite : _get(_getPrototypeOf(MaskedDynamic.prototype), "overwrite", this);
+      get: function t() {
+        return this.currentMask ? this.currentMask.overwrite : nx(nS(n.prototype), "overwrite", this);
       },
-      set: function set(overwrite) {
+      set: function t(e) {
         console.warn('"overwrite" option is not available in dynamic mask, use this option in siblings');
       }
-    }]);
+    }]), n;
+  }(nV);
 
-    return MaskedDynamic;
-  }(Masked);
-
-  MaskedDynamic.DEFAULTS = {
-    dispatch: function dispatch(appended, masked, flags) {
-      if (!masked.compiledMasks.length) return;
-      var inputValue = masked.rawInputValue; // simulate input
-
-      var inputs = masked.compiledMasks.map(function (m, index) {
-        m.reset();
-        m.append(inputValue, {
-          raw: true
+  ur.DEFAULTS = {
+    dispatch: function t(e, n, u) {
+      if (n.compiledMasks.length) {
+        var i = n.rawInputValue,
+            r = n.compiledMasks.map(function (t, n) {
+          return t.reset(), t.append(i, {
+            raw: !0
+          }), t.append(e, u), {
+            weight: t.rawInputValue.length,
+            index: n
+          };
         });
-        m.append(appended, flags);
-        var weight = m.rawInputValue.length;
-        return {
-          weight: weight,
-          index: index
-        };
-      }); // pop masks with longer values first
-
-      inputs.sort(function (i1, i2) {
-        return i2.weight - i1.weight;
-      });
-      return masked.compiledMasks[inputs[0].index];
+        return r.sort(function (t, e) {
+          return e.weight - t.weight;
+        }), n.compiledMasks[r[0].index];
+      }
     }
+  }, nO.MaskedDynamic = ur;
+  var ua = {
+    MASKED: "value",
+    UNMASKED: "unmaskedValue",
+    TYPED: "typedValue"
   };
-  IMask.MaskedDynamic = MaskedDynamic;
-  /** Mask pipe source and destination types */
 
-  var PIPE_TYPE = {
-    MASKED: 'value',
-    UNMASKED: 'unmaskedValue',
-    TYPED: 'typedValue'
-  };
-  /** Creates new pipe function depending on mask type, source and destination options */
-
-  function createPipe(mask) {
-    var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : PIPE_TYPE.MASKED;
-    var to = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : PIPE_TYPE.MASKED;
-    var masked = createMask(mask);
-    return function (value) {
-      return masked.runIsolated(function (m) {
-        m[from] = value;
-        return m[to];
+  function us(t) {
+    var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : ua.MASKED,
+        n = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : ua.MASKED,
+        u = nL(t);
+    return function (t) {
+      return u.runIsolated(function (u) {
+        return u[e] = t, u[n];
       });
     };
   }
-  /** Pipes value through mask depending on mask type, source and destination options */
 
-
-  function pipe(value) {
-    for (var _len = arguments.length, pipeArgs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      pipeArgs[_key - 1] = arguments[_key];
+  function uo(t) {
+    for (var e = arguments.length, n = Array(e > 1 ? e - 1 : 0), u = 1; u < e; u++) {
+      n[u - 1] = arguments[u];
     }
 
-    return createPipe.apply(void 0, pipeArgs)(value);
+    return us.apply(void 0, n)(t);
   }
 
-  IMask.PIPE_TYPE = PIPE_TYPE;
-  IMask.createPipe = createPipe;
-  IMask.pipe = pipe;
+  nO.PIPE_TYPE = ua, nO.createPipe = us, nO.pipe = uo;
 
   try {
-    globalThis.IMask = IMask;
-  } catch (e) {}
+    globalThis.IMask = nO;
+  } catch (ul) {}
 
-  exports.HTMLContenteditableMaskElement = HTMLContenteditableMaskElement;
-  exports.HTMLMaskElement = HTMLMaskElement;
-  exports.InputMask = InputMask;
-  exports.MaskElement = MaskElement;
-  exports.Masked = Masked;
-  exports.MaskedDate = MaskedDate;
-  exports.MaskedDynamic = MaskedDynamic;
-  exports.MaskedEnum = MaskedEnum;
-  exports.MaskedFunction = MaskedFunction;
-  exports.MaskedNumber = MaskedNumber;
-  exports.MaskedPattern = MaskedPattern;
-  exports.MaskedRange = MaskedRange;
-  exports.MaskedRegExp = MaskedRegExp;
-  exports.PIPE_TYPE = PIPE_TYPE;
-  exports.createMask = createMask;
-  exports.createPipe = createPipe;
-  exports['default'] = IMask;
-  exports.pipe = pipe;
-  Object.defineProperty(exports, '__esModule', {
-    value: true
+  t.HTMLContenteditableMaskElement = nJ, t.HTMLMaskElement = nX, t.InputMask = ut, t.MaskElement = nq, t.Masked = nV, t.MaskedDate = n9, t.MaskedDynamic = ur, t.MaskedEnum = ue, t.MaskedFunction = uu, t.MaskedNumber = un, t.MaskedPattern = nK, t.MaskedRange = nW, t.MaskedRegExp = nY, t.PIPE_TYPE = ua, t.createMask = nL, t.createPipe = us, t.default = nO, t.pipe = uo, Object.defineProperty(t, "__esModule", {
+    value: !0
   });
 });
 "use strict";
