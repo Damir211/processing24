@@ -15085,4 +15085,12 @@ addEventListener('DOMContentLoaded', function () {
     document.body.classList.remove('no-scroll');
     document.querySelector('.mobilemenu').classList.remove('active');
   });
+  document.querySelectorAll('.choices').forEach(function (item) {
+    item.setAttribute('aria-label', 'select');
+    item.setAttribute('role', 'select');
+  });
+  document.querySelectorAll('.choices__item').forEach(function (item) {
+    item.setAttribute('aria-label', 'option');
+    item.setAttribute('role', 'option');
+  });
 });
