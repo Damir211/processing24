@@ -5,8 +5,8 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Процессинг24</title>
-        <meta content="" name="description">
-        <meta content="" name="keywords">
+        <meta content="description" name="description">
+        <meta content="keywords">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta content="telephone=no" name="format-detection">
@@ -50,7 +50,7 @@
             (function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)
         </script>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+        <link rel="preload" as="style" onload="this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
 
     </head>
 
@@ -325,11 +325,11 @@
                     <div class="calculator__form">
                         <div class="select">
                             <div class="select__label">Вид топлива</div>
-                            <select name="price" id="price">
-                                <option value="ДТ" data-price="45.50" data-price-azs="49.59">
+                            <select name="price" id="price" aria-label="Тип топлива">
+                                <option value="ДТ" data-price="45.50" data-price-azs="49.59" aria-label="ДТ">
                                     ДТ
                                 </option>
-                                <option value="АИ-95" data-price="50.50" data-price-azs="58.59">
+                                <option value="АИ-95" data-price="50.50" data-price-azs="58.59" aria-label="АИ-95">
                                     АИ-95
                                 </option>
                             </select>
@@ -589,32 +589,32 @@
                     <div class="swiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <a href="./static/img/content/sertificate1-big.jpg" data-fancybox class="sertificate-img">
+                                <a href="./static/img/content/sertificate1-big.jpg" data-fancybox class="sertificate-img" aria-label="sertificate">
                                     <img src="./static/img/content/sertificate1.jpg" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
-                                <a href="./static/img/content/sertificate2-big.jpg" data-fancybox class="sertificate-img">
+                                <a href="./static/img/content/sertificate2-big.jpg" data-fancybox class="sertificate-img" aria-label="sertificate">
                                     <img src="./static/img/content/sertificate2.jpg" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
-                                <a href="./static/img/content/sertificate3-big.jpg" data-fancybox class="sertificate-img">
+                                <a href="./static/img/content/sertificate3-big.jpg" data-fancybox class="sertificate-img" aria-label="sertificate">
                                     <img src="./static/img/content/sertificate3.jpg" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
-                                <a href="./static/img/content/sertificate4-big.jpg" data-fancybox class="sertificate-img">
+                                <a href="./static/img/content/sertificate4-big.jpg" data-fancybox class="sertificate-img" aria-label="sertificate">
                                     <img src="./static/img/content/sertificate4.jpg" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
-                                <a href="./static/img/content/sertificate1-big.jpg" data-fancybox class="sertificate-img">
+                                <a href="./static/img/content/sertificate1-big.jpg" data-fancybox class="sertificate-img" aria-label="sertificate">
                                     <img src="./static/img/content/sertificate1.jpg" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
-                                <a href="./static/img/content/sertificate2-big.jpg" data-fancybox class="sertificate-img">
+                                <a href="./static/img/content/sertificate2-big.jpg" data-fancybox class="sertificate-img" aria-label="sertificate">
                                     <img src="./static/img/content/sertificate2.jpg" alt="">
                                 </a>
                             </div>
@@ -791,38 +791,38 @@
                     </div>
                     <div class="footer__nav">
                         <div class="footer__link">
-                            <a href="">Карта АЗС</a>
+                            <a href="#">Карта АЗС</a>
                         </div>
                         <div class="footer__link">
-                            <a href="">Контакты</a>
+                            <a href="#">Контакты</a>
                         </div>
                         <div class="footer__link">
-                            <a href="">АЗС по регионам</a>
+                            <a href="#">АЗС по регионам</a>
                         </div>
                         <div class="footer__link">
-                            <a href="">О компании</a>
+                            <a href="#">О компании</a>
                         </div>
                         <div class="footer__link">
-                            <a href="">АЗС по брандам</a>
+                            <a href="#">АЗС по брандам</a>
                         </div>
                         <div class="footer__link">
-                            <a href="">Личный кабинет</a>
+                            <a href="#">Личный кабинет</a>
                         </div>
                         <div class="footer__link">
-                            <a href="">Доставка топлива</a>
+                            <a href="#">Доставка топлива</a>
                         </div>
                     </div>
                     <div class="footer__contacts">
                         <div class="footer__tel">
                             <span>Отдел продаж</span>
-                            <a href="">8 (495) 796-65-56</a>
+                            <a href="tel:84957966556">8 (495) 796-65-56</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="footer__copyright">
                 <div class="wrapper">
-                    <a href="">Политика конфиденциальности</a>
+                    <a href="#">Политика конфиденциальности</a>
                 </div>
             </div>
         </footer>
